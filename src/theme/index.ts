@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-import { SCALING_FACTOR } from '@constant';
+import { SCALING_FACTOR } from '@constants';
 
 /* Customized MUI components themes */
 import { components } from './components';
@@ -26,6 +26,7 @@ let theme = createTheme({
 /* Extend the base theme with additional configurations */
 theme = createTheme(theme, {
     typography: {
+        allVariants: { lineHeight: 1.5 },
         ...typography.typographyStyle(theme),
     },
 });

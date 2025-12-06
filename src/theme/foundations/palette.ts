@@ -1,11 +1,34 @@
 import type { PaletteOptions } from '@mui/material/styles';
 
-import { COLORS } from '@constant';
+import { COLORS } from '@constants';
 
 /* Custom Palette */
 export const palette: PaletteOptions = {
-    // TODO: Add necessary colors here
     primary: {
         main: COLORS.PRIMARY.MAIN,
     },
+    secondary: {
+        main: COLORS.SECONDARY.MAIN,
+    },
+    text: {
+        primary: COLORS.TEXT.PRIMARY,
+        secondary: COLORS.TEXT.SECONDARY,
+    },
+    info: {
+        main: COLORS.INFO.MAIN,
+        contrastText: COLORS.INFO.CONTRAST_TEXT,
+    },
+    success: {
+        main: COLORS.SUCCESS.MAIN,
+        contrastText: COLORS.SUCCESS.CONTRAST_TEXT,
+    },
+    error: {
+        main: COLORS.ERROR.MAIN,
+        contrastText: COLORS.ERROR.CONTRAST_TEXT,
+    },
+    background: {
+        default: COLORS.BACKGROUND.DEFAULT,
+        paper: COLORS.BACKGROUND.PAPER,
+    },
+    divider: COLORS.DIVIDER,
 };
