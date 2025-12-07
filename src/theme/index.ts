@@ -36,6 +36,18 @@ theme = createTheme(theme, {
         allVariants: { lineHeight: 1.5 },
         ...typography.typographyStyle(theme),
     },
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    textTransform: 'none',
+                    boxShadow: 'none',
+                    borderRadius: theme.shape.borderRadius * 5,
+                    padding: theme.spacing(2, 3),
+                },
+            },
+        },
+    },
 });
 
 export { theme };

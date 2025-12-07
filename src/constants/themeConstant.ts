@@ -26,7 +26,7 @@ export const COLORS = {
         CONTRAST_TEXT: '#FFFFFF',
     },
     BACKGROUND: {
-        DEFAULT: '#1E1E1E',
+        DEFAULT: '#09090B',
         PAPER: '#12161C',
     },
     DIVIDER: '#4B4F54',
@@ -47,6 +47,16 @@ export const BREAKPOINTS = {
  * The default locale for the application.
  */
 export const DEFAULT_LOCALE: Intl.LocalesArgument = 'en-IN';
+
+/**
+ * The default height for the header.
+ */
+export const HEADER_HEIGHT = 70;
+
+/**
+ * The max width of the main container.
+ */
+export const CONTAINER_MAX_WIDTH = 1600;
 
 /**
  * Base font size in pixels.

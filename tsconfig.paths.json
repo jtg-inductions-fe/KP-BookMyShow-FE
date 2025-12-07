@@ -9,7 +9,8 @@
             "@routes": ["routes"],
             "@components": ["components"],
             "@containers": ["containers"],
-            "@layout": ["layout/index"]
+            "@layout": ["layout/index"],
+            "@pages": ["pages/index"]
         }
     }
 }
