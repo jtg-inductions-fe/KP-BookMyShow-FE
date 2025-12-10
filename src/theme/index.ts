@@ -42,7 +42,7 @@ theme = createTheme(theme, {
                 root: {
                     textTransform: 'none',
                     boxShadow: 'none',
-                    borderRadius: theme.shape.borderRadius * 5,
+                    borderRadius: theme.shape.borderRadius * 2,
                     padding: theme.spacing(2, 3),
                 },
             },
