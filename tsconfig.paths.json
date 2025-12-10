@@ -6,7 +6,10 @@
             "@constants": ["constants"],
             "@theme": ["theme"],
             "@store": ["store"],
-            "@routes": ["routes"]
+            "@routes": ["routes"],
+            "@components": ["components"],
+            "@containers": ["containers"],
+            "@layout": ["layout/index"]
         }
     }
 }
