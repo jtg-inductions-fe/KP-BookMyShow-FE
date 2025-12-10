@@ -11,7 +11,7 @@ const fontFaceDeclarations = `
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        src: url(${InterRegularWOFF2}) format('woff2')
+        src: url(${InterRegularWOFF2}) format('woff2');
         };
 
         @font-face {
@@ -19,7 +19,7 @@ const fontFaceDeclarations = `
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
-        src: url(${InterMediumWOFF2}) format('woff2')
+        src: url(${InterMediumWOFF2}) format('woff2');
         };
 
         @font-face {
@@ -27,7 +27,7 @@ const fontFaceDeclarations = `
         font-family: 'Inter';
         font-style: normal;
         font-weight: 600;
-        src: url(${InterSemiBoldWOFF2}) format('woff2')
+        src: url(${InterSemiBoldWOFF2}) format('woff2');
         };
 
         @font-face {
@@ -35,7 +35,7 @@ const fontFaceDeclarations = `
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
-        src: url(${InterBoldWOFF2}) format('woff2')
+        src: url(${InterBoldWOFF2}) format('woff2');
         };
 
     `;

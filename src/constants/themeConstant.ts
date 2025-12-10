@@ -7,7 +7,7 @@ export const COLORS = {
         MAIN: '#F84565',
     },
     SECONDARY: {
-        MAIN: '#f8456665',
+        MAIN: '#F8456665',
     },
     TEXT: {
         PRIMARY: '#FFFFFF',

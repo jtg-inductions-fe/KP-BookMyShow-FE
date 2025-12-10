@@ -62,7 +62,7 @@ export default tseslint.config(
                         ['^@mui'],
                         ['^@react-redux'],
                         [
-                            '^@(?:|assets|components|constant|layout|utils|routes|theme)',
+                            '^@(?:|assets|components|constants|layout|utils|routes|theme)',
                         ],
                         ['^\\./', '^\\.\\./'],
                     ],

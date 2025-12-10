@@ -3,10 +3,10 @@
         "baseUrl": "./src",
         "paths": {
             "@assets/*": ["assets/*"],
-            "@constants": ["constants/index"],
-            "@theme": ["theme/index"],
-            "@store": ["store/index"],
-            "@routes": ["constants/routeConstants"]
+            "@constants": ["constants"],
+            "@theme": ["theme"],
+            "@store": ["store"],
+            "@routes": ["routes"]
         }
     }
 }

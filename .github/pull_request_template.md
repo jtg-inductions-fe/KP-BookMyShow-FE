@@ -1,6 +1,6 @@
 #### Description:
 
-- Add tasks done in this is Pull Request
+- Add tasks done in this Pull Request
 
 #### Development Checklist
 

@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 
-import { APP_ROUTES } from '@routes';
+import { APP_ROUTES } from '@constants';
 
 const routes: RouteObject[] = [
     {

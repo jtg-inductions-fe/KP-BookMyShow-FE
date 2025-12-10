@@ -3,7 +3,7 @@
  * - Style is set to 'currency'.
  * - Currency is set to 'INR'.
  * - Uses standard notation for full numeric display.
- * - Maximum of 1 fraction digit in the currency amount.
+ * - Maximum of 2 fraction digit in the currency amount.
  */
 export const STANDARD_CURRENCY_FORMAT_OPTIONS = {
     style: 'currency',

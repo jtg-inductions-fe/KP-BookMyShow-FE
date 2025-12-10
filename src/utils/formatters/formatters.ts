@@ -1,9 +1,8 @@
 import { DEFAULT_LOCALE } from '@constants';
-
 import {
     DATE_FORMATTER_OPTIONS,
     STANDARD_CURRENCY_FORMAT_OPTIONS,
-} from './formatters.util';
+} from '@constants';
 
 /**
  * Formats a number into indian currency.
@@ -11,7 +10,7 @@ import {
  * @param options - Optional formatting options, it defaults to `STANDARD_CURRENCY_FORMAT_OPTIONS`.
  * @returns A string with the number formatted
  */
-export const numberFormatter = (
+export const currencyFormatter = (
     num: number,
     locale: Intl.LocalesArgument = DEFAULT_LOCALE,
     options: Intl.NumberFormatOptions = STANDARD_CURRENCY_FORMAT_OPTIONS,
