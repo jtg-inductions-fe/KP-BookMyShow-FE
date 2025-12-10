@@ -1,48 +1,46 @@
+import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import AuthImg from '@assets/images/auth_background.webp';
-import SignupImg from '@assets/images/signup_image.webp';
+import LoginImg from '@assets/images/login_image.webp';
 import { APP_ROUTES } from '@constants';
 import { AuthContainer } from '@containers';
 import { showSnackbar } from '@features';
-import { SignupRequest, useSignupMutation } from '@services';
+import { LoginRequest, useLoginMutation } from '@services';
 import { AppDispatch } from '@store';
 
 import { Config } from './config';
-import { OuterContainer, StyledImg } from './Signup.styles';
+import { TOKEN_LIFETIME_IN_MINUTES } from './Login.constants';
+import { OuterContainer, StyledImg } from './Login.styles';
 
 /**
- * `SignupPage` is a container which contains the logic of the `onSubmit`
+ * `LoginPage` is a container which contains the logic of the `onSubmit`
  * and responsible for dispatch the messages to the redux store.
  *
  * @returns a container which holds background image and `AuthContainer`.
  */
-export const SignupPage = () => {
-    const [SignupUser] = useSignupMutation();
+export const LoginPage = () => {
+    const [LoginUser] = useLoginMutation();
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
-    const onSubmit = async (data: SignupRequest): Promise<void> => {
+    const onSubmit = async (data: LoginRequest): Promise<void> => {
         try {
-            await SignupUser(data).unwrap();
+            const response = await LoginUser(data).unwrap();
+            Cookies.set('token', response.access, {
+                expires: TOKEN_LIFETIME_IN_MINUTES / (24 * 60),
+            });
             dispatch(
                 showSnackbar({
-                    messages: ['Signup successful!'],
+                    messages: ['Login successful!'],
                     options: { variant: 'success' },
                 }),
             );
-            void navigate(APP_ROUTES.LOGIN, { replace: true });
-        } catch (e) {
+            void navigate(APP_ROUTES.HOME, { replace: true });
+        } catch (error) {
             const allErrors: string[] = [];
-            const errorData = (e as { data: Record<string, string[]> }).data;
-            Object.keys(errorData).forEach((fieldName) => {
-                const messages = errorData[fieldName];
-
-                messages.forEach((msg) => {
-                    allErrors.push(msg);
-                });
-            });
-
+            const errorData = (error as { data: Record<string, string> }).data;
+            allErrors.push(errorData.detail);
             dispatch(
                 showSnackbar({
                     messages: allErrors,
@@ -56,7 +54,7 @@ export const SignupPage = () => {
         <OuterContainer>
             <StyledImg src={AuthImg} alt="side poster" aria-hidden={true} />
             <AuthContainer
-                imgPath={SignupImg}
+                imgPath={LoginImg}
                 formConfig={{ ...Config, onSubmit }}
             />
         </OuterContainer>

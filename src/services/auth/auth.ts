@@ -1,6 +1,11 @@
 import { baseApi } from '@api';
 
-import { SignupRequest, SignupResponse } from './auth.types';
+import {
+    LoginRequest,
+    LoginResponse,
+    SignupRequest,
+    SignupResponse,
+} from './auth.types';
 
 /**
  * `authApi` is a  function to inject the endpoints into the original API,
@@ -16,7 +21,14 @@ export const authApi = baseApi.injectEndpoints({
                 body: data,
             }),
         }),
+        login: builder.mutation<LoginResponse, LoginRequest>({
+            query: (data) => ({
+                url: '/api/login/',
+                method: 'POST',
+                body: data,
+            }),
+        }),
     }),
 });
 
-export const { useSignupMutation } = authApi;
+export const { useLoginMutation, useSignupMutation } = authApi;

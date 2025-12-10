@@ -5,7 +5,9 @@ import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { APP_ROUTES } from '@constants';
 import { Header } from '@containers';
 import { MainLayout } from '@layout';
-import { SignupPage } from '@pages';
+import { LoginPage, SignupPage } from '@pages';
+
+import { GuestRoute } from './GuestRoute';
 
 type PagesModule = typeof import('@pages');
 
@@ -40,9 +42,25 @@ const routes: RouteObject[] = [
     },
     {
         path: APP_ROUTES.SIGNUP,
-        element: <MainLayout />,
+        element: (
+            <GuestRoute>
+                <MainLayout />
+            </GuestRoute>
+        ),
         children: [
             { index: true, element: <SignupPage /> },
+            { path: '*', element: <NotFoundPage /> },
+        ],
+    },
+    {
+        path: APP_ROUTES.LOGIN,
+        element: (
+            <GuestRoute>
+                <MainLayout />
+            </GuestRoute>
+        ),
+        children: [
+            { index: true, element: <LoginPage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },
