@@ -4,7 +4,7 @@ import type {
     TypographyUtils,
 } from '@mui/material/styles/createTypography';
 
-import { HTML_FONT_SIZE } from '@constant';
+import { HTML_FONT_SIZE } from '@constants';
 
 /* Custom px to rem function */
 const typographyUtil: TypographyUtils = {
@@ -16,7 +16,6 @@ const typographyUtil: TypographyUtils = {
     pxToRem: (px: number) => `${px / HTML_FONT_SIZE}` + 'rem',
 };
 
-// TODO: Add the necessary typographies here.
 /**
  * Creates a typography block with various styles
  * @param theme - Theme object to access the breakpoints.
@@ -26,9 +25,10 @@ const typographyStyle = (theme: Theme): TypographyOptions => ({
     fontFamily: 'Inter',
     htmlFontSize: HTML_FONT_SIZE,
 
-    fontWeightLight: 400,
-    fontWeightRegular: 500,
-    fontWeightMedium: 600,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightSemiBold: 600,
+    fontWeightBold: 700,
 
     h1: {
         fontSize: typographyUtil.pxToRem(30),
@@ -38,6 +38,50 @@ const typographyStyle = (theme: Theme): TypographyOptions => ({
         [theme.breakpoints.up('md')]: {
             fontSize: typographyUtil.pxToRem(48),
             lineHeight: typographyUtil.pxToRem(62.5),
+        },
+    },
+
+    h2: {
+        fontSize: typographyUtil.pxToRem(20),
+        fontWeight: 700,
+    },
+    h3: {
+        fontSize: typographyUtil.pxToRem(20),
+        fontWeight: 600,
+    },
+    h4: {
+        fontSize: typographyUtil.pxToRem(16),
+        fontWeight: 500,
+    },
+    subtitle1: {
+        fontSize: typographyUtil.pxToRem(16),
+        fontWeight: 600,
+    },
+    subtitle2: {
+        fontSize: typographyUtil.pxToRem(12),
+        fontWeight: 400,
+    },
+    body1: {
+        fontSize: typographyUtil.pxToRem(16),
+        fontWeight: 400,
+    },
+    body2: {
+        fontSize: typographyUtil.pxToRem(12),
+        fontWeight: 600,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(14),
+        },
+    },
+    button: {
+        fontSize: typographyUtil.pxToRem(14),
+        fontWeight: 600,
+    },
+    caption: {
+        fontSize: typographyUtil.pxToRem(12),
+        fontWeight: 400,
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(14),
         },
     },
 });
