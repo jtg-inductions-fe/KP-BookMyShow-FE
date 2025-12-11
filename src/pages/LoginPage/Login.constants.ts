@@ -1,1 +1,1 @@
-export const TOKEN_LIFETIME_IN_MINUTES = 20;
+export const COOKIE_LIFETIME_IN_WEEKS = 2;

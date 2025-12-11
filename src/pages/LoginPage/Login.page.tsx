@@ -11,7 +11,7 @@ import { LoginRequest, useLoginMutation } from '@services';
 import { AppDispatch } from '@store';
 
 import { Config } from './config';
-import { TOKEN_LIFETIME_IN_MINUTES } from './Login.constants';
+import { COOKIE_LIFETIME_IN_WEEKS } from './Login.constants';
 import { OuterContainer, StyledImg } from './Login.styles';
 
 /**
@@ -27,16 +27,28 @@ export const LoginPage = () => {
     const onSubmit = async (data: LoginRequest): Promise<void> => {
         try {
             const response = await LoginUser(data).unwrap();
-            Cookies.set('token', response.access, {
-                expires: TOKEN_LIFETIME_IN_MINUTES / (24 * 60),
+            Cookies.set('refresh-token', response.refresh, {
+                expires: COOKIE_LIFETIME_IN_WEEKS,
+                secure: true,
+                sameSite: 'strict',
             });
+
+            Cookies.set('access-token', response.access, {
+                expires: COOKIE_LIFETIME_IN_WEEKS,
+                secure: true,
+                sameSite: 'strict',
+            });
+
             dispatch(
                 showSnackbar({
                     messages: ['Login successful!'],
                     options: { variant: 'success' },
                 }),
             );
-            void navigate(APP_ROUTES.HOME, { replace: true });
+
+            void navigate(APP_ROUTES.HOME, {
+                replace: true,
+            });
         } catch (error) {
             const allErrors: string[] = [];
             const errorData = (error as { data: Record<string, string> }).data;
