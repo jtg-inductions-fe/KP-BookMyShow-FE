@@ -1,0 +1,1 @@
+export { useLazyProfileQuery } from './user';

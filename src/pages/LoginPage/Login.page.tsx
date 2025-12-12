@@ -1,17 +1,19 @@
 import Cookies from 'js-cookie';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import AuthImg from '@assets/images/auth_background.webp';
 import LoginImg from '@assets/images/login_image.webp';
 import { APP_ROUTES } from '@constants';
 import { AuthContainer } from '@containers';
-import { showSnackbar } from '@features';
+import { setAuthState, showSnackbar } from '@features';
 import { LoginRequest, useLoginMutation } from '@services';
-import { AppDispatch } from '@store';
+import { useAppDispatch } from '@store';
 
 import { Config } from './config';
-import { COOKIE_LIFETIME_IN_DAYS } from './Login.constants';
+import {
+    ACCESS_COOKIE_LIFETIME_IN_MINUTES,
+    REFRESH_COOKIE_LIFETIME_IN_DAYS,
+} from './Login.constants';
 import { OuterContainer, StyledImg } from './Login.styles';
 
 /**
@@ -22,22 +24,23 @@ import { OuterContainer, StyledImg } from './Login.styles';
  */
 export const LoginPage = () => {
     const [loginUser] = useLoginMutation();
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const onSubmit = async (data: LoginRequest): Promise<void> => {
         try {
             const response = await loginUser(data).unwrap();
             Cookies.set('refresh-token', response.refresh, {
-                expires: COOKIE_LIFETIME_IN_DAYS,
+                expires: REFRESH_COOKIE_LIFETIME_IN_DAYS,
                 secure: true,
                 sameSite: 'strict',
             });
 
             Cookies.set('access-token', response.access, {
-                expires: COOKIE_LIFETIME_IN_DAYS,
+                expires: ACCESS_COOKIE_LIFETIME_IN_MINUTES / (24 * 60),
                 secure: true,
                 sameSite: 'strict',
             });
+            dispatch(setAuthState());
 
             dispatch(
                 showSnackbar({
