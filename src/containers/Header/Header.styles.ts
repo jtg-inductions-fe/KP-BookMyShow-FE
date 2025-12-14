@@ -43,8 +43,8 @@ export const LeftContainer = styled(Box)(
             typography: { pxToRem },
         },
     }) => ({
-        height: pxToRem(30),
-        width: pxToRem(30),
+        height: pxToRem(40),
+        width: pxToRem(40),
     }),
 );
 

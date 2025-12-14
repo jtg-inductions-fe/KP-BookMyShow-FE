@@ -6,10 +6,12 @@ export const userApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         profile: builder.query<User, void>({
             query: () => ({
-                url: '/api/user/profile/',
+                url: 'api/user/profile/',
                 method: 'GET',
-                requiresAuth: true,
             }),
+            extraOptions: {
+                requiresAuth: true,
+            },
         }),
     }),
 });

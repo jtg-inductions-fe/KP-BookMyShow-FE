@@ -20,6 +20,6 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true
     },
-    "include": ["src"],
+    "include": ["src", "src/components/MovieCard/.types.ts"],
     "extends": "./tsconfig.paths.json"
 }

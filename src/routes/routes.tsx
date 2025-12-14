@@ -23,7 +23,7 @@ export const lazyLoadPage = <K extends keyof PagesModule>(
 const NotFoundPage = lazyLoadPage('NotFoundPage');
 const SignupPage = lazyLoadPage('SignupPage');
 const LoginPage = lazyLoadPage('LoginPage');
-
+const HomePage = lazyLoadPage('HomePage');
 /**
  * Define the routing structure for the application.
  *
@@ -37,7 +37,7 @@ const routes: RouteObject[] = [
         path: APP_ROUTES.HOME,
         element: <MainLayout header={<Header />} />,
         children: [
-            { index: true, element: <>Bookmyshow</> },
+            { index: true, element: <HomePage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },

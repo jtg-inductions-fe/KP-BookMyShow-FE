@@ -9,11 +9,14 @@
             "@routes": ["routes"],
             "@components": ["components"],
             "@containers": ["containers"],
-            "@layout": ["layout/index"],
-            "@pages": ["pages/index"],
-            "@api": ["api/index"],
-            "@services": ["services/index"],
-            "@features": ["features/index"]
+            "@layout": ["layout"],
+            "@pages": ["pages"],
+            "@api": ["api"],
+            "@services": ["services"],
+            "@features": ["features"],
+            "@models": ["models"],
+            "@utils": ["utils"],
+            "@hooks": ["hooks"]
         }
     }
 }

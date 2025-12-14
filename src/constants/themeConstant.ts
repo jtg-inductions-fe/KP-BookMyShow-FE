@@ -51,7 +51,7 @@ export const DEFAULT_LOCALE: Intl.LocalesArgument = 'en-IN';
 /**
  * The default height for the header.
  */
-export const HEADER_HEIGHT = 70;
+export const HEADER_HEIGHT = 75;
 
 /**
  * The max width of the main container.
