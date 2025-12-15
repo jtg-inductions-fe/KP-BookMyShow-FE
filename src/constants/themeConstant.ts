@@ -74,3 +74,8 @@ export const SCALING_FACTOR = 4;
  * Snackbar component duration.
  */
 export const SNACKBAR_DURATION = 5000;
+
+/**
+ * movie description expanding threshold.
+ */
+export const TEXT_EXPANDING_THRESHOLD = 330;

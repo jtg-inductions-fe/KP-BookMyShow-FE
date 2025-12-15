@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Box, Stack } from '@mui/material';
 
 import { Grid, Swiper, Typography, VerticalCard } from '@components';
+import { APP_ROUTES } from '@constants';
 import { useInfiniteScroll } from '@hooks';
 import { MovieAdapter } from '@models';
 import { useGetLatestMoviesInfiniteQuery } from '@services';
@@ -15,6 +18,7 @@ import { BottomGradient, HomeContainer } from './Home.styles';
  * and navigation to other sections of the app.
  */
 export const HomePage = () => {
+    const navigate = useNavigate();
     const { data, isLoading, fetchNextPage, isFetching, hasNextPage } =
         useGetLatestMoviesInfiniteQuery();
 
@@ -25,6 +29,10 @@ export const HomePage = () => {
         isFetching,
         onLoadMore: fetchNextPage,
     });
+
+    const handelClick = (slug: string) => {
+        void navigate(`${APP_ROUTES.MOVIES}/${slug}`);
+    };
     return (
         <HomeContainer>
             <Box sx={{ position: 'relative' }}>
@@ -40,6 +48,7 @@ export const HomePage = () => {
                                 data={new MovieAdapter(movie).adaptToVCard()}
                                 isLoading={isLoading}
                                 imgUrl={`https://picsum.photos/id/${movie.id}/900/900`}
+                                onClick={() => handelClick(movie.slug)}
                             />
                         )}
                         gridItemsData={currentData}
@@ -49,7 +58,6 @@ export const HomePage = () => {
                         No latest movies available.
                     </Typography>
                 )}
-
                 <Box ref={endRef} style={{ height: 1 }} />
             </Stack>
         </HomeContainer>

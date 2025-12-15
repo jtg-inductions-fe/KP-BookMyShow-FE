@@ -14,6 +14,7 @@ export const APP_ROUTES = {
     ORDER_SUMMARY: '/order-summary',
     PURCHASE_HISTORY: '/purchase-history',
     ERROR: '/error',
+    NOTFOUND: '/notfound',
 } as const;
 
 /**

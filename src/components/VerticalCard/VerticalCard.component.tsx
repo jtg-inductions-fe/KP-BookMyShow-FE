@@ -18,13 +18,14 @@ export const VerticalCard = ({
     data,
     isLoading,
     imgUrl,
+    onClick,
 }: VerticalCardProps) => (
     <Card
         sx={{
             borderRadius: 5,
         }}
     >
-        <CardActionArea>
+        <CardActionArea onClick={onClick}>
             <StyledCardMedia image={imgUrl} />
             <StyledCardContent>
                 {isLoading ? (

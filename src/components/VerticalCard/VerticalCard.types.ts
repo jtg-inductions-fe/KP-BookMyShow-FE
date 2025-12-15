@@ -17,4 +17,5 @@ export interface VerticalCardProps {
     data: VerticalCardData;
     isLoading: boolean;
     imgUrl: string;
+    onClick: () => void;
 }
