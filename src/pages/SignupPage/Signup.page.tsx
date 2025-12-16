@@ -1,15 +1,14 @@
 import { useDispatch } from 'react-redux';
-import { SignupRequest } from 'services/auth/auth.types';
 
 import AuthImg from '@assets/images/auth_background.webp';
 import SignupImg from '@assets/images/signup_image.webp';
 import { AuthContainer } from '@containers';
 import { showSnackbar } from '@features';
-import { useSignupMutation } from '@services';
+import { SignupRequest, useSignupMutation } from '@services';
 import { AppDispatch } from '@store';
 
 import { Config } from './config';
-import { OuterContainer, StyledImg } from './SIgnup.styles';
+import { OuterContainer, StyledImg } from './Signup.styles';
 
 /**
  * `SignupPage` is a container which contains the logic of the `onSubmit`

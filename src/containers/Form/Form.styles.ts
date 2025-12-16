@@ -1,5 +1,10 @@
-import { Box, styled, TextField } from '@mui/material';
-import { inputBaseClasses, outlinedInputClasses } from '@mui/material';
+import {
+    Box,
+    inputBaseClasses,
+    outlinedInputClasses,
+    styled,
+    TextField,
+} from '@mui/material';
 
 export const StyledTextField = styled(TextField)(
     ({
@@ -47,7 +52,7 @@ export const StyledForm = styled('form')(
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        padding: '0 0',
+        padding: 0,
         gap: 20,
 
         [breakpoints.up('md')]: {

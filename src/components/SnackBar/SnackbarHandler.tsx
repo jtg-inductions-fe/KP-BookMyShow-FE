@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useTheme } from '@mui/material';
 
+import { SNACKBAR_DURATION } from '@constants';
 import { clearSnackbar } from '@features';
 import { RootState } from '@store';
 
@@ -30,7 +31,7 @@ export const SnackbarHandler = () => {
             messages.forEach((message) => {
                 enqueueSnackbar(message, {
                     variant: options?.variant,
-                    autoHideDuration: 5000,
+                    autoHideDuration: SNACKBAR_DURATION,
                     style: {
                         fontSize: pxToRem(20),
                     },

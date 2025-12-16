@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ReactNode } from 'react';
 
 import { Typography } from 'components';
 
@@ -17,15 +16,8 @@ export class ErrorBoundary extends Component<
 > {
     public state: ErrorBoundaryState = { hasError: false };
 
-    public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-        console.error('Error in a child component: ', error);
+    public static getDerivedStateFromError(): ErrorBoundaryState {
         return { hasError: true };
-    }
-
-    public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-        if (import.meta.env.DEV) {
-            console.error('ErrorBoundary detail: ', error, errorInfo);
-        }
     }
 
     private renderDefaultFallback(): ReactNode {

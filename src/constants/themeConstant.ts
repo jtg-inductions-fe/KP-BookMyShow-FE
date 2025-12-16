@@ -69,3 +69,8 @@ export const HTML_FONT_SIZE = 10;
  * @constant
  */
 export const SCALING_FACTOR = 4;
+
+/**
+ * Snackbar component duration.
+ */
+export const SNACKBAR_DURATION = 5000;

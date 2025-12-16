@@ -1,9 +1,10 @@
-import { Form } from 'containers';
 import { FieldValues } from 'react-hook-form';
 
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Grid2, useMediaQuery, useTheme } from '@mui/material';
 
-import { StyledBox, StyledImg } from './Auth.styles';
+import { Form } from '@containers';
+
+import { StyledGrid, StyledImg } from './Auth.styles';
 import { AuthProps } from './Auth.types';
 
 /**
@@ -20,17 +21,19 @@ export const AuthContainer = <T extends FieldValues>(Props: AuthProps<T>) => {
 
     const { imgPath, formConfig } = Props;
     return (
-        <StyledBox>
+        <StyledGrid container>
             {isTablet && (
-                <Box height={'100%'} flex={1}>
+                <Grid2 size={6}>
                     <StyledImg
                         src={imgPath}
                         alt={`${formConfig.heading} image`}
-                        aria-hidden={true}
+                        aria-hidden
                     />
-                </Box>
+                </Grid2>
             )}
-            <Form {...formConfig} />
-        </StyledBox>
+            <Grid2 size={isTablet ? 6 : 12}>
+                <Form {...formConfig} />
+            </Grid2>
+        </StyledGrid>
     );
 };

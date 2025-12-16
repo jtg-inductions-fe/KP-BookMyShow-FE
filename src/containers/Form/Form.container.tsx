@@ -8,7 +8,7 @@ import { Button, IconButton, InputAdornment, useTheme } from '@mui/material';
 
 import { Typography } from '@components';
 
-import { OuterContainer, StyledForm, StyledTextField } from './form.styles';
+import { OuterContainer, StyledForm, StyledTextField } from './Form.styles';
 import { FormProps } from './Form.types';
 
 /**
@@ -94,7 +94,8 @@ export const Form = <T extends FieldValues>({
             </StyledForm>
 
             <Typography variant="subtitle2" color="text.primary">
-                {link.message}{' '}
+                {link.message}
+                {'\u00A0'}
                 <Link
                     style={{
                         color: palette.primary.main,
