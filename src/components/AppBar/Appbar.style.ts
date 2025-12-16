@@ -1,6 +1,7 @@
 import { AppBar, styled } from '@mui/material';
 
-// TODO: Height will need to be adjusted as the main section will be developed in upcoming PRs.
+import { HEADER_HEIGHT } from '@constants';
+
 export const StyledAppBar = styled(AppBar)(
     ({
         theme: {
@@ -13,6 +14,7 @@ export const StyledAppBar = styled(AppBar)(
     }) => ({
         boxShadow: shadows[0],
         zIndex: zIndex.appBar,
+        minHeight: pxToRem(HEADER_HEIGHT),
         backgroundColor: palette.background.paper,
         padding: `${pxToRem(12)} ${pxToRem(16)}`,
 

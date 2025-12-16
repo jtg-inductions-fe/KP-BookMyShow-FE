@@ -4,6 +4,8 @@ export {
     SCALING_FACTOR,
     BREAKPOINTS,
     DEFAULT_LOCALE,
+    HEADER_HEIGHT,
+    CONTAINER_MAX_WIDTH,
 } from './themeConstant';
 
 export { APP_ROUTES } from './routeConstants';
