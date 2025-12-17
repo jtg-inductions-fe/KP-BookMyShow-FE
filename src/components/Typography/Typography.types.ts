@@ -7,4 +7,5 @@ import { TypographyProps } from '@mui/material';
  */
 export type CustomTypographyProps = TypographyProps & {
     lines?: number;
+    hasShowMore?: boolean;
 };

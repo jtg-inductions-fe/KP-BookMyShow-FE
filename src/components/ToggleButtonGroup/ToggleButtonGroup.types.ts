@@ -12,6 +12,7 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 export interface ToggleButtonItem {
     handleClick: () => void;
     label: string;
+    url: string;
     logo: OverridableComponent<SvgIconTypeMap<unknown, 'svg'>>;
 }
 

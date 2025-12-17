@@ -4,6 +4,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 import TheatersIcon from '@mui/icons-material/Theaters';
 
 import { ToggleButtonItem } from '@components';
+import { APP_ROUTES } from '@constants';
 import { clearAuthState, clearUser } from '@features';
 import { AppDispatch } from '@store';
 /**
@@ -56,13 +57,15 @@ export const getMenuOptions = (
  */
 export const ToggleButtonItemConfig: ToggleButtonItem[] = [
     {
-        label: 'Movies',
+        label: 'movies',
         handleClick: () => {},
         logo: MovieIcon,
+        url: APP_ROUTES.MOVIES,
     },
     {
-        label: 'Cinemas',
+        label: 'cinemas',
         handleClick: () => {},
         logo: TheatersIcon,
+        url: APP_ROUTES.CINEMAS,
     },
 ];

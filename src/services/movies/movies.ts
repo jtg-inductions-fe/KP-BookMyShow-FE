@@ -1,5 +1,5 @@
 import { baseApi } from '@api';
-import { Movie } from '@models';
+import { Genre, Language, Movie } from '@models';
 
 import { PaginatedResponse } from '../services.types';
 
@@ -28,8 +28,53 @@ export const movieApi = baseApi.injectEndpoints({
                 method: 'GET',
             }),
         }),
+        getMovies: builder.infiniteQuery<
+            PaginatedResponse<Movie>,
+            string,
+            string | null
+        >({
+            query: ({ queryArg, pageParam }) =>
+                pageParam ? pageParam : `/api/movies?${queryArg}`,
+            infiniteQueryOptions: {
+                initialPageParam: null,
+                getNextPageParam: (lastPage) => lastPage.next,
+            },
+        }),
     }),
 });
 
-export const { useGetLatestMoviesInfiniteQuery, useGetMovieDetailsQuery } =
-    movieApi;
+export const LanguageApi = baseApi.injectEndpoints({
+    endpoints: (builder) => ({
+        getLanguages: builder.query<string[], void>({
+            query: () => ({
+                url: '/api/common/languages/',
+                method: 'GET',
+            }),
+            transformResponse: (languages: Language[]) =>
+                languages.map((language) => language.name),
+        }),
+    }),
+});
+
+export const GenreApi = baseApi.injectEndpoints({
+    endpoints: (builder) => ({
+        getGenres: builder.query<string[], void>({
+            query: () => ({
+                url: '/api/movies/genres/',
+                method: 'GET',
+            }),
+            transformResponse: (genres: Genre[]) =>
+                genres.map((genre) => genre.name),
+        }),
+    }),
+});
+
+export const {
+    useGetLatestMoviesInfiniteQuery,
+    useGetMovieDetailsQuery,
+    useGetMoviesInfiniteQuery,
+} = movieApi;
+
+export const { useGetLanguagesQuery } = LanguageApi;
+
+export const { useGetGenresQuery } = GenreApi;

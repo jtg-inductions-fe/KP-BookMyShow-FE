@@ -1,9 +1,6 @@
-import { useState } from 'react';
-
 import { Box, Button, useMediaQuery, useTheme } from '@mui/material';
 
 import { Typography } from '@components';
-import { TEXT_EXPANDING_THRESHOLD } from '@constants';
 
 import {
     DetailsContainer,
@@ -19,7 +16,7 @@ import { DetailCardProps } from './DetailCard.types';
 export const DetailCard = ({ data, imgUrl, btnText }: DetailCardProps) => {
     const { breakpoints } = useTheme();
     const isTablet = useMediaQuery(breakpoints.up('md'));
-    const [isExpanded, setExpanded] = useState(false);
+
     return (
         <MainContainer>
             <Gradient1 />
@@ -44,25 +41,11 @@ export const DetailCard = ({ data, imgUrl, btnText }: DetailCardProps) => {
                     <Box>
                         <Typography
                             color="text.secondary"
-                            lines={isExpanded ? undefined : 3}
+                            lines={3}
+                            hasShowMore
                         >
                             {data.description}
                         </Typography>
-                        {data.description.length > TEXT_EXPANDING_THRESHOLD && (
-                            <Typography
-                                sx={{
-                                    '&:hover': {
-                                        cursor: 'pointer',
-                                    },
-                                }}
-                                variant="caption"
-                                component={'span'}
-                                color="primary.main"
-                                onClick={() => setExpanded(!isExpanded)}
-                            >
-                                {isExpanded ? 'show less' : 'show more'}
-                            </Typography>
-                        )}
                     </Box>
                     <Typography lines={1}>{data.subtitle2}</Typography>
                     <Typography lines={1}>{data.extraInfo}</Typography>

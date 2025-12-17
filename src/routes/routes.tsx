@@ -25,6 +25,7 @@ const SignupPage = lazyLoadPage('SignupPage');
 const LoginPage = lazyLoadPage('LoginPage');
 const HomePage = lazyLoadPage('HomePage');
 const MovieDetailPage = lazyLoadPage('MovieDetailPage');
+const MovieListPage = lazyLoadPage('MovieListPage');
 /**
  * Define the routing structure for the application.
  *
@@ -71,6 +72,14 @@ const routes: RouteObject[] = [
         element: <MainLayout header={<Header />} />,
         children: [
             { index: true, element: <MovieDetailPage /> },
+            { path: '*', element: <NotFoundPage /> },
+        ],
+    },
+    {
+        path: APP_ROUTES.MOVIES,
+        element: <MainLayout header={<Header />} />,
+        children: [
+            { index: true, element: <MovieListPage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },
