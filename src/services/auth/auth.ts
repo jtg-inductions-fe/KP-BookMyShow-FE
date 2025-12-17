@@ -1,0 +1,22 @@
+import { baseApi } from '@api';
+
+import { SignupRequest, SignupResponse } from './auth.types';
+
+/**
+ * `authApi` is a  function to inject the endpoints into the original API,
+ * but also give you that same API with correct types for these endpoints back.
+ *  Useful with code-splitting.
+ */
+export const authApi = baseApi.injectEndpoints({
+    endpoints: (builder) => ({
+        signup: builder.mutation<SignupResponse, SignupRequest>({
+            query: (data) => ({
+                url: '/api/signup/',
+                method: 'POST',
+                body: data,
+            }),
+        }),
+    }),
+});
+
+export const { useSignupMutation } = authApi;

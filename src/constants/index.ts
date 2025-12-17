@@ -6,6 +6,7 @@ export {
     DEFAULT_LOCALE,
     HEADER_HEIGHT,
     CONTAINER_MAX_WIDTH,
+    SNACKBAR_DURATION,
 } from './themeConstant';
 
 export { APP_ROUTES } from './routeConstants';

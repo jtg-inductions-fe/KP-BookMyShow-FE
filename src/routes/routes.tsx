@@ -1,9 +1,11 @@
 import { lazy, LazyExoticComponent } from 'react';
 
-import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom';
+import { createBrowserRouter, RouteObject } from 'react-router-dom';
 
 import { APP_ROUTES } from '@constants';
+import { Header } from '@containers';
 import { MainLayout } from '@layout';
+import { SignupPage } from '@pages';
 
 type PagesModule = typeof import('@pages');
 
@@ -16,8 +18,6 @@ export const lazyLoadPage = <K extends keyof PagesModule>(
             default: module[exportName],
         })),
     );
-
-const ErrorPage = lazyLoadPage('ErrorPage');
 
 const NotFoundPage = lazyLoadPage('NotFoundPage');
 
@@ -32,11 +32,17 @@ const NotFoundPage = lazyLoadPage('NotFoundPage');
 const routes: RouteObject[] = [
     {
         path: APP_ROUTES.HOME,
-        element: <MainLayout />,
-        errorElement: <Navigate to={APP_ROUTES.ERROR} />,
+        element: <MainLayout header={<Header />} />,
         children: [
             { index: true, element: <>Bookmyshow</> },
-            { path: APP_ROUTES.ERROR, element: <ErrorPage /> },
+            { path: '*', element: <NotFoundPage /> },
+        ],
+    },
+    {
+        path: APP_ROUTES.SIGNUP,
+        element: <MainLayout />,
+        children: [
+            { index: true, element: <SignupPage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },
