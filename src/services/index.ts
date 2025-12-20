@@ -17,4 +17,10 @@ export {
 } from './movies';
 export type { MovieCinemaSlot } from './movies';
 
-export { useGetCinemasInfiniteQuery, useGetLocationsQuery } from './cinemas';
+export {
+    useGetCinemasInfiniteQuery,
+    useGetLocationsQuery,
+    useGetCinemaDetailsQuery,
+    useGetCinemaMovieSlotsQuery,
+} from './cinemas';
+export type { CinemaMovieSlot } from './cinemas';

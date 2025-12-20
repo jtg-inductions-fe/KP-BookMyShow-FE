@@ -1,4 +1,4 @@
-import { Box, Button, Grid2, useMediaQuery, useTheme } from '@mui/material';
+import { Button, Grid2, useMediaQuery, useTheme } from '@mui/material';
 
 import { Typography } from '@components';
 
@@ -30,6 +30,9 @@ export const DetailCard = (props: DetailCardProps) => {
     const { breakpoints } = useTheme();
     const isTablet = useMediaQuery(breakpoints.up('md'));
 
+    const isUpperContainer = !!title || !!subtitle1;
+    const isLowerContainer = !!subtitle2 || !!description || !!extraInfo;
+
     return (
         <MainContainer container>
             <Gradient1
@@ -54,27 +57,29 @@ export const DetailCard = (props: DetailCardProps) => {
             <Grid2 flex={1}>
                 {!isLoading ? (
                     <DetailsContainer sx={{ paddingTop: imgUrl ? 4 : 0 }}>
-                        <UpperContainer>
-                            {subtitle1 && (
-                                <Typography
-                                    variant="h4"
-                                    color="primary.light"
-                                    lines={isTablet ? 1 : 2}
-                                >
-                                    {subtitle1}
-                                </Typography>
-                            )}
-                            {title && (
-                                <Typography
-                                    fontSize={30}
-                                    lines={isTablet ? 1 : 2}
-                                >
-                                    {title}
-                                </Typography>
-                            )}
-                        </UpperContainer>
-                        <LowerContainer>
-                            <Box>
+                        {isUpperContainer && (
+                            <UpperContainer>
+                                {subtitle1 && (
+                                    <Typography
+                                        variant="h4"
+                                        color="primary.light"
+                                        lines={isTablet ? 1 : 2}
+                                    >
+                                        {subtitle1}
+                                    </Typography>
+                                )}
+                                {title && (
+                                    <Typography
+                                        fontSize={30}
+                                        lines={isTablet ? 1 : 2}
+                                    >
+                                        {title}
+                                    </Typography>
+                                )}
+                            </UpperContainer>
+                        )}
+                        {isLowerContainer && (
+                            <LowerContainer>
                                 {description && (
                                     <Typography
                                         color="text.secondary"
@@ -84,18 +89,19 @@ export const DetailCard = (props: DetailCardProps) => {
                                         {description}
                                     </Typography>
                                 )}
-                            </Box>
-                            {subtitle2 && (
-                                <Typography lines={isTablet ? 1 : 2}>
-                                    {subtitle2}
-                                </Typography>
-                            )}
-                            {extraInfo && (
-                                <Typography lines={isTablet ? 1 : 2}>
-                                    {extraInfo}
-                                </Typography>
-                            )}
-                        </LowerContainer>
+
+                                {subtitle2 && (
+                                    <Typography lines={isTablet ? 1 : 2}>
+                                        {subtitle2}
+                                    </Typography>
+                                )}
+                                {extraInfo && (
+                                    <Typography lines={isTablet ? 1 : 2}>
+                                        {extraInfo}
+                                    </Typography>
+                                )}
+                            </LowerContainer>
+                        )}
                         {btnText && (
                             <Button variant="contained" onClick={onClick}>
                                 {btnText}

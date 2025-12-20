@@ -1,4 +1,4 @@
-import { Box, Grid2, styled } from '@mui/material';
+import { Box, Grid2, Stack, styled } from '@mui/material';
 
 export const MainContainer = styled(Grid2)(
     ({ theme: { spacing, breakpoints } }) => ({
@@ -27,8 +27,7 @@ export const ImgContainer = styled('img')(
     }),
 );
 
-export const DetailsContainer = styled(Box)(({ theme: { spacing } }) => ({
-    display: 'flex',
+export const DetailsContainer = styled(Stack)(({ theme: { spacing } }) => ({
     flexDirection: 'column',
     gap: spacing(7),
     alignItems: 'start',
@@ -41,9 +40,8 @@ export const UpperContainer = styled(Box)(({ theme: { spacing } }) => ({
     alignItems: 'start',
 }));
 
-export const LowerContainer = styled(Box)(
+export const LowerContainer = styled(Stack)(
     ({ theme: { spacing, breakpoints } }) => ({
-        display: 'flex',
         flexDirection: 'column',
         gap: spacing(3),
         alignItems: 'start',
@@ -118,9 +116,8 @@ export const SkeletonUpperContainer = styled(Box)(({ theme: { spacing } }) => ({
     width: '100%',
 }));
 
-export const SkeletonLowerContainer = styled(Box)(
+export const SkeletonLowerContainer = styled(Stack)(
     ({ theme: { spacing, breakpoints } }) => ({
-        display: 'flex',
         flexDirection: 'column',
         gap: spacing(3),
         alignItems: 'start',

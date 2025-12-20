@@ -28,6 +28,7 @@ const MovieDetailPage = lazyLoadPage('MovieDetailPage');
 const MovieListPage = lazyLoadPage('MovieListPage');
 const CinemaListPage = lazyLoadPage('CinemaListPage');
 const MovieCinemaSlotPage = lazyLoadPage('MovieCinemaSlotPage');
+const CinemaMovieSlotPage = lazyLoadPage('CinemaMovieSlotPage');
 
 /**
  * Define the routing structure for the application.
@@ -99,6 +100,14 @@ const routes: RouteObject[] = [
         element: <MainLayout header={<Header />} />,
         children: [
             { index: true, element: <MovieCinemaSlotPage /> },
+            { path: '*', element: <NotFoundPage /> },
+        ],
+    },
+    {
+        path: APP_ROUTES.CINEMA_MOVIES_SLOTS,
+        element: <MainLayout header={<Header />} />,
+        children: [
+            { index: true, element: <CinemaMovieSlotPage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },
