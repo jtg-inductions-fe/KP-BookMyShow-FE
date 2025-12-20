@@ -27,6 +27,7 @@ export class MovieAdapter {
         } satisfies VerticalCardData;
     }
     adaptToDCard() {
+        if (this.movie === undefined) return {};
         return {
             title: this.movie.title,
             description: this.movie.description,

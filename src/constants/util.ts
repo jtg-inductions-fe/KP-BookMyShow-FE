@@ -23,3 +23,9 @@ export const DATE_FORMATTER_OPTIONS = {
     month: 'short',
     year: 'numeric',
 } satisfies Intl.DateTimeFormatOptions;
+
+export const DATE_TIME_FORMATTER_OPTIONS = {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+} satisfies Intl.DateTimeFormatOptions;

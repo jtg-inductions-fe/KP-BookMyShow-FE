@@ -14,4 +14,5 @@ export { APP_ROUTES, ENDPOINTS_WITH_HEADERS } from './routeConstants';
 export {
     DATE_FORMATTER_OPTIONS,
     STANDARD_CURRENCY_FORMAT_OPTIONS,
+    DATE_TIME_FORMATTER_OPTIONS,
 } from './util';

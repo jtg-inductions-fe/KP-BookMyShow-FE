@@ -1,6 +1,7 @@
 import { baseApi } from '@api';
 import { Genre, Language, Movie } from '@models';
 
+import { MovieCinemaSlot } from './movies.types';
 import { PaginatedResponse } from '../services.types';
 
 /**
@@ -40,6 +41,16 @@ export const movieApi = baseApi.injectEndpoints({
                 getNextPageParam: (lastPage) => lastPage.next,
             },
         }),
+        getMovieCinemaSlots: builder.query<
+            MovieCinemaSlot[],
+            { slug: string; date: string | null }
+        >({
+            query: ({ slug, date }) => ({
+                url: `/api/movies/${slug}/cinemas/slots/`,
+                method: 'GET',
+                params: { date: date },
+            }),
+        }),
     }),
 });
 
@@ -73,6 +84,7 @@ export const {
     useGetLatestMoviesInfiniteQuery,
     useGetMovieDetailsQuery,
     useGetMoviesInfiniteQuery,
+    useGetMovieCinemaSlotsQuery,
 } = movieApi;
 
 export const { useGetLanguagesQuery } = languageApi;
