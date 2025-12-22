@@ -8,3 +8,4 @@ export { MovieListPage } from './MovieListPage';
 export { CinemaListPage } from './CinemaListPage';
 export { MovieCinemaSlotPage } from './MovieCinemaSlotPage';
 export { CinemaMovieSlotPage } from './CinemaMovieSlotPage';
+export { SeatLayoutPage } from './SeatLayoutPage';

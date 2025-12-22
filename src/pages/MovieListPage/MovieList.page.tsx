@@ -11,7 +11,7 @@ import {
     useTheme,
 } from '@mui/material';
 
-import { Grid, Typography, VerticalCard } from '@components';
+import { Grid, NoDataText, Typography, VerticalCard } from '@components';
 import { APP_ROUTES } from '@constants';
 import { Filter } from '@containers';
 import { useInfiniteScroll } from '@hooks';
@@ -121,9 +121,7 @@ export const MovieListPage = () => {
                             <Box ref={endRef} style={{ height: 1 }} />
                         </>
                     ) : (
-                        <Typography variant="h3" color="primary.main">
-                            No movies available
-                        </Typography>
+                        <NoDataText text={'No movies available'} />
                     )}
                 </Stack>
             </Grid2>

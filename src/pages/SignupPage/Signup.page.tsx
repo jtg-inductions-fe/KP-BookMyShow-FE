@@ -32,19 +32,10 @@ export const SignupPage = () => {
             );
             void navigate(APP_ROUTES.LOGIN, { replace: true });
         } catch (e) {
-            const allErrors: string[] = [];
             const errorData = (e as { data: Record<string, string[]> }).data;
-            Object.keys(errorData).forEach((fieldName) => {
-                const messages = errorData[fieldName];
-
-                messages.forEach((msg) => {
-                    allErrors.push(msg);
-                });
-            });
-
             dispatch(
                 showSnackbar({
-                    messages: allErrors,
+                    messages: Object.values(errorData).flat(),
                     options: { variant: 'error' },
                 }),
             );

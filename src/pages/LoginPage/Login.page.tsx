@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import AuthImg from '@assets/images/auth_background.webp';
 import LoginImg from '@assets/images/login_image.webp';
-import { APP_ROUTES } from '@constants';
 import { AuthContainer } from '@containers';
 import { setAuthState, showSnackbar } from '@features';
 import { LoginRequest, useLoginMutation } from '@services';
@@ -51,16 +50,12 @@ export const LoginPage = () => {
                 }),
             );
 
-            void navigate(APP_ROUTES.HOME, {
-                replace: true,
-            });
+            void navigate(-1);
         } catch (error) {
-            const allErrors: string[] = [];
             const errorData = (error as { data: Record<string, string> }).data;
-            allErrors.push(errorData.detail);
             dispatch(
                 showSnackbar({
-                    messages: allErrors,
+                    messages: Object.values(errorData).flat(),
                     options: { variant: 'error' },
                 }),
             );

@@ -53,42 +53,6 @@ export const LowerContainer = styled(Stack)(
     }),
 );
 
-export const Gradient1 = styled(Box)(
-    ({
-        theme: {
-            typography: { pxToRem },
-        },
-    }) => ({
-        zIndex: -1,
-        width: pxToRem(600),
-        height: pxToRem(300),
-        borderRadius: '50%',
-        background:
-            'radial-gradient(circle, #f845662d 0%, rgba(0, 0, 0, 0.34) 100%)',
-        filter: 'blur(60px)',
-        position: 'absolute',
-    }),
-);
-
-export const Gradient2 = styled(Box)(
-    ({
-        theme: {
-            typography: { pxToRem },
-        },
-    }) => ({
-        zIndex: -1,
-        width: pxToRem(600),
-        height: pxToRem(300),
-        borderRadius: '50%',
-        bottom: 10,
-        right: 80,
-        background:
-            'radial-gradient(circle, #f8456623 0%, rgba(0, 0, 0, 0.18) 100%)',
-        filter: 'blur(60px)',
-        position: 'absolute',
-    }),
-);
-
 export const SkeletonImg = styled(Box)(
     ({
         theme: {

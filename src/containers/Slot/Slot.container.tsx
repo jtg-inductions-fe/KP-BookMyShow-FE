@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { Box, Stack, useTheme } from '@mui/material';
 
-import { DatePicker, SlotCard, Typography } from '@components';
+import { DatePicker, NoDataText, SlotCard } from '@components';
 import { useAppSelector } from '@store';
 
 import { SlotContainerProps } from './Slot.types';
@@ -49,9 +49,7 @@ export const SlotContainer = <T,>(props: SlotContainerProps<T>) => {
                         />
                     ))
                 ) : (
-                    <Typography variant="h3" color="primary.main">
-                        No slots available
-                    </Typography>
+                    <NoDataText text={'No slots available'} />
                 )}
             </Box>
         </Stack>

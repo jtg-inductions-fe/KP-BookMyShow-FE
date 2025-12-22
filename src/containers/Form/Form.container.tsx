@@ -102,6 +102,7 @@ export const Form = <T extends FieldValues>({
                         textDecoration: 'none',
                     }}
                     to={link.url}
+                    replace
                 >
                     {link.to}
                 </Link>

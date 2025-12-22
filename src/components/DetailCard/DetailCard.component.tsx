@@ -1,12 +1,10 @@
 import { Button, Grid2, useMediaQuery, useTheme } from '@mui/material';
 
-import { Typography } from '@components';
+import { BackgroundGradient, Typography } from '@components';
 
 import { DetailsSkeleton, ImgSkeleton } from './DetailCard.skeleton';
 import {
     DetailsContainer,
-    Gradient1,
-    Gradient2,
     ImgContainer,
     LowerContainer,
     MainContainer,
@@ -35,13 +33,13 @@ export const DetailCard = (props: DetailCardProps) => {
 
     return (
         <MainContainer container>
-            <Gradient1
+            <BackgroundGradient
                 sx={{
                     top: imgUrl ? -100 : 0,
                     right: imgUrl ? 510 : 1000,
                 }}
             />
-            {imgUrl && <Gradient2 />}
+            {imgUrl && <BackgroundGradient sx={{ bottom: 10, right: 80 }} />}
             {imgUrl &&
                 (!isLoading ? (
                     <Grid2
