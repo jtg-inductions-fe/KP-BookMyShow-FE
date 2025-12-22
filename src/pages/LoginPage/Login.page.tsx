@@ -11,7 +11,7 @@ import { LoginRequest, useLoginMutation } from '@services';
 import { AppDispatch } from '@store';
 
 import { Config } from './config';
-import { COOKIE_LIFETIME_IN_WEEKS } from './Login.constants';
+import { COOKIE_LIFETIME_IN_DAYS } from './Login.constants';
 import { OuterContainer, StyledImg } from './Login.styles';
 
 /**
@@ -21,20 +21,20 @@ import { OuterContainer, StyledImg } from './Login.styles';
  * @returns a container which holds background image and `AuthContainer`.
  */
 export const LoginPage = () => {
-    const [LoginUser] = useLoginMutation();
+    const [loginUser] = useLoginMutation();
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
     const onSubmit = async (data: LoginRequest): Promise<void> => {
         try {
-            const response = await LoginUser(data).unwrap();
+            const response = await loginUser(data).unwrap();
             Cookies.set('refresh-token', response.refresh, {
-                expires: COOKIE_LIFETIME_IN_WEEKS,
+                expires: COOKIE_LIFETIME_IN_DAYS,
                 secure: true,
                 sameSite: 'strict',
             });
 
             Cookies.set('access-token', response.access, {
-                expires: COOKIE_LIFETIME_IN_WEEKS,
+                expires: COOKIE_LIFETIME_IN_DAYS,
                 secure: true,
                 sameSite: 'strict',
             });

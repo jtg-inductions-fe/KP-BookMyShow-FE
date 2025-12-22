@@ -1,7 +1,7 @@
 /**
  * `GuestRouteProps` interface
  *
- * Props for 'GUestRoute` component.
+ * Props for 'GuestRoute` component.
  */
 export interface GuestRouteProps {
     children: React.ReactNode;

@@ -1,1 +1,1 @@
-export { SnackbarHandler } from './SnackbarHandler';
+export { SnackBarHandler } from './SnackBarHandler';

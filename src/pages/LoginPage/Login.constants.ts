@@ -1,1 +1,1 @@
-export const COOKIE_LIFETIME_IN_WEEKS = 2;
+export const COOKIE_LIFETIME_IN_DAYS = 14;

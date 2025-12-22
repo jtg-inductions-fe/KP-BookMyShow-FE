@@ -1,8 +1,7 @@
-import { SignupRequest } from 'services/auth/auth.types';
-
 import { ConfigType } from '@containers';
+import { LoginRequest } from '@services';
 
-export const Config: ConfigType<SignupRequest> = {
+export const Config: ConfigType<LoginRequest> = {
     heading: 'Login',
     fields: [
         {

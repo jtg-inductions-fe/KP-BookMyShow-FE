@@ -5,7 +5,6 @@ import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { APP_ROUTES } from '@constants';
 import { Header } from '@containers';
 import { MainLayout } from '@layout';
-import { LoginPage, SignupPage } from '@pages';
 
 import { GuestRoute } from './GuestRoute';
 
@@ -22,6 +21,8 @@ export const lazyLoadPage = <K extends keyof PagesModule>(
     );
 
 const NotFoundPage = lazyLoadPage('NotFoundPage');
+const SignupPage = lazyLoadPage('SignupPage');
+const LoginPage = lazyLoadPage('LoginPage');
 
 /**
  * Define the routing structure for the application.
