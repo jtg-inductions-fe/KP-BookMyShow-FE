@@ -14,4 +14,4 @@ export { Swiper } from './Swiper';
 export { DetailCard, DetailCardSkeleton } from './DetailCard';
 export type { DetailCardData } from './DetailCard';
 export { Chip } from './Chip';
-export { Accordion } from './Accordian';
+export { Accordion } from './Accordion';

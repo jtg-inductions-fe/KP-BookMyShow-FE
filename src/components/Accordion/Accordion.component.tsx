@@ -18,8 +18,8 @@ export const Accordion = ({
     <StyledAccordion {...props}>
         <AccordionSummary
             expandIcon={<ExpandMoreOutlined color="secondary" />}
-            aria-controls="accordion-content"
-            id="accordion-header"
+            aria-controls={`accordion-content-${label}`}
+            id={`accordion-header-${label}`}
         >
             <Typography component="span">{label}</Typography>
         </AccordionSummary>

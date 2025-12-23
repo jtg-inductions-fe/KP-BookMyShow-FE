@@ -17,27 +17,33 @@ export const Typography = (props: CustomTypographyProps) => {
     const descRef = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
         const handleResize = () => {
-            if (!descRef.current) return;
+            if (!descRef.current || lines === undefined) return;
 
             const el = descRef.current;
             const styles = window.getComputedStyle(el);
 
             const lineHeight = parseFloat(styles.lineHeight);
             const totalLines = Math.round(el.scrollHeight / lineHeight);
-            setOverflow(totalLines > lines!);
+            setOverflow(totalLines > lines);
         };
         handleResize();
         window.addEventListener('resize', handleResize);
-    }, []);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [lines]);
 
     return (
         <>
             <MuiTypography
-                sx={() => ({
-                    ...(hasShowMore && lines
-                        ? !isExpanded && theme.mixins.lineClamp(lines)
-                        : theme.mixins.lineClamp(lines!)),
-                })}
+                sx={() => {
+                    const shouldClamp =
+                        !hasShowMore || (hasShowMore && !isExpanded);
+                    return shouldClamp && lines
+                        ? theme.mixins.lineClamp(lines)
+                        : {};
+                }}
                 ref={descRef}
                 {...muiProps}
             >

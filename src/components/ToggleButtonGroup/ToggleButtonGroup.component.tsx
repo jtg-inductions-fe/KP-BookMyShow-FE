@@ -43,20 +43,17 @@ export const ToggleButtonGroup = ({
                     {({ isActive }) => (
                         <>
                             {!isTablet && (
-                                <Typography
-                                    color={
-                                        isActive
-                                            ? 'textPrimary'
-                                            : 'textDisabled'
-                                    }
+                                <IconButton
+                                    sx={{
+                                        padding: 0,
+                                        margin: 0,
+                                        color: isActive
+                                            ? 'text.primary'
+                                            : 'text.disabled',
+                                    }}
                                 >
-                                    <IconButton
-                                        sx={{ padding: 0, margin: 0 }}
-                                        color="inherit"
-                                    >
-                                        <toggleButtonItem.logo />
-                                    </IconButton>
-                                </Typography>
+                                    <toggleButtonItem.logo />
+                                </IconButton>
                             )}
                             {isTablet && (
                                 <Typography

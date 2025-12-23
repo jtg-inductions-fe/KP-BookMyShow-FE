@@ -22,8 +22,6 @@ import {
     useGetMoviesInfiniteQuery,
 } from '@services';
 
-type Filter = { key: string; value: string };
-
 /**
  * Movie list page holding features like filtering and showing all movies.
  */
@@ -46,7 +44,7 @@ export const MovieListPage = () => {
         onLoadMore: fetchNextPage,
     });
 
-    const handelClick = (slug: string) => {
+    const handleClick = (slug: string) => {
         void navigate(`${APP_ROUTES.MOVIES}/${slug}`);
     };
 
@@ -63,12 +61,12 @@ export const MovieListPage = () => {
         setSearchParams(params);
     };
 
-    const Exists = (key: string, value: string) =>
+    const exists = (key: string, value: string) =>
         searchParams.getAll(key).includes(value);
 
     useEffect(() => {
         void refetch({ refetchCachedPages: false });
-    }, [searchParams]);
+    }, [refetch, searchParams]);
 
     return isLoading ? (
         <Box
@@ -97,7 +95,7 @@ export const MovieListPage = () => {
                         },
                     ]}
                     onClick={toggleLanguage}
-                    onCheck={Exists}
+                    onCheck={exists}
                 />
             </Grid2>
             <Grid2 flex={1}>
@@ -113,7 +111,7 @@ export const MovieListPage = () => {
                                         ).adaptToVCard()}
                                         isLoading={isLoading}
                                         imgUrl={`https://picsum.photos/id/${movie.id}/900/900`}
-                                        onClick={() => handelClick(movie.slug)}
+                                        onClick={() => handleClick(movie.slug)}
                                     />
                                 )}
                                 gridItemsData={currentData}
@@ -123,7 +121,7 @@ export const MovieListPage = () => {
                             <Box ref={endRef} style={{ height: 1 }} />
                         </>
                     ) : (
-                        <Typography variant="h3">
+                        <Typography variant="h3" color="primary.main">
                             No movies available
                         </Typography>
                     )}

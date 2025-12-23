@@ -5,7 +5,7 @@ import { Box, capitalize, Stack, useMediaQuery, useTheme } from '@mui/material';
 import { Accordion, Chip, Grid, Typography } from '@components';
 
 import { FilterBox, StyledSwiperSlide } from './Filter.styles';
-import { FilterProps } from './FIlter.types';
+import { FilterProps } from './Filter.types';
 
 /**
  * Filter container hold logic of loading filter chips
@@ -16,6 +16,16 @@ export const Filter = (props: FilterProps) => {
     const { breakpoints } = useTheme();
     const isTablet = useMediaQuery(breakpoints.up('md'));
 
+    const renderChip = (filter: string, value: string) => (
+        <Chip
+            key={value}
+            label={value}
+            variant={onCheck(filter, value) ? 'filled' : 'outlined'}
+            onClick={() => {
+                onClick(filter, value);
+            }}
+        />
+    );
     return (
         <Box>
             <Typography variant="h2">Filters</Typography>
@@ -24,20 +34,9 @@ export const Filter = (props: FilterProps) => {
                     isTablet ? (
                         <Accordion key={index} label={capitalize(label)}>
                             <Grid
-                                renderNode={(value) => (
-                                    <Chip
-                                        key={index}
-                                        label={value}
-                                        variant={
-                                            onCheck(filter, value)
-                                                ? 'filled'
-                                                : 'outlined'
-                                        }
-                                        onClick={() => {
-                                            onClick(filter, value);
-                                        }}
-                                    />
-                                )}
+                                renderNode={(value) =>
+                                    renderChip(filter, value)
+                                }
                                 gridItemsData={data}
                                 spacing={2}
                             />
@@ -53,18 +52,7 @@ export const Filter = (props: FilterProps) => {
                         >
                             {data?.map((value, ind) => (
                                 <StyledSwiperSlide key={ind}>
-                                    <Chip
-                                        key={ind}
-                                        label={value}
-                                        variant={
-                                            onCheck(filter, value)
-                                                ? 'filled'
-                                                : 'outlined'
-                                        }
-                                        onClick={() => {
-                                            onClick(filter, value);
-                                        }}
-                                    />
+                                    {renderChip(filter, value)}
                                 </StyledSwiperSlide>
                             ))}
                         </FilterBox>

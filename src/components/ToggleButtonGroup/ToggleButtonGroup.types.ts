@@ -10,7 +10,6 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
  * @property {logo} - The icon component to display on the button.
  */
 export interface ToggleButtonItem {
-    handleClick: () => void;
     label: string;
     url: string;
     logo: OverridableComponent<SvgIconTypeMap<unknown, 'svg'>>;

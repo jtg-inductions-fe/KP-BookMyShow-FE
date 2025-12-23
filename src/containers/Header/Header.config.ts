@@ -50,21 +50,17 @@ export const getMenuOptions = (
     },
 ];
 
-//TODO - handleClick will be developed in upcoming PR's.
-
 /**
- * config for menuItem.
+ * config for ToggleButtons defining the properties of `ToggleButtonItem`.
  */
 export const ToggleButtonItemConfig: ToggleButtonItem[] = [
     {
         label: 'movies',
-        handleClick: () => {},
         logo: MovieIcon,
         url: APP_ROUTES.MOVIES,
     },
     {
         label: 'cinemas',
-        handleClick: () => {},
         logo: TheatersIcon,
         url: APP_ROUTES.CINEMAS,
     },

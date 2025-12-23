@@ -8,6 +8,7 @@ export const COLORS = {
     },
     SECONDARY: {
         MAIN: '#F8456665',
+        LIGHT: '#f8456621',
     },
     TEXT: {
         PRIMARY: '#FFFFFF',

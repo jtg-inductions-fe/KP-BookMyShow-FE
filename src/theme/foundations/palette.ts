@@ -9,6 +9,7 @@ export const palette: PaletteOptions = {
     },
     secondary: {
         main: COLORS.SECONDARY.MAIN,
+        light: COLORS.SECONDARY.LIGHT,
     },
     text: {
         primary: COLORS.TEXT.PRIMARY,

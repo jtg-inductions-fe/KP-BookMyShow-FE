@@ -43,7 +43,7 @@ export const movieApi = baseApi.injectEndpoints({
     }),
 });
 
-export const LanguageApi = baseApi.injectEndpoints({
+export const languageApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getLanguages: builder.query<string[], void>({
             query: () => ({
@@ -56,7 +56,7 @@ export const LanguageApi = baseApi.injectEndpoints({
     }),
 });
 
-export const GenreApi = baseApi.injectEndpoints({
+export const genreApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getGenres: builder.query<string[], void>({
             query: () => ({
@@ -75,6 +75,6 @@ export const {
     useGetMoviesInfiniteQuery,
 } = movieApi;
 
-export const { useGetLanguagesQuery } = LanguageApi;
+export const { useGetLanguagesQuery } = languageApi;
 
-export const { useGetGenresQuery } = GenreApi;
+export const { useGetGenresQuery } = genreApi;
