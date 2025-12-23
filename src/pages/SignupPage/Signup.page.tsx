@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import AuthImg from '@assets/images/auth_background.webp';
 import SignupImg from '@assets/images/signup_image.webp';
+import { APP_ROUTES } from '@constants';
 import { AuthContainer } from '@containers';
 import { showSnackbar } from '@features';
 import { SignupRequest, useSignupMutation } from '@services';
@@ -19,6 +21,7 @@ import { OuterContainer, StyledImg } from './Signup.styles';
 export const SignupPage = () => {
     const [SignupUser] = useSignupMutation();
     const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
     const onSubmit = async (data: SignupRequest): Promise<void> => {
         try {
             await SignupUser(data).unwrap();
@@ -28,6 +31,7 @@ export const SignupPage = () => {
                     options: { variant: 'success' },
                 }),
             );
+            void navigate(APP_ROUTES.LOGIN, { replace: true });
         } catch (e) {
             const allErrors: string[] = [];
             const errorData = (e as { data: Record<string, string[]> }).data;

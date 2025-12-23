@@ -20,3 +20,23 @@ export interface SignupResponse {
     email: string;
     number: string;
 }
+
+/**
+ * `LoginRequest` interface
+ *
+ * defines the structure of the Login Request.
+ */
+export interface LoginRequest {
+    email: string;
+    password: string;
+}
+
+/**
+ * `LoginResponse` interface
+ *
+ * defines the structure of the Login Response.
+ */
+export interface LoginResponse {
+    access: string;
+    refresh: string;
+}

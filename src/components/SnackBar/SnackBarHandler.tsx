@@ -10,10 +10,10 @@ import { clearSnackbar } from '@features';
 import { RootState } from '@store';
 
 /**
- * `SnackbarHandler` is responsible for showing multiple snackbar
+ * `SnackBarHandler` is responsible for showing multiple snackbar
  * it's take the array of messages from store and enqueue them.
  */
-export const SnackbarHandler = () => {
+export const SnackBarHandler = () => {
     const { messages, options } = useSelector(
         (state: RootState) => state.snackbar,
     );
