@@ -17,3 +17,8 @@ export const MainContent = styled(Box, {
         paddingTop: hasHeader ? pxToRem(HEADER_HEIGHT) : 0,
     }),
 );
+
+export const MainContainer = styled(Box)(({ theme: { spacing } }) => ({
+    height: '100vh',
+    padding: `0 ${spacing(3)}`,
+}));

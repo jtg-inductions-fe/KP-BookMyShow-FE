@@ -9,7 +9,7 @@ export {
     SNACKBAR_DURATION,
 } from './themeConstant';
 
-export { APP_ROUTES } from './routeConstants';
+export { APP_ROUTES, ENDPOINTS_WITH_HEADERS } from './routeConstants';
 
 export {
     DATE_FORMATTER_OPTIONS,

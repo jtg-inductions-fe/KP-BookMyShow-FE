@@ -1,7 +1,7 @@
-import Cookies from 'js-cookie';
 import { Navigate } from 'react-router-dom';
 
 import { APP_ROUTES } from '@constants';
+import { useAppSelector } from '@store';
 
 import { GuestRouteProps } from './routes.types';
 
@@ -12,7 +12,11 @@ import { GuestRouteProps } from './routes.types';
  * unauthenticated users.
  */
 export const GuestRoute = ({ children }: GuestRouteProps) => {
-    const token = Cookies.get('token');
+    const { isAuthenticated } = useAppSelector((state) => state.auth);
 
-    return token ? <Navigate to={APP_ROUTES.HOME} /> : <>{children}</>;
+    return isAuthenticated ? (
+        <Navigate to={APP_ROUTES.HOME} />
+    ) : (
+        <>{children}</>
+    );
 };

@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import AuthImg from '@assets/images/auth_background.webp';
@@ -7,7 +6,7 @@ import { APP_ROUTES } from '@constants';
 import { AuthContainer } from '@containers';
 import { showSnackbar } from '@features';
 import { SignupRequest, useSignupMutation } from '@services';
-import { AppDispatch } from '@store';
+import { useAppDispatch } from '@store';
 
 import { Config } from './config';
 import { OuterContainer, StyledImg } from './Signup.styles';
@@ -20,7 +19,7 @@ import { OuterContainer, StyledImg } from './Signup.styles';
  */
 export const SignupPage = () => {
     const [SignupUser] = useSignupMutation();
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const onSubmit = async (data: SignupRequest): Promise<void> => {
         try {

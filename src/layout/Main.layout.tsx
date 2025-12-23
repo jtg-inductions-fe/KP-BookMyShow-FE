@@ -1,11 +1,9 @@
 import { Outlet } from 'react-router-dom';
 
-import { Box } from '@mui/material';
-
 import { ErrorBoundary } from '@components';
 import { ErrorPage } from '@pages';
 
-import { MainContent } from './Main.styles';
+import { MainContainer, MainContent } from './Main.styles';
 import { MainLayoutProps } from './main.types';
 /**
  * `MainLayout` component that includes a Header and MainContent.
@@ -14,12 +12,12 @@ import { MainLayoutProps } from './main.types';
  * - `Header`: Renders the header.
  */
 export const MainLayout = ({ header }: MainLayoutProps) => (
-    <Box height="100vh">
+    <MainContainer>
         <ErrorBoundary fallback={<ErrorPage />}>
             {header && header}
             <MainContent hasHeader={!!header}>
                 <Outlet />
             </MainContent>
         </ErrorBoundary>
-    </Box>
+    </MainContainer>
 );

@@ -5,3 +5,4 @@ export type {
     LoginRequest,
     LoginResponse,
 } from './auth';
+export * from './user';
