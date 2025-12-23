@@ -1,1 +1,1 @@
-export { CinemaMovieSlotPage } from './CInemaMovieSlot';
+export { CinemaMovieSlotPage } from './CinemaMovieSlot';

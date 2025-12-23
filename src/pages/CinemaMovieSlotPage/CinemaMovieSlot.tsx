@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 import { MovieCreation } from '@mui/icons-material';
@@ -24,7 +25,7 @@ export const CinemaMovieSlotPage = () => {
 
     const { data } = useGetCinemaMovieSlotsQuery({
         slug: slug!,
-        date: searchParams.get('date'),
+        date: searchParams.get('date') || dayjs().format('YYYY-MM-DD'),
     });
 
     const navigate = useNavigate();
@@ -35,8 +36,8 @@ export const CinemaMovieSlotPage = () => {
     const CinemaMovieAdapter = (slotData: CinemaMovieSlot) =>
         new CinemaMovieSlotAdapter(slotData).adaptToSlotCard();
 
-    const onClick = (id: bigint, pathSlug: string) => {
-        void navigate(`${Number(id)} ${pathSlug}`);
+    const onClick = (id: number) => {
+        void navigate(`${Number(id)}`);
     };
 
     const onDateChange = (value: string) => {
@@ -44,7 +45,7 @@ export const CinemaMovieSlotPage = () => {
     };
 
     return (
-        <Box paddingTop={10} paddingBottom={10}>
+        <Box py={10}>
             <SlotContainer<CinemaMovieSlot>
                 data={data}
                 adapter={CinemaMovieAdapter}
@@ -58,7 +59,9 @@ export const CinemaMovieSlotPage = () => {
                         isLoading={isLoading}
                     />
                 ) : (
-                    <Typography variant="h3">No cinema available</Typography>
+                    <Typography variant="h3" color="primary.main">
+                        No cinema available
+                    </Typography>
                 )}
             </SlotContainer>
         </Box>

@@ -25,8 +25,7 @@ export const MovieCinemaSlotPage = () => {
 
     const { data } = useGetMovieCinemaSlotsQuery({
         slug: slug!,
-        date:
-            searchParams.get('date') || dayjs().format('YYYY-MM-DD').toString(),
+        date: searchParams.get('date') || dayjs().format('YYYY-MM-DD'),
     });
 
     const navigate = useNavigate();

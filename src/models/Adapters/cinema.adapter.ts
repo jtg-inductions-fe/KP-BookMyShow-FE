@@ -20,7 +20,6 @@ export class CinemaAdapter {
     }
 
     adaptToDCard() {
-        if (this.cinema === undefined) return {};
         return {
             title: this.cinema.name,
             subtitle1: this.cinema.location.city,

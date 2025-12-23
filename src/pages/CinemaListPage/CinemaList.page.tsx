@@ -42,7 +42,7 @@ export const CinemaListPage = () => {
 
     const handleClick = (slug: string) => {
         void navigate(
-            `${slug}${APP_ROUTES.MOVIES}/?date=${dayjs().format('YYYY-MM-DD').toString()}`,
+            `${slug}${APP_ROUTES.MOVIES}/?date=${dayjs().format('YYYY-MM-DD')}`,
         );
     };
 
