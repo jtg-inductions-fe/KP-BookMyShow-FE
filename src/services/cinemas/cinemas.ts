@@ -1,7 +1,7 @@
 import { baseApi } from '@api';
 import { Cinema, Location } from '@models';
 
-import { PaginatedResponse } from '../utils';
+import { CinemaApi, PaginatedResponse } from '../services.types';
 
 /**
  * The `cinemaApi` object injected with endpoints for fetching cinema data.
@@ -16,20 +16,29 @@ export const cinemaApi = baseApi.injectEndpoints({
             string | null
         >({
             query: ({ queryArg, pageParam }) =>
-                pageParam ? pageParam : `/api/cinemas?${queryArg}`,
+                pageParam ? pageParam : `api/cinemas?${queryArg}`,
             infiniteQueryOptions: {
                 initialPageParam: null,
                 getNextPageParam: (lastPage) => lastPage.next,
             },
+            transformResponse: (
+                data: PaginatedResponse<CinemaApi>,
+            ): PaginatedResponse<Cinema> => ({
+                ...data,
+                results: data.results.map(({ seats_per_row, ...cinema }) => ({
+                    ...cinema,
+                    seatsPerRow: seats_per_row,
+                })),
+            }),
         }),
     }),
 });
 
-export const LocationAPi = baseApi.injectEndpoints({
+export const locationApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getLocations: builder.query<string[], void>({
             query: () => ({
-                url: '/api/cinemas/locations/',
+                url: 'api/cinemas/locations/',
                 method: 'GET',
             }),
             transformResponse: (locations: Location[]) =>
@@ -40,4 +49,4 @@ export const LocationAPi = baseApi.injectEndpoints({
 
 export const { useGetCinemasInfiniteQuery } = cinemaApi;
 
-export const { useGetLocationsQuery } = LocationAPi;
+export const { useGetLocationsQuery } = locationApi;

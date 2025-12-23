@@ -39,7 +39,7 @@ export const CinemaListPage = () => {
         onLoadMore: fetchNextPage,
     });
 
-    const handelClick = (slug: string) => {
+    const handleClick = (slug: string) => {
         void navigate(`${APP_ROUTES.CINEMAS}/${slug}`);
     };
 
@@ -51,17 +51,17 @@ export const CinemaListPage = () => {
             params.delete(key);
         }
 
-        if (values[0] != value) params.append(key, value);
+        if (values[0] !== value) params.append(key, value);
 
         setSearchParams(params);
     };
 
-    const Exists = (key: string, value: string) =>
+    const exists = (key: string, value: string) =>
         searchParams.getAll(key).includes(value);
 
     useEffect(() => {
         void refetch({ refetchCachedPages: false });
-    }, [searchParams]);
+    }, [refetch, searchParams]);
 
     return isLoading ? (
         <Box
@@ -85,13 +85,13 @@ export const CinemaListPage = () => {
                         },
                     ]}
                     onClick={toggleFilter}
-                    onCheck={Exists}
+                    onCheck={exists}
                 />
             </Grid2>
             <Grid2 flex={1}>
                 <Stack sx={{ gap: 5 }}>
                     <Typography variant="h2">Cinemas</Typography>
-                    {currentData!.length ? (
+                    {currentData?.length ? (
                         <>
                             <Grid
                                 renderNode={(cinema) => (
@@ -100,7 +100,7 @@ export const CinemaListPage = () => {
                                             cinema,
                                         ).adaptToVCard()}
                                         isLoading={isLoading}
-                                        onClick={() => handelClick(cinema.slug)}
+                                        onClick={() => handleClick(cinema.slug)}
                                     />
                                 )}
                                 gridItemsData={currentData}

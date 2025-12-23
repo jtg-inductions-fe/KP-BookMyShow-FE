@@ -4,6 +4,6 @@
  * This interface defines the properties of a location.
  */
 export interface Location {
-    id: bigint;
+    id: number;
     city: string;
 }
