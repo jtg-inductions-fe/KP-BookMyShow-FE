@@ -29,7 +29,7 @@ export const DetailCard = ({ data, imgUrl, btnText }: DetailCardProps) => {
                 height={isTablet ? 450 : 400}
                 borderRadius={30}
             >
-                <ImgContainer src={imgUrl} />
+                <ImgContainer aria-hidden src={imgUrl} alt={data.title} />
             </Box>
             <DetailsContainer>
                 <UpperContainer>

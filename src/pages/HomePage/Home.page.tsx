@@ -30,7 +30,7 @@ export const HomePage = () => {
         onLoadMore: fetchNextPage,
     });
 
-    const handelClick = (slug: string) => {
+    const handleClick = (slug: string) => {
         void navigate(`${APP_ROUTES.MOVIES}/${slug}`);
     };
     return (
@@ -48,7 +48,7 @@ export const HomePage = () => {
                                 data={new MovieAdapter(movie).adaptToVCard()}
                                 isLoading={isLoading}
                                 imgUrl={`https://picsum.photos/id/${movie.id}/900/900`}
-                                onClick={() => handelClick(movie.slug)}
+                                onClick={() => handleClick(movie.slug)}
                             />
                         )}
                         gridItemsData={currentData}

@@ -5,7 +5,7 @@ import {
     MainContainer,
     SkeletonImg,
     SkeletonLowerContainer,
-    SKeletonUpperContainer,
+    SkeletonUpperContainer,
 } from './DetailCard.styles';
 
 export const DetailCardSkeleton = () => (
@@ -19,10 +19,10 @@ export const DetailCardSkeleton = () => (
             />
         </SkeletonImg>
         <DetailsContainer>
-            <SKeletonUpperContainer>
+            <SkeletonUpperContainer>
                 <Skeleton variant="text" width={'50%'} />
                 <Skeleton variant="text" width={'50%'} />
-            </SKeletonUpperContainer>
+            </SkeletonUpperContainer>
             <SkeletonLowerContainer>
                 <Skeleton variant="text" width={'70%'} height={80} />
                 <Skeleton variant="text" width={'40%'} />

@@ -25,14 +25,14 @@ export const MainContainer = styled(Box)(
 );
 
 export const ImgContainer = styled('img')(
-    ({ theme: { breakpoints, spacing } }) => ({
+    ({ theme: { breakpoints, spacing, palette } }) => ({
         width: '100%',
         height: '100%',
         borderRadius: spacing(5),
         aspectRatio: 2 / 3,
         objectFit: 'cover',
         minHeight: spacing(10),
-        backgroundColor: '#5f5f5f46',
+        backgroundColor: palette.action.hover,
 
         [breakpoints.up('md')]: {
             aspectRatio: 2.3 / 3,
@@ -126,7 +126,7 @@ export const SkeletonImg = styled(Box)(
     }),
 );
 
-export const SKeletonUpperContainer = styled(Box)(({ theme: { spacing } }) => ({
+export const SkeletonUpperContainer = styled(Box)(({ theme: { spacing } }) => ({
     display: 'flex',
     flexDirection: 'column',
     gap: spacing(1),

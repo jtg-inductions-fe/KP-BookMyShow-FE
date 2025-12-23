@@ -24,7 +24,7 @@ export const movieApi = baseApi.injectEndpoints({
         }),
         getMovieDetails: builder.query<Movie, { slug: string }>({
             query: ({ slug }) => ({
-                url: `/api/movies/${slug}`,
+                url: `api/movies/${slug}`,
                 method: 'GET',
             }),
         }),

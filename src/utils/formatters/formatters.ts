@@ -35,7 +35,7 @@ export const dateFormatter = (
 };
 
 /**
- * Formats a given duration string into a 'HH:MM:SS' format.
+ * Formats a given duration string in 'HH:MM' format into a human-readable format.
  **/
 export const formatDuration = (duration: string) => {
     const parts = duration.split(':');
