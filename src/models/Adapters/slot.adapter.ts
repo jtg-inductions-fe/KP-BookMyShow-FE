@@ -19,7 +19,7 @@ export class MovieCinemaSlotAdapter {
             title: `${this.slot.name}, ${this.slot.location.city}`,
             slug: this.slot.slug,
             chipData: this.slot.slots.map((data) => ({
-                key: this.slot.id,
+                key: data.id,
                 value: dateFormatter(
                     data.start_time,
                     undefined,

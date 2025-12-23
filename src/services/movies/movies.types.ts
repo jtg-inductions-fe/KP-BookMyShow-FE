@@ -4,7 +4,7 @@ import { Location, Slot } from '@models';
  * Structure for MovieCinemaSlot coming from API.
  */
 export interface MovieCinemaSlot {
-    id: bigint;
+    id: number;
     name: string;
     slug: string;
     location: Location;

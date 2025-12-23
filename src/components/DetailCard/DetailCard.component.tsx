@@ -2,7 +2,7 @@ import { Box, Button, Grid2, useMediaQuery, useTheme } from '@mui/material';
 
 import { Typography } from '@components';
 
-import { DetailsSkeleton, ImgSKeleton } from './DetailCard.skeleton';
+import { DetailsSkeleton, ImgSkeleton } from './DetailCard.skeleton';
 import {
     DetailsContainer,
     Gradient1,
@@ -48,7 +48,7 @@ export const DetailCard = (props: DetailCardProps) => {
                         <ImgContainer src={imgUrl} />
                     </Grid2>
                 ) : (
-                    <ImgSKeleton />
+                    <ImgSkeleton />
                 ))}
 
             <Grid2 flex={1}>

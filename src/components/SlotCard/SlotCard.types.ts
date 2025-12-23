@@ -5,7 +5,7 @@ import { SvgIconTypeMap } from '@mui/material/SvgIcon';
  * Common interface for `slotCard` and `slotContainer`.
  */
 export interface SlotCommonProps {
-    onClick?: (id: bigint, slug: string) => void;
+    onClick?: (id: number, slug: string) => void;
     Icon?: OverridableComponent<SvgIconTypeMap<unknown, 'svg'>>;
 }
 
@@ -15,6 +15,6 @@ export interface SlotCommonProps {
 export interface SlotCardProps extends SlotCommonProps {
     title: string;
     slug: string;
-    chipData: { key: bigint; value: string }[];
+    chipData: { key: number; value: string }[];
     isAuthenticated?: boolean;
 }

@@ -9,7 +9,7 @@ import { StyledGrid } from './SlotCard.styles';
 import { SlotCardProps } from './SlotCard.types';
 
 /**
- * A component fo showing slot information (e.g: cinema | movie, slots timing, etc)
+ * A component for showing slot information (e.g: cinema | movie, slots timing, etc)
  * @param props
  * @returns A Grid containing the slot information.
  */

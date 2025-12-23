@@ -1,10 +1,9 @@
-import { SlotCard } from 'components/SlotCard';
 import dayjs from 'dayjs';
 import { useSearchParams } from 'react-router-dom';
 
 import { Box, Stack, useTheme } from '@mui/material';
 
-import { DatePicker, Typography } from '@components';
+import { DatePicker, SlotCard, Typography } from '@components';
 import { useAppSelector } from '@store';
 
 import { SlotContainerProps } from './Slot.types';
@@ -30,7 +29,10 @@ export const SlotContainer = <T,>(props: SlotContainerProps<T>) => {
                     label="Slot Date"
                     desktopModeMediaQuery={breakpoints.up('md')}
                     disablePast
-                    value={dayjs(searchParams.get('date'))}
+                    value={dayjs(
+                        searchParams.get('date') ||
+                            dayjs().format('YYYY-MM-DD').toString(),
+                    )}
                     format="YYYY-MM-DD"
                     onChange={(value) =>
                         onDateChange(
@@ -49,7 +51,9 @@ export const SlotContainer = <T,>(props: SlotContainerProps<T>) => {
                         />
                     ))
                 ) : (
-                    <Typography variant="h3">No slots available</Typography>
+                    <Typography variant="h3" color="primary.main">
+                        No slots available
+                    </Typography>
                 )}
             </Box>
         </Stack>

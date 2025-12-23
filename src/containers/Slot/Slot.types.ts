@@ -1,7 +1,4 @@
-import {
-    SlotCardProps,
-    SlotCommonProps,
-} from 'components/SlotCard/SlotCard.types';
+import { SlotCardProps, SlotCommonProps } from '@components';
 
 /**
  * A generic interface for slotContainer properties.

@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material';
+import { svgIconClasses, useTheme } from '@mui/material';
 import {
     DatePicker as MuiDatePicker,
     DatePickerProps,
@@ -25,8 +25,10 @@ export const DatePicker = ({ ...props }: DatePickerProps) => {
                 slotProps={{
                     day: {
                         sx: {
-                            [`&.${pickersDayClasses.disabled}`]: {
-                                color: `${palette.secondary.light} !important`,
+                            [`&.${pickersDayClasses.root}`]: {
+                                [`&.${pickersDayClasses.disabled}`]: {
+                                    color: `${palette.secondary.light}`,
+                                },
                             },
                         },
                     },
@@ -48,22 +50,15 @@ export const DatePicker = ({ ...props }: DatePickerProps) => {
 
                     actionBar: {
                         actions: ['cancel', 'today'],
-                        color: 'white',
                     },
                     textField: {
                         sx: {
                             width: 'fit-content',
-                            '& .MuiSvgIcon-root': {
+                            [`& .${svgIconClasses.root}`]: {
                                 color: 'primary.main',
                             },
                             '& fieldset': {
                                 borderColor: 'secondary.main',
-                            },
-                            '&:hover fieldset': {
-                                borderColor: 'green',
-                            },
-                            '&.Mui-focused fieldset': {
-                                borderColor: 'purple',
                             },
                         },
                     },

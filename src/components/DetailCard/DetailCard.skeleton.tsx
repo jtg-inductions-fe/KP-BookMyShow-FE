@@ -1,6 +1,7 @@
-import { Skeleton } from '@mui/material';
+import { Grid2, Skeleton } from '@mui/material';
 
 import {
+    MainContainer,
     SkeletonImg,
     SkeletonLowerContainer,
     SkeletonUpperContainer,
@@ -28,7 +29,7 @@ export const DetailsSkeleton = () => (
  * Skeleton for the image section of the Detail card.
  * @returns A Skeleton for handling loading state of card image.
  */
-export const ImgSKeleton = () => (
+export const ImgSkeleton = () => (
     <SkeletonImg>
         <Skeleton
             sx={{ borderRadius: 5 }}
@@ -37,4 +38,18 @@ export const ImgSKeleton = () => (
             width={'auto'}
         />
     </SkeletonImg>
+);
+
+/**
+ * A component which loads full skeleton for the DetailCard.
+ * Used where the single detail card is loaded.
+ * @returns A Skeleton for Detail Card component.
+ */
+export const DetailCardSkeleton = () => (
+    <MainContainer container>
+        <ImgSkeleton />
+        <Grid2 flex={1}>
+            <DetailsSkeleton />
+        </Grid2>
+    </MainContainer>
 );

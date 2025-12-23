@@ -16,7 +16,7 @@ export const Grid = <T,>(props: CustomGridProps<T>) => {
         ...gridProps
     } = props;
     return (
-        <Grid2 container {...gridProps} spacing={spacing}>
+        <Grid2 {...gridProps} container spacing={spacing}>
             {gridItemsData?.map((data, index) => (
                 <Grid2 key={index} size={gridColumns}>
                     {renderNode(data)}

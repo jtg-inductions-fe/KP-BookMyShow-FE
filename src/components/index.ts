@@ -11,7 +11,7 @@ export { VerticalCard } from './VerticalCard';
 export type { VerticalCardData } from './VerticalCard';
 export { Grid } from './Grid';
 export { Swiper } from './Swiper';
-export { DetailCard } from './DetailCard';
+export { DetailCard, DetailCardSkeleton } from './DetailCard';
 export type { DetailCardData } from './DetailCard';
 export { Chip } from './Chip';
 export { Accordion } from './Accordion';

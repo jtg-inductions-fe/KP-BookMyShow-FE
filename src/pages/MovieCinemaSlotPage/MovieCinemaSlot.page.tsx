@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 import { Theaters } from '@mui/icons-material';
@@ -24,17 +25,18 @@ export const MovieCinemaSlotPage = () => {
 
     const { data } = useGetMovieCinemaSlotsQuery({
         slug: slug!,
-        date: searchParams.get('date'),
+        date:
+            searchParams.get('date') || dayjs().format('YYYY-MM-DD').toString(),
     });
 
     const navigate = useNavigate();
     const { data: movie, isLoading } = useGetMovieDetailsQuery({ slug: slug! });
 
-    const MovieCinemaAdapter = (slotData: MovieCinemaSlot) =>
+    const adaptSlotData = (slotData: MovieCinemaSlot) =>
         new MovieCinemaSlotAdapter(slotData).adaptToSlotCard();
 
-    const onClick = (id: bigint, pathSlug: string) => {
-        void navigate(`${Number(id)} ${pathSlug}`);
+    const onClick = (id: number, pathSlug: string) => {
+        void navigate(`/${id}/${pathSlug}`);
     };
 
     const onDateChange = (value: string) => {
@@ -45,7 +47,7 @@ export const MovieCinemaSlotPage = () => {
         <Box paddingTop={10} paddingBottom={10}>
             <SlotContainer<MovieCinemaSlot>
                 data={data}
-                adapter={MovieCinemaAdapter}
+                adapter={adaptSlotData}
                 onClick={onClick}
                 Icon={Theaters}
                 onDateChange={onDateChange}
@@ -56,7 +58,9 @@ export const MovieCinemaSlotPage = () => {
                         isLoading={isLoading}
                     />
                 ) : (
-                    <Typography variant="h3">No movie available</Typography>
+                    <Typography variant="h3" color="primary.main">
+                        No movie available
+                    </Typography>
                 )}
             </SlotContainer>
         </Box>
