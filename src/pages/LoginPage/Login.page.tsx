@@ -10,10 +10,6 @@ import { LoginRequest, useLoginMutation } from '@services';
 import { useAppDispatch } from '@store';
 
 import { Config } from './config';
-import {
-    ACCESS_COOKIE_LIFETIME_IN_MINUTES,
-    REFRESH_COOKIE_LIFETIME_IN_DAYS,
-} from './Login.constants';
 import { OuterContainer, StyledImg } from './Login.styles';
 
 /**
@@ -30,13 +26,19 @@ export const LoginPage = () => {
         try {
             const response = await loginUser(data).unwrap();
             Cookies.set('refresh-token', response.refresh, {
-                expires: REFRESH_COOKIE_LIFETIME_IN_DAYS,
+                expires: Number(
+                    import.meta.env.VITE_REFRESH_COOKIE_LIFETIME_IN_DAYS,
+                ),
                 secure: true,
                 sameSite: 'strict',
             });
 
             Cookies.set('access-token', response.access, {
-                expires: ACCESS_COOKIE_LIFETIME_IN_MINUTES / (24 * 60),
+                expires:
+                    Number(
+                        import.meta.env.VITE_ACCESS_COOKIE_LIFETIME_IN_MINUTES,
+                    ) /
+                    (24 * 60),
                 secure: true,
                 sameSite: 'strict',
             });

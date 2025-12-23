@@ -4,28 +4,23 @@ import { Button, Skeleton } from '@mui/material';
 
 import { Avatar } from '@components';
 import { getMenuOptions } from '@containers';
+import { useAppDispatch } from '@store';
 
 import { StyledMenu, StyledMenuItem } from './Profile.styles';
 import { ProfileProps } from './Profile.types';
 
 export const Profile = (props: ProfileProps) => {
-    const {
-        isAuthenticated,
-        nameInitial,
-        dispatch,
-        onCTAClick,
-        btnLabel,
-        isLoading,
-    } = props;
+    const { isAuthenticated, nameInitial, onCTAClick, btnLabel, isLoading } =
+        props;
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const dispatch = useAppDispatch();
 
     const open = Boolean(anchorEl);
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -36,12 +31,12 @@ export const Profile = (props: ProfileProps) => {
         <>
             {isAuthenticated ? (
                 isLoading ? (
-                    <Skeleton variant="circular" width={32} height={32} />
+                    <Skeleton variant="circular" width={40} height={40} />
                 ) : (
                     <Avatar
                         component="button"
                         size={40}
-                        alt={`profile`}
+                        alt="profile"
                         onClick={handleClick}
                     >
                         {nameInitial}

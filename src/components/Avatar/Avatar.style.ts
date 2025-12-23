@@ -12,7 +12,7 @@ export const StyledAvatar = styled(Avatar)<StyledAvatarProps>(
     }) => ({
         height: pxToRem(size),
         width: pxToRem(size),
-        background: palette.success.light,
+        backgroundColor: palette.success.light,
 
         '&:hover': {
             cursor: 'pointer',

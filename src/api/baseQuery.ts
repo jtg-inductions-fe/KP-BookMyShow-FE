@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie';
-import { ACCESS_COOKIE_LIFETIME_IN_MINUTES } from 'pages/LoginPage/Login.constants';
 
 import { ENDPOINTS_WITH_HEADERS } from '@constants';
 import { clearAuthState, clearUser } from '@features';
@@ -62,17 +61,15 @@ export const baseQueryWithReauth: BaseQueryFn<
         const accessToken = Cookies.get('access-token');
 
         if (!refreshToken) {
-            Cookies.remove('refresh-token');
             store.dispatch(clearAuthState());
             store.dispatch(clearUser());
             return { error: { status: 401, data: 'Unauthorized' } };
         } else if (!accessToken) {
             const refreshResult = await baseQuery(
                 {
-                    url: '/api/token/refresh/',
+                    url: 'api/token/refresh/',
                     method: 'POST',
-                    body: JSON.stringify({ refresh: refreshToken }),
-                    headers: { 'Content-Type': 'application/json' },
+                    body: { refresh: refreshToken },
                 },
                 store,
                 extraOptions,
@@ -87,7 +84,12 @@ export const baseQueryWithReauth: BaseQueryFn<
                 const access = (refreshResult.data as { access: string })
                     .access;
                 Cookies.set('access-token', access, {
-                    expires: ACCESS_COOKIE_LIFETIME_IN_MINUTES / (24 * 60),
+                    expires:
+                        Number(
+                            import.meta.env
+                                .VITE_ACCESS_COOKIE_LIFETIME_IN_MINUTES,
+                        ) /
+                        (24 * 60),
                     secure: true,
                     sameSite: 'strict',
                 });

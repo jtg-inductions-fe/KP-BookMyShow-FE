@@ -8,6 +8,4 @@ import { StyledAvatarProps } from './Avatar.types';
  *
  * @returns The Avatar component.
  */
-export const Avatar = (props: StyledAvatarProps) => (
-    <StyledAvatar {...props}></StyledAvatar>
-);
+export const Avatar = (props: StyledAvatarProps) => <StyledAvatar {...props} />;

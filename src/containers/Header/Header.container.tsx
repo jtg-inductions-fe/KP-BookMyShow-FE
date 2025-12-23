@@ -11,7 +11,7 @@ import { setUser } from '@features';
 import { useLazyProfileQuery } from '@services';
 import { useAppDispatch, useAppSelector } from '@store';
 
-import { menuItemConfig } from './Header.config';
+import { ToggleButtonItemConfig } from './Header.config';
 import {
     LeftContainer,
     MainContainer,
@@ -51,7 +51,6 @@ export const Header = () => {
 
     const profileProps: ProfileProps = {
         isAuthenticated,
-        dispatch,
         nameInitial: name.charAt(0).toUpperCase(),
         btnLabel: 'Login',
         onCTAClick: goToLogin,
@@ -59,7 +58,7 @@ export const Header = () => {
     };
 
     return (
-        <StyledAppBar role="navigation">
+        <StyledAppBar>
             <MainContainer>
                 <LeftContainer>
                     <Link to="/">
@@ -67,7 +66,9 @@ export const Header = () => {
                     </Link>
                 </LeftContainer>
                 <RightContainer>
-                    <ToggleButtonGroup ToggleButtonItems={menuItemConfig} />
+                    <ToggleButtonGroup
+                        ToggleButtonItems={ToggleButtonItemConfig}
+                    />
                     <Profile {...profileProps} />
                 </RightContainer>
             </MainContainer>

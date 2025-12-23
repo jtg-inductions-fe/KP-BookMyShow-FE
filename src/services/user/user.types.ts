@@ -1,5 +1,5 @@
 /**
- * It's defines the structure of the User.
+ * Defines the structure of the User.
  */
 export interface User {
     name: string;

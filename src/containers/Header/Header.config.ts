@@ -1,9 +1,9 @@
-import { ToggleButtonItem } from 'components/ToggleButtonGroup/ToggleButtonGroup.types';
 import Cookies from 'js-cookie';
 
 import MovieIcon from '@mui/icons-material/Movie';
 import TheatersIcon from '@mui/icons-material/Theaters';
 
+import { ToggleButtonItem } from '@components';
 import { clearAuthState, clearUser } from '@features';
 import { AppDispatch } from '@store';
 /**
@@ -49,10 +49,12 @@ export const getMenuOptions = (
     },
 ];
 
+//TODO - handleClick will be developed in upcoming PR's.
+
 /**
  * config for menuItem.
  */
-export const menuItemConfig: ToggleButtonItem[] = [
+export const ToggleButtonItemConfig: ToggleButtonItem[] = [
     {
         label: 'Movies',
         handleClick: () => {},

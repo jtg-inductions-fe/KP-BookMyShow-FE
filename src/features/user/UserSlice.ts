@@ -15,23 +15,15 @@ const initialState: User = {
  *
  * It exposes:
  * - `userSlice.reducer`
- * - `userSlice.actions
+ * - `userSlice.actions`
  *
  */
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser: (state, action: PayloadAction<User>) => {
-            state.name = action.payload.name;
-            state.email = action.payload.email;
-            state.phone_number = action.payload.phone_number;
-        },
-        clearUser: (state) => {
-            state.name = '';
-            state.email = '';
-            state.phone_number = '';
-        },
+        setUser: (_, action: PayloadAction<User>) => action.payload,
+        clearUser: () => initialState,
     },
 });
 

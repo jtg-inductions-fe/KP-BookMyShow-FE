@@ -9,7 +9,6 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
  * @property {label} - The label text displayed on the button.
  * @property {logo} - The icon component to display on the button.
  */
-
 export interface ToggleButtonItem {
     handleClick: () => void;
     label: string;

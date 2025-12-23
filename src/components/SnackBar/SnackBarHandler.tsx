@@ -13,7 +13,6 @@ import { useAppDispatch, useAppSelector } from '@store';
  * it's take the array of messages from store and enqueue them.
  */
 export const SnackBarHandler = () => {
-    
     const { messages, options } = useAppSelector((state) => state.snackbar);
 
     const dispatch = useAppDispatch();

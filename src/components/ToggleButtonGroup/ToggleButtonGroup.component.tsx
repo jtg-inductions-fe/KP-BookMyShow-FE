@@ -22,7 +22,7 @@ export const ToggleButtonGroup = ({
     const isTablet = useMediaQuery(breakpoints.up('md'));
 
     const handleChange = (_: unknown, newValue: string) => {
-        if (newValue != null) {
+        if (newValue !== null) {
             setSelected(newValue);
         }
     };
@@ -32,9 +32,9 @@ export const ToggleButtonGroup = ({
             exclusive
             onChange={handleChange}
         >
-            {ToggleButtonItems.map((toggleButtonItem, index) => (
+            {ToggleButtonItems.map((toggleButtonItem) => (
                 <StyledToggleButton
-                    key={index}
+                    key={toggleButtonItem.label}
                     value={toggleButtonItem.label}
                     onClick={toggleButtonItem.handleClick}
                 >

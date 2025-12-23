@@ -16,7 +16,7 @@ const initialState: AuthState = {
  *
  * It exposes:
  * - `authSlice.reducer`
- * - `authSlice.actions
+ * - `authSlice.actions`
  *
  */
 const authSlice = createSlice({
