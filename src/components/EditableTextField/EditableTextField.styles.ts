@@ -1,5 +1,6 @@
 import {
     inputBaseClasses,
+    inputClasses,
     outlinedInputClasses,
     styled,
     TextField,
@@ -23,15 +24,15 @@ export const StyledTextField = styled(TextField)(
                 borderRadius: pxToRem(10),
                 color: 'primary.main',
             },
-            '& .MuiInputBase-root.Mui-disabled': {
+            [`& .${inputBaseClasses.root}.${inputBaseClasses.disabled}`]: {
                 '& fieldset': {
                     borderColor: palette.secondary.main,
                 },
             },
-            '& input.Mui-disabled': {
+            [`& input.${inputClasses.disabled}`]: {
                 WebkitTextFillColor: 'white',
             },
-            '& .MuiOutlinedInput-root': {
+            [`& .${outlinedInputClasses.root}`]: {
                 '& fieldset': {
                     borderColor: palette.secondary.main,
                 },
