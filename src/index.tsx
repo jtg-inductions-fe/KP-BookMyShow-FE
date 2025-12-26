@@ -7,7 +7,7 @@ import { RouterProvider } from 'react-router-dom';
 
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
-import { SnackBarHandler } from '@components';
+import { Loader, SnackBarHandler } from '@components';
 import { router } from '@routes';
 import { store } from '@store';
 import { theme } from '@theme';
@@ -24,7 +24,7 @@ createRoot(rootElement).render(
                 <SnackBarHandler />
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
-                    <Suspense fallback={<>Loading...</>}>
+                    <Suspense fallback={<Loader />}>
                         <RouterProvider router={router} />
                     </Suspense>
                 </ThemeProvider>

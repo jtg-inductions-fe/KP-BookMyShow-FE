@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 
 import { ChairOutlined, CurrencyRupee } from '@mui/icons-material';
-import { Box, CircularProgress, Stack } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
 import ScreenImg from '@assets/images/screen.svg';
 import {
     BackgroundGradient,
     BackNavigation,
-    DetailCard,
-    PopOver,
+    BookingDetailModal,
+    Loader,
     Seats,
     Typography,
 } from '@components';
@@ -24,9 +24,7 @@ import {
     MainContainer,
     MainLayout,
     ScreenWrapper,
-    StyledButton,
 } from './SeatLayout.styles';
-import { BookingDetailModalProps } from './SeatLayout.types';
 
 /**
  * A page rendering seatLayout of the cinema representing the different components.
@@ -47,11 +45,7 @@ export const SeatLayoutPage = () => {
     } = useSeatSelection(id);
 
     if (isLoading) {
-        return (
-            <Stack justifyContent="center" alignItems="center" height="100vh">
-                <CircularProgress />
-            </Stack>
-        );
+        return <Loader />;
     }
 
     if (!data) {
@@ -122,54 +116,10 @@ export const SeatLayoutPage = () => {
                     handlePopOverButtonClick={handlePopoverButtonClick}
                     onClose={handleModalClose}
                     TransactionDetail={TransactionDetail}
+                    btnText="Confirm Booking"
                     detailCardData={detailCardData}
                 />
             </InnerContainer>
         </MainContainer>
-    );
-};
-
-/**
- * A Modal which shows a information about the booking.
- * @param props includes variables and function require for modal.
- * @returns A PopOverComponent showing booking information.
- */
-const BookingDetailModal = (props: BookingDetailModalProps) => {
-    const {
-        open,
-        onClose,
-        TransactionDetail,
-        detailCardData,
-        handlePopOverButtonClick,
-    } = props;
-    return (
-        <PopOver
-            open={open}
-            anchorReference={'none'}
-            onClose={onClose}
-            anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-            }}
-        >
-            <Stack gap={7}>
-                <DetailCard data={detailCardData} />
-                {TransactionDetail.map(({ Icon, detail }, index) => (
-                    <Stack key={index} direction={'row'} gap={2}>
-                        <Icon />
-                        <Typography variant="h3" lines={2}>
-                            {detail}
-                        </Typography>
-                    </Stack>
-                ))}
-
-                <StyledButton
-                    variant="contained"
-                    onClick={() => void handlePopOverButtonClick()}
-                >
-                    Confirm Booking
-                </StyledButton>
-            </Stack>
-        </PopOver>
     );
 };

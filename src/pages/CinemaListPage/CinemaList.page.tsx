@@ -1,23 +1,21 @@
-import { useEffect } from 'react';
-
 import dayjs from 'dayjs';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import {
-    Box,
-    CircularProgress,
-    Grid2,
-    Stack,
-    useMediaQuery,
-    useTheme,
-} from '@mui/material';
+import { Box, Grid2, Stack, useMediaQuery, useTheme } from '@mui/material';
 
-import { Grid, NoDataText, Typography, VerticalCard } from '@components';
+import {
+    Grid,
+    Loader,
+    NoDataText,
+    Typography,
+    VerticalCard,
+} from '@components';
 import { APP_ROUTES } from '@constants';
 import { Filter } from '@containers';
 import { useInfiniteScroll } from '@hooks';
 import { CinemaAdapter } from '@models';
 import { useGetCinemasInfiniteQuery, useGetLocationsQuery } from '@services';
+import { exists, setFilter } from '@utils';
 
 /**
  * Cinema list page holding features like filtering and showing all cinemas.
@@ -28,7 +26,7 @@ export const CinemaListPage = () => {
     const isTablet = useMediaQuery(breakpoints.up('md'));
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const { data, fetchNextPage, isLoading, isFetching, hasNextPage, refetch } =
+    const { data, fetchNextPage, isLoading, isFetching, hasNextPage } =
         useGetCinemasInfiniteQuery(searchParams.toString());
     const { data: locations } = useGetLocationsQuery();
 
@@ -46,36 +44,8 @@ export const CinemaListPage = () => {
         );
     };
 
-    const toggleFilter = (key: string, value: string) => {
-        const params = new URLSearchParams(searchParams);
-        const values = params.getAll(key);
-
-        if (values.length > 0) {
-            params.delete(key);
-        }
-
-        if (values[0] !== value) params.append(key, value);
-
-        setSearchParams(params);
-    };
-
-    const exists = (key: string, value: string) =>
-        searchParams.getAll(key).includes(value);
-
-    useEffect(() => {
-        void refetch({ refetchCachedPages: false });
-    }, [refetch, searchParams]);
-
     return isLoading ? (
-        <Box
-            width="100%"
-            height="100%"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-        >
-            <CircularProgress />
-        </Box>
+        <Loader />
     ) : (
         <Grid2 container gap={5} flexDirection={isTablet ? 'row' : 'column'}>
             <Grid2 size={isTablet ? 3 : 12}>
@@ -87,8 +57,10 @@ export const CinemaListPage = () => {
                             data: locations,
                         },
                     ]}
-                    onClick={toggleFilter}
-                    onCheck={exists}
+                    onClick={(key, value) =>
+                        setFilter(searchParams, setSearchParams, key, value)
+                    }
+                    onCheck={(key, value) => exists(searchParams, key, value)}
                 />
             </Grid2>
             <Grid2 flex={1}>

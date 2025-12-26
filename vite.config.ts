@@ -18,11 +18,11 @@ const commonConfig: UserConfig = {
         rollupOptions: {
             output: {
                 entryFileNames: 'js/[name]-[hash].js',
-                assetFileNames: ({ name }) => {
-                    if (/\.(webp|jpe?g|png)$/.test(name ?? '')) {
+                assetFileNames: ({ names }) => {
+                    if (/\.(webp|jpe?g|png)$/.test(names[0] ?? '')) {
                         return 'assets/images/[name]-[hash][extname]';
                     }
-                    if (/\.(woff2|ttf)$/.test(name ?? ''))
+                    if (/\.(woff2|ttf)$/.test(names[0] ?? ''))
                         return 'assets/fonts/[name]-[hash][extname]';
                     return '[name]-[hash][extname]';
                 },

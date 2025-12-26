@@ -11,7 +11,6 @@ export const APP_ROUTES = {
     CINEMAS: '/cinemas',
     MOVIE_CINEMAS_SLOTS: '/movies/:slug/cinemas',
     CINEMA_MOVIES_SLOTS: '/cinemas/:slug/movies',
-    ORDER_SUMMARY: '/order-summary',
     SEAT_LAYOUT: '/slots/:id/seat-layout',
     ERROR: '/error',
     NOTFOUND: '/notfound',
@@ -20,4 +19,10 @@ export const APP_ROUTES = {
 /**
  * API endpoints that should include auth headers.
  */
-export const ENDPOINTS_WITH_HEADERS: string[] = ['profile', 'bookSeats'];
+export const ENDPOINTS_WITH_HEADERS: string[] = [
+    'profile',
+    'bookSeats',
+    'getBookings',
+    'updateProfile',
+    'cancelBooking',
+];

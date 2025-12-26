@@ -5,6 +5,7 @@ export {
     useGetCinemaMovieSlotsQuery,
     useGetSeatLayoutQuery,
     useBookSeatsMutation,
+    useCancelBookingMutation,
 } from './cinemas';
 
 export type { CinemaMovieSlot } from './cinemas.types';

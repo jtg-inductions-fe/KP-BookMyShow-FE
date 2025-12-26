@@ -1,17 +1,14 @@
-import { useEffect } from 'react';
-
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import {
-    Box,
-    CircularProgress,
-    Grid2,
-    Stack,
-    useMediaQuery,
-    useTheme,
-} from '@mui/material';
+import { Box, Grid2, Stack, useMediaQuery, useTheme } from '@mui/material';
 
-import { Grid, NoDataText, Typography, VerticalCard } from '@components';
+import {
+    Grid,
+    Loader,
+    NoDataText,
+    Typography,
+    VerticalCard,
+} from '@components';
 import { APP_ROUTES } from '@constants';
 import { Filter } from '@containers';
 import { useInfiniteScroll } from '@hooks';
@@ -31,7 +28,7 @@ export const MovieListPage = () => {
     const isTablet = useMediaQuery(breakpoints.up('md'));
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const { data, fetchNextPage, isLoading, isFetching, hasNextPage, refetch } =
+    const { data, fetchNextPage, isLoading, isFetching, hasNextPage } =
         useGetMoviesInfiniteQuery(searchParams.toString());
     const { data: languages } = useGetLanguagesQuery();
     const { data: genres } = useGetGenresQuery();
@@ -48,7 +45,7 @@ export const MovieListPage = () => {
         void navigate(`${APP_ROUTES.MOVIES}/${slug}`);
     };
 
-    const toggleLanguage = (key: string, value: string) => {
+    const toggleFilters = (key: string, value: string) => {
         const params = new URLSearchParams(searchParams);
         const values = params.getAll(key);
 
@@ -64,20 +61,8 @@ export const MovieListPage = () => {
     const exists = (key: string, value: string) =>
         searchParams.getAll(key).includes(value);
 
-    useEffect(() => {
-        void refetch();
-    }, [refetch, searchParams]);
-
     return isLoading ? (
-        <Box
-            width="100%"
-            height="100%"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-        >
-            <CircularProgress />
-        </Box>
+        <Loader />
     ) : (
         <Grid2 container gap={5} flexDirection={isTablet ? 'row' : 'column'}>
             <Grid2 size={isTablet ? 3 : 12}>
@@ -94,7 +79,7 @@ export const MovieListPage = () => {
                             data: genres,
                         },
                     ]}
-                    onClick={toggleLanguage}
+                    onClick={toggleFilters}
                     onCheck={exists}
                 />
             </Grid2>

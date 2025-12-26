@@ -1,5 +1,6 @@
 import { DetailCardData, SeatState } from '@components';
 import { SeatLayout } from '@models';
+import { numberToChar } from '@utils';
 
 /**
  * Adapter class for seatLayout which give function to adapt layout data in multiple
@@ -21,7 +22,7 @@ export class SeatLayoutAdapter {
             description: this.seatsState
                 .slice()
                 .sort((a, b) => a.row - b.row || a.column - b.column)
-                .map((seat) => `R${seat.row}-S${seat.column}`)
+                .map((seat) => `${numberToChar(seat.row)}${seat.column}`)
                 .join(', '),
         } satisfies Partial<DetailCardData>;
     }

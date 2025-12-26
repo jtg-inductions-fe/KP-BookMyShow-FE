@@ -1,6 +1,9 @@
+/**
+ * Interface representing structure of Seat.
+ */
 export interface Seat {
     id: number;
-    row_number: number;
-    seat_number: number;
+    rowNumber: number;
+    seatNumber: number;
     available: boolean;
 }

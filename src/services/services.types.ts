@@ -1,4 +1,4 @@
-import { Location, Seat } from '@models';
+import { BookingStatus, Location } from '@models';
 
 /**
  * A generic interface representing the response of API with paginated response.
@@ -32,5 +32,29 @@ export interface SeatLayoutApi {
     seats_per_row: number;
     slot_id: number;
     slot_price: number;
-    seats: Seat[];
+    seats: SeatApi[];
+}
+
+/**
+ * Interface representing the booking Api structure.
+ */
+export interface BookingApi {
+    id: number;
+    movie: string;
+    cinema: string;
+    location: string;
+    start_time: string;
+    status: keyof typeof BookingStatus;
+    price: number;
+    seats: Partial<SeatApi>[];
+}
+
+/**
+ * Interface representing the seat Api structure.
+ */
+export interface SeatApi {
+    id: number;
+    row_number: number;
+    seat_number: number;
+    available: boolean;
 }

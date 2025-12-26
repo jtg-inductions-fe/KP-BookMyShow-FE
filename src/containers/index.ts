@@ -4,3 +4,5 @@ export type { ConfigType, FieldConfig, FormProps } from './Form';
 export { AuthContainer } from './Auth';
 export { Filter } from './Filters';
 export { SlotContainer } from './Slot';
+export { BookingHistory } from './BookingHistory';
+export { Profile } from './Profile';

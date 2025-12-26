@@ -41,14 +41,18 @@ export const useSeatSelection = (id?: string) => {
                 id: Number(id),
                 seats: state.map((seat) => seat.id),
             }).unwrap();
-            void navigate(APP_ROUTES.HOME, { replace: true });
-        } catch (error) {
-            const allErrors: string[] = [];
-            const errorData = (error as { data: Record<string, string> }).data;
-            allErrors.push(errorData.detail);
             dispatch(
                 showSnackbar({
-                    messages: allErrors,
+                    messages: ['seats booked Successfully.'],
+                    options: { variant: 'success' },
+                }),
+            );
+            void navigate(APP_ROUTES.HOME, { replace: true });
+        } catch (error) {
+            const errorData = (error as { data: Record<string, string> }).data;
+            dispatch(
+                showSnackbar({
+                    messages: Object.values(errorData).flat(),
                     options: { variant: 'error' },
                 }),
             );
