@@ -48,11 +48,13 @@ export const userApi = baseApi.injectEndpoints({
                 results: data.results.map((booking) => ({
                     ...booking,
                     startTime: booking.start_time,
-                    seats: booking.seats.map((seat) => ({
-                        ...seat,
-                        rowNumber: seat.row_number,
-                        seatNumber: seat.seat_number,
-                    })),
+                    seats: booking.seats.map(
+                        ({ row_number, seat_number, ...rest }) => ({
+                            ...rest,
+                            rowNumber: row_number,
+                            seatNumber: seat_number,
+                        }),
+                    ),
                 })),
             }),
             providesTags: ['Booking'],

@@ -58,11 +58,13 @@ export const cinemaApi = baseApi.injectEndpoints({
                 seatsPerRow: data.seats_per_row,
                 slotId: data.slot_id,
                 slotPrice: data.slot_price,
-                seats: data.seats.map((seat) => ({
-                    ...seat,
-                    rowNumber: seat.row_number,
-                    seatNumber: seat.seat_number,
-                })),
+                seats: data.seats.map(
+                    ({ row_number, seat_number, ...rest }) => ({
+                        ...rest,
+                        rowNumber: row_number,
+                        seatNumber: seat_number,
+                    }),
+                ),
             }),
             providesTags: ['Booking'],
         }),

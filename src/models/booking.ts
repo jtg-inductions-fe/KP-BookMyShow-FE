@@ -13,5 +13,5 @@ export interface Booking {
     startTime: string;
     status: keyof typeof BookingStatus;
     price: number;
-    seats: Partial<Seat>[];
+    seats: Seat[];
 }

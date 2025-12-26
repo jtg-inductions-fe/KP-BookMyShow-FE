@@ -14,7 +14,7 @@ export const BookingDetailModal = (props: BookingDetailModalProps) => {
     const {
         open,
         onClose,
-        TransactionDetail,
+        transactionDetail,
         detailCardData,
         btnText,
         handlePopOverButtonClick,
@@ -23,8 +23,8 @@ export const BookingDetailModal = (props: BookingDetailModalProps) => {
     return (
         <PopOver
             open={open}
-            anchorReference={'none'}
-            onClose={() => onClose()}
+            anchorReference="none"
+            onClose={onClose}
             anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
@@ -32,8 +32,8 @@ export const BookingDetailModal = (props: BookingDetailModalProps) => {
         >
             <Stack gap={7}>
                 <DetailCard data={detailCardData} />
-                {TransactionDetail.map(({ Icon, detail }, index) => (
-                    <Stack key={index} direction={'row'} gap={2}>
+                {transactionDetail.map(({ Icon, detail }, index) => (
+                    <Stack key={index} direction="row" gap={2}>
                         <Icon />
                         <Typography variant="h3" lines={2}>
                             {detail}

@@ -2,7 +2,7 @@ import { BookingStatus } from '@models';
 
 /**
  * Define the structure of the bookingCard.
- * It's describe about the booking details.
+ * It describes the booking details.
  */
 export interface BookingDetails {
     id: number;

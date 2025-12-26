@@ -36,7 +36,7 @@ export const exists = (
 /**
  * A function which will use to set the filter.
  * @param filterParams A `URLSearchParams` which holds the current selected det of filter.
- * @param setFilterState A `DIspatcher` which will update the value.
+ * @param setFilterState A dispatcher which will update the value.
  * @param key filter
  * @param value filter value
  */

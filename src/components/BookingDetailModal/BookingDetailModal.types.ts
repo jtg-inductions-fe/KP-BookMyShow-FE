@@ -20,5 +20,5 @@ export interface BookingDetailModalProps {
     detailCardData: Partial<DetailCardData>;
     handlePopOverButtonClick: () => Promise<void>;
     btnText: string;
-    TransactionDetail: Transaction[];
+    transactionDetail: Transaction[];
 }

@@ -46,7 +46,7 @@ export interface BookingApi {
     start_time: string;
     status: keyof typeof BookingStatus;
     price: number;
-    seats: Partial<SeatApi>[];
+    seats: SeatApi[];
 }
 
 /**

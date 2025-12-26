@@ -14,11 +14,9 @@ export const EditableTextField = (props: EditableTextFieldProps) => {
 
     return (
         <Stack gap={2}>
-            {title && (
-                <Typography variant="subtitle1" color="text.primary">
-                    {title}
-                </Typography>
-            )}
+            <Typography variant="subtitle1" color="text.primary">
+                {title}
+            </Typography>
             <StyledTextField
                 {...MuiTextFieldProps}
                 disabled={!editFields[title]}

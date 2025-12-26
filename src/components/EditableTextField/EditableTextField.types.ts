@@ -5,7 +5,7 @@ import { TextFieldProps } from '@mui/material';
  */
 export type EditableTextFieldProps = {
     title: string;
-    editFields: { [key: string]: boolean };
+    editFields: Record<string, boolean>;
     setEditFields: React.Dispatch<
         React.SetStateAction<Record<string, boolean>>
     >;

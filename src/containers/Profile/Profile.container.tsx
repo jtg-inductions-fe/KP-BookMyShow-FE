@@ -35,11 +35,7 @@ export const Profile = () => {
         },
     });
 
-    const [editFields, setEditFields] = useState<Record<string, boolean>>({
-        name: false,
-        phone_number: false,
-    });
-
+    const [editFields, setEditFields] = useState<Record<string, boolean>>({});
     const onSubmit = async (data: Partial<User>): Promise<void> => {
         try {
             const res = await updateUser(data).unwrap();

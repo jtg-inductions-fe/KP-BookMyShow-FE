@@ -30,7 +30,7 @@ import { DefaultFilter, FilterData } from './BookingHistory.constants';
 export const BookingHistory = () => {
     const dispatch = useAppDispatch();
 
-    const [CancelBooking] = useCancelBookingMutation();
+    const [cancelBooking] = useCancelBookingMutation();
 
     const [filterParams, setFilterState] = useState<URLSearchParams>(
         () => new URLSearchParams({ booking: DefaultFilter }),
@@ -60,7 +60,7 @@ export const BookingHistory = () => {
 
     const onCancelClick = async (id?: number): Promise<void> => {
         try {
-            await CancelBooking({ id });
+            await cancelBooking({ id }).unwrap();
             closePopover();
             await refetch();
             dispatch(
@@ -123,7 +123,7 @@ export const BookingHistory = () => {
                     open={open}
                     onClose={closePopover}
                     detailCardData={selectedBooking}
-                    TransactionDetail={transactionDetail}
+                    transactionDetail={transactionDetail}
                     btnText="Cancel Booking"
                     handlePopOverButtonClick={() =>
                         onCancelClick(selectedBooking?.id)

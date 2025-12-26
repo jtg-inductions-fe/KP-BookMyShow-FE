@@ -15,14 +15,10 @@ export const BookingDetailHolder = (props: BookingDetailHolderProps) => {
     const { booking, onClick, imgUrl } = props;
     const { breakpoints } = useTheme();
 
-    const isMobile = useMediaQuery(breakpoints.up('sm'));
+    const isSmUp = useMediaQuery(breakpoints.up('sm'));
 
     return (
-        <DetailHolder
-            key={booking.id}
-            tabIndex={0}
-            onClick={() => onClick && onClick(booking)}
-        >
+        <DetailHolder tabIndex={0} onClick={() => onClick?.(booking)}>
             {imgUrl && (
                 <ImgContainer>
                     <Box
@@ -59,7 +55,7 @@ export const BookingDetailHolder = (props: BookingDetailHolderProps) => {
                         {booking.price}
                     </Typography>
 
-                    <Stack alignItems={isMobile ? 'end' : 'start'}>
+                    <Stack alignItems={isSmUp ? 'end' : 'start'}>
                         <Typography color="primary.main" lines={1}>
                             {booking.status}
                         </Typography>

@@ -54,7 +54,7 @@ export const SeatLayoutPage = () => {
 
     const detailCardData = new SeatLayoutAdapter(data, state).adaptToDCard();
 
-    const TransactionDetail = [
+    const transactionDetail = [
         {
             Icon: ChairOutlined,
             detail: `total seats: ${state.length}`,
@@ -115,7 +115,7 @@ export const SeatLayoutPage = () => {
                     open={open}
                     handlePopOverButtonClick={handlePopoverButtonClick}
                     onClose={handleModalClose}
-                    TransactionDetail={TransactionDetail}
+                    transactionDetail={transactionDetail}
                     btnText="Confirm Booking"
                     detailCardData={detailCardData}
                 />

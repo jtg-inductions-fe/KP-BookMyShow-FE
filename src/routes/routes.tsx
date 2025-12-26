@@ -7,6 +7,7 @@ import { Header } from '@containers';
 import { MainLayout } from '@layout';
 
 import { GuestRoute } from './GuestRoute';
+import { ProtectedRoute } from './ProtectedRoute';
 
 type PagesModule = typeof import('@pages');
 
@@ -115,7 +116,11 @@ const routes: RouteObject[] = [
     },
     {
         path: APP_ROUTES.SEAT_LAYOUT,
-        element: <MainLayout />,
+        element: (
+            <ProtectedRoute>
+                <MainLayout />
+            </ProtectedRoute>
+        ),
         children: [
             { index: true, element: <SeatLayoutPage /> },
             { path: '*', element: <NotFoundPage /> },
@@ -123,7 +128,11 @@ const routes: RouteObject[] = [
     },
     {
         path: APP_ROUTES.PROFILE,
-        element: <MainLayout header={<Header />} />,
+        element: (
+            <ProtectedRoute>
+                <MainLayout header={<Header />} />
+            </ProtectedRoute>
+        ),
         children: [
             { index: true, element: <ProfilePage /> },
             { path: '*', element: <NotFoundPage /> },

@@ -6,17 +6,16 @@ import { useAppSelector } from '@store';
 import { RouteProps } from './routes.types';
 
 /**
- * `GuestRoute`
+ * `PrivateRoute`
  *
  * This route wrapper is used to redirect access to pages that should be visible to
- * unauthenticated users.
+ * authenticated users.
  */
-export const GuestRoute = ({ children }: RouteProps) => {
+export const ProtectedRoute = ({ children }: RouteProps) => {
     const { isAuthenticated } = useAppSelector((state) => state.auth);
-
     return isAuthenticated ? (
-        <Navigate to={APP_ROUTES.HOME} />
-    ) : (
         <>{children}</>
+    ) : (
+        <Navigate to={APP_ROUTES.LOGIN} replace />
     );
 };

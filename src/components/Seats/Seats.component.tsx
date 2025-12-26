@@ -25,7 +25,7 @@ export const Seats = (props: SeatsProps) => {
                 {data?.seats.map((seat) => (
                     <Chip
                         key={seat.id}
-                        label={`${numberToChar(seat.rowNumber)}${seat.seatNumber}`}
+                        label={`${numberToChar(seat.rowNumber) ?? ''}${seat.seatNumber}`}
                         variant={
                             state.find((item) => item.id === seat.id) ||
                             !seat.available

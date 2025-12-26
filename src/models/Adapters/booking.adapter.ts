@@ -6,10 +6,8 @@ import { Booking } from '@models';
 import { currencyFormatter, dateFormatter, numberToChar } from '@utils';
 
 /**
- * Adapter class for movie which gives functions to adapt movie data in multiple
- * component formats.
+ * Enum for booking status.
  */
-
 export enum BookingStatus {
     B = 'Booked',
     C = 'Cancelled',
@@ -44,7 +42,7 @@ export class BookingAdapter {
                         `${numberToChar(seat.rowNumber)}${seat.seatNumber}`,
                 )
                 .join(', '),
-            status: BookingStatus[`${this.booking.status}`],
+            status: BookingStatus[this.booking.status],
             totalSeats: this.booking.seats.length,
         } satisfies BookingDetails;
     }

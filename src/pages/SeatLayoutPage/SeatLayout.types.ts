@@ -11,7 +11,7 @@ export interface BookingDetailModalProps {
     onClose: () => void;
     detailCardData: Partial<DetailCardData>;
     handlePopOverButtonClick: () => Promise<void>;
-    TransactionDetail: {
+    transactionDetail: {
         Icon: OverridableComponent<SvgIconTypeMap<unknown, 'svg'>>;
         detail: string;
     }[];

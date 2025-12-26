@@ -5,7 +5,9 @@ import dayjs from 'dayjs';
 import { ChairOutlined, CurrencyRupee } from '@mui/icons-material';
 
 import { BookingDetails, DetailCardData, Transaction } from '@components';
+import { showSnackbar } from '@features';
 import { BookingStatus } from '@models';
+import { useAppDispatch } from '@store';
 
 /**
  * A customHook for encapsulating the booking related logic.
@@ -18,6 +20,7 @@ export const useBookingState = () => {
     const [transactionDetail, setTransactionDetail] = useState<Transaction[]>(
         [],
     );
+    const dispatch = useAppDispatch();
     const [open, setOpen] = useState(false);
     const openDetails = (booking: BookingDetails) => {
         const bookingDateTime = dayjs(
@@ -29,8 +32,21 @@ export const useBookingState = () => {
         if (
             booking.status !== BookingStatus.B ||
             bookingDateTime.isBefore(currentDateTime)
-        )
+        ) {
+            dispatch(
+                showSnackbar({
+                    messages: [
+                        `${
+                            booking.status !== BookingStatus.B
+                                ? 'Booking is not active'
+                                : 'Booking slot has passed'
+                        }`,
+                    ],
+                    options: { variant: 'default' },
+                }),
+            );
             return;
+        }
 
         setSelectedBooking({
             id: booking.id,

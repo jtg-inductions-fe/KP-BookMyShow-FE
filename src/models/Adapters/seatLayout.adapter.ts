@@ -22,7 +22,7 @@ export class SeatLayoutAdapter {
             description: this.seatsState
                 .slice()
                 .sort((a, b) => a.row - b.row || a.column - b.column)
-                .map((seat) => `${numberToChar(seat.row)}${seat.column}`)
+                .map((seat) => `${numberToChar(seat.row) ?? ''}${seat.column}`)
                 .join(', '),
         } satisfies Partial<DetailCardData>;
     }

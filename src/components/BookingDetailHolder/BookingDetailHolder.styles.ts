@@ -44,8 +44,8 @@ export const DetailsContainer = styled(Stack)(
         justifyContent: 'space-between',
         width: '100%',
         gap: spacing(5),
-        paddingTop: 2,
-        paddingBottom: 2,
+        paddingTop: spacing(1),
+        paddingBottom: spacing(1),
         [breakpoints.up('sm')]: {
             flexDirection: 'row',
             gap: 0,
