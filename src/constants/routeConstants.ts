@@ -12,7 +12,7 @@ export const APP_ROUTES = {
     MOVIE_CINEMAS_SLOTS: '/movies/:slug/cinemas',
     CINEMA_MOVIES_SLOTS: '/cinemas/:slug/movies',
     ORDER_SUMMARY: '/order-summary',
-    SEAT_LAYOUT: '/slots/:id/seat-layout/',
+    SEAT_LAYOUT: '/slots/:id/seat-layout',
     ERROR: '/error',
     NOTFOUND: '/notfound',
 } as const;

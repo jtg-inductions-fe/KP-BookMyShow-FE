@@ -4,15 +4,6 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { DetailCardData } from '@components';
 
 /**
- * Interface representing the state of seat in seatLayout.
- */
-export interface SeatState {
-    id: number;
-    row: number;
-    column: number;
-}
-
-/**
  * Interface representing the structure of the `bookingModal`.
  */
 export interface BookingDetailModalProps {

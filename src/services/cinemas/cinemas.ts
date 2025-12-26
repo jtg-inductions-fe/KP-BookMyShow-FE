@@ -61,10 +61,7 @@ export const cinemaApi = baseApi.injectEndpoints({
             }),
             providesTags: ['Booking'],
         }),
-        bookSeats: builder.mutation<
-            number,
-            { id: number | undefined; seats: number[] }
-        >({
+        bookSeats: builder.mutation<number, { id: number; seats: number[] }>({
             query: ({ id, seats }) => ({
                 url: `api/cinemas/${id}/booking/`,
                 method: 'POST',

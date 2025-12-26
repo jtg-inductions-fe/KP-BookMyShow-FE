@@ -10,7 +10,7 @@ import { Gradient } from './common.styles';
 export const BackgroundGradient = (props: BoxProps) => <Gradient {...props} />;
 
 /**
- * A component when there is no data text consistent over the app..
+ * A component shows when there is no data, to make text consistent over the app.
  * @param text A message text
  * @returns A Typography component with text.
  */

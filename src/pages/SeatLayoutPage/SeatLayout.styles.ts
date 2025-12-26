@@ -7,6 +7,9 @@ export const MainContainer = styled(Box)({
     width: '100%',
     height: '100%',
     scrollbarWidth: 'none',
+    '&::-webkit-scrollbar': {
+        display: 'none',
+    },
 });
 
 export const InnerContainer = styled(Box)({

@@ -121,7 +121,7 @@ export const MovieListPage = () => {
                             <Box ref={endRef} style={{ height: 1 }} />
                         </>
                     ) : (
-                        <NoDataText text={'No movies available'} />
+                        <NoDataText text="No movies available" />
                     )}
                 </Stack>
             </Grid2>

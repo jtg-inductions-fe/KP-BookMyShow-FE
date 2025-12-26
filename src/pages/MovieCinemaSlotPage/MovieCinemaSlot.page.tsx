@@ -35,7 +35,7 @@ export const MovieCinemaSlotPage = () => {
         new MovieCinemaSlotAdapter(slotData).adaptToSlotCard();
 
     const onClick = (id: number) => {
-        void navigate(`/slots/${Number(id)}/seat-layout`);
+        void navigate(`/slots/${id}/seat-layout`);
     };
 
     const onDateChange = (value: string) => {

@@ -12,23 +12,15 @@ import { StyledStack } from './BackNavigation.styles';
  * @param props A `DetailCardData` for reusing detailCard.
  * @returns A component having `BackArrow` and `details`.
  */
-export const BackNavigation = (props: Partial<DetailCardData>) => {
+export const BackNavigation = (data: Partial<DetailCardData>) => {
     const navigate = useNavigate();
     return (
         <StyledStack>
             <IconButton onClick={() => void navigate(-1)}>
-                <ArrowBackIosOutlined
-                    fontSize="large"
-                    color="primary"
-                    sx={{ cursor: 'pointer' }}
-                />
+                <ArrowBackIosOutlined fontSize="large" color="primary" />
             </IconButton>
 
-            <DetailCard
-                data={{
-                    ...props,
-                }}
-            />
+            <DetailCard data={data} />
         </StyledStack>
     );
 };

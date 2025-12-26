@@ -21,12 +21,12 @@ export const Seats = (props: SeatsProps) => {
                     gridTemplateColumns: `repeat(${data?.seatsPerRow}, ${size}px)`,
                 }}
             >
-                {data?.seats.map((seat, index) => (
+                {data?.seats.map((seat) => (
                     <Chip
                         label=""
-                        key={index}
+                        key={seat.id}
                         variant={
-                            state.find((item) => item.id == seat.id) ||
+                            state.find((item) => item.id === seat.id) ||
                             !seat.available
                                 ? 'filled'
                                 : 'outlined'
@@ -52,7 +52,7 @@ export const Seats = (props: SeatsProps) => {
             <Button
                 variant="outlined"
                 sx={{ margin: 'auto' }}
-                onClick={() => handleButtonClick()}
+                onClick={handleButtonClick}
             >
                 Book Seat
             </Button>

@@ -44,7 +44,7 @@ export const SeatLayoutPage = () => {
         handleSeatClick,
         handlePopoverButtonClick,
         handleButtonClick,
-    } = useSeatSelection(id!);
+    } = useSeatSelection(id);
 
     if (isLoading) {
         return (
@@ -146,7 +146,7 @@ const BookingDetailModal = (props: BookingDetailModalProps) => {
         <PopOver
             open={open}
             anchorReference={'none'}
-            onClose={() => onClose()}
+            onClose={onClose}
             anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',

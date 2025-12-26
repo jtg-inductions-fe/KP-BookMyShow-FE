@@ -19,8 +19,9 @@ export class SeatLayoutAdapter {
             title: this.seatLayout.movie,
             subtitle1: `${this.seatLayout.cinema}, ${this.seatLayout.location}`,
             description: this.seatsState
+                .slice()
+                .sort((a, b) => a.row - b.row || a.column - b.column)
                 .map((seat) => `R${seat.row}-S${seat.column}`)
-                .sort()
                 .join(', '),
         } satisfies Partial<DetailCardData>;
     }

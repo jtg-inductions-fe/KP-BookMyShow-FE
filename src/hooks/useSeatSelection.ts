@@ -13,11 +13,11 @@ import { useAppDispatch } from '@store';
  * @param id A slot id for booking the seats.
  * @returns A whole functionality require for the booking with modal.
  */
-export const useSeatSelection = (id: string) => {
+export const useSeatSelection = (id?: string) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [state, setState] = useState<SeatState[]>([]);
-    const [BookSeat] = useBookSeatsMutation();
+    const [bookSeat] = useBookSeatsMutation();
 
     const handleSeatClick = (seat: SeatState) => {
         setState((prevState) => {
@@ -34,7 +34,10 @@ export const useSeatSelection = (id: string) => {
 
     const handlePopoverButtonClick = async (): Promise<void> => {
         try {
-            await BookSeat({
+            if (!id || isNaN(Number(id))) {
+                return;
+            }
+            await bookSeat({
                 id: Number(id),
                 seats: state.map((seat) => seat.id),
             }).unwrap();

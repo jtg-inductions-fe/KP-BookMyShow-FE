@@ -1,4 +1,4 @@
-import { Button, paperClasses, Popover, styled } from '@mui/material';
+import { paperClasses, Popover, styled } from '@mui/material';
 
 export const StyledPopOver = styled(Popover)(
     ({ theme: { spacing, palette } }) => ({
@@ -16,8 +16,3 @@ export const StyledPopOver = styled(Popover)(
         },
     }),
 );
-
-export const StyledButton = styled(Button)(({ theme: { palette } }) => ({
-    border: '1px solid',
-    borderColor: palette.primary.main,
-}));
