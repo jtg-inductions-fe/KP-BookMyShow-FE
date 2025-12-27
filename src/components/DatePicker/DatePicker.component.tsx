@@ -1,4 +1,4 @@
-import { svgIconClasses, useTheme } from '@mui/material';
+import { iconButtonClasses, svgIconClasses, useTheme } from '@mui/material';
 import {
     DatePicker as MuiDatePicker,
     DatePickerProps,
@@ -30,24 +30,48 @@ export const DatePicker = ({ ...props }: DatePickerProps) => {
                                     color: `${palette.secondary.light}`,
                                 },
                             },
+                            '&:hover': {
+                                color: palette.primary.main,
+                            },
+                            '&: focus-visible': {
+                                color: palette.primary.main,
+                            },
+                        },
+                    },
+                    yearButton: {
+                        sx: {
+                            '&:hover': {
+                                color: palette.primary.main,
+                            },
+                            '&: focus-visible': {
+                                color: palette.primary.main,
+                            },
                         },
                     },
                     leftArrowIcon: {
                         sx: {
                             color: 'primary.main',
+                            [`.${iconButtonClasses.root}:focus-within &`]: {
+                                color: 'white',
+                            },
                         },
                     },
                     rightArrowIcon: {
                         sx: {
                             color: 'primary.main',
+                            [`.${iconButtonClasses.root}:focus-within &`]: {
+                                color: 'white',
+                            },
                         },
                     },
                     switchViewIcon: {
                         sx: {
                             color: 'primary.main',
+                            [`.${iconButtonClasses.root}:focus-within &`]: {
+                                color: 'white',
+                            },
                         },
                     },
-
                     actionBar: {
                         actions: ['cancel', 'today'],
                     },
@@ -60,6 +84,10 @@ export const DatePicker = ({ ...props }: DatePickerProps) => {
                             '& fieldset': {
                                 borderColor: 'secondary.main',
                             },
+                            [`& .${iconButtonClasses.root}:focus .${svgIconClasses.root}`]:
+                                {
+                                    color: 'white',
+                                },
                         },
                     },
                 }}

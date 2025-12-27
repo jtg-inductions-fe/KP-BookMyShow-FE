@@ -1,4 +1,9 @@
-import { Accordion, accordionClasses, styled } from '@mui/material';
+import {
+    Accordion,
+    accordionClasses,
+    accordionSummaryClasses,
+    styled,
+} from '@mui/material';
 
 export const StyledAccordion = styled(Accordion)(
     ({ theme: { palette, spacing } }) => ({
@@ -8,7 +13,10 @@ export const StyledAccordion = styled(Accordion)(
         '&:before': {
             display: 'none',
         },
-
+        [`& .${accordionSummaryClasses.root}:focus-visible .${accordionSummaryClasses.expandIconWrapper} svg`]:
+            {
+                color: palette.text.primary,
+            },
         [`&.${accordionClasses.root}.${accordionClasses.expanded}`]: {
             margin: 0,
         },

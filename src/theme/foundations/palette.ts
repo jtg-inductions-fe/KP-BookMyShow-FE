@@ -14,6 +14,7 @@ export const palette: PaletteOptions = {
     text: {
         primary: COLORS.TEXT.PRIMARY,
         secondary: COLORS.TEXT.SECONDARY,
+        disabled: COLORS.TEXT.DISABLED,
     },
     info: {
         main: COLORS.INFO.MAIN,

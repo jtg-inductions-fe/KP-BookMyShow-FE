@@ -1,16 +1,11 @@
-import { Chip as MuiChip } from '@mui/material';
-
-import { StyledChipProps } from './Chip.styles';
+import { StyledChip } from './Chip.styles';
+import { StyledChipProps } from './Chip.types';
 
 /**
  * Custom chip component with theme specific style.
+ * @param StyledChipProps props for styled chip props.
+ * @returns
  */
 export const Chip = ({ label, ...props }: StyledChipProps) => (
-    <MuiChip
-        sx={{ borderRadius: 3, width: 'fit-content' }}
-        label={label}
-        clickable
-        color="secondary"
-        {...props}
-    />
+    <StyledChip label={label} clickable color="secondary" {...props} />
 );

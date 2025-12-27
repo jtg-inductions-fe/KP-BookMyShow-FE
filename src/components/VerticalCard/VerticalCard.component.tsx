@@ -26,7 +26,7 @@ export const VerticalCard = ({
         }}
     >
         <CardActionArea onClick={onClick}>
-            {imgUrl && <StyledCardMedia image={imgUrl} />}
+            {imgUrl && <StyledCardMedia image={imgUrl} title={data.title} />}
             <StyledCardContent>
                 {isLoading ? (
                     <>

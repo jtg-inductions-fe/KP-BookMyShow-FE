@@ -13,12 +13,12 @@ import 'swiper/css';
  * @param props - Props used to configure the swiper.
  * @returns A React element rendering the image swiper.
  */
-export const Swiper = ({ slides, delayTIme }: ImageSwiperProps) => (
+export const Swiper = ({ slides, delayTime }: ImageSwiperProps) => (
     <ImageSwiper
         style={{ width: '100%', height: '100%' }}
         modules={[Navigation, Autoplay, A11y]}
         autoplay={{
-            delay: delayTIme,
+            delay: delayTime,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
         }}
@@ -27,8 +27,8 @@ export const Swiper = ({ slides, delayTIme }: ImageSwiperProps) => (
         spaceBetween={0}
         slidesPerView={1}
     >
-        {slides.map((img, index) => (
-            <SwiperSlide key={index} style={{ width: '100%', height: '100%' }}>
+        {slides.map((img) => (
+            <SwiperSlide key={img} style={{ width: '100%', height: '100%' }}>
                 <Box
                     sx={{
                         objectFit: 'cover',
@@ -37,7 +37,7 @@ export const Swiper = ({ slides, delayTIme }: ImageSwiperProps) => (
                     }}
                     component="img"
                     src={img}
-                    alt={`slide-${index}`}
+                    alt={`slide-${img}`}
                 />
             </SwiperSlide>
         ))}

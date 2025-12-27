@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Person2Outlined } from '@mui/icons-material';
-import { Button, Stack } from '@mui/material';
+import { Button, Stack, Tooltip } from '@mui/material';
 
-import { EditableTextField, Typography } from '@components';
+import { EditableTextField, Heading, Typography } from '@components';
 import { setUser, showSnackbar } from '@features';
 import { User } from '@models';
 import { useUpdateProfileMutation } from '@services';
@@ -60,12 +60,19 @@ export const Profile = () => {
 
     return (
         <Stack gap={5}>
-            <Typography variant={'h2'}>Profile Details</Typography>
+            <Heading>Profile Details</Heading>
             <EmailHolder>
                 <Person2Outlined />
-                <Typography variant="h4" color="primary.main">
-                    {userData.email}
-                </Typography>
+                <Tooltip title={userData.email}>
+                    <Typography
+                        variant="h4"
+                        color="primary.main"
+                        component="span"
+                        lines={1}
+                    >
+                        {userData.email}
+                    </Typography>
+                </Tooltip>
             </EmailHolder>
 
             <StyledForm onSubmit={(e) => void handleSubmit(onSubmit)(e)}>
@@ -75,6 +82,7 @@ export const Profile = () => {
                         editFields={editFields}
                         setEditFields={setEditFields}
                         title={field.placeholder}
+                        type={field.type}
                         defaultValue={getValues()[field.name]}
                         error={!!errors[field.name]}
                         helperText={errors[field.name]?.message as string}

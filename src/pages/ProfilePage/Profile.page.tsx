@@ -1,3 +1,5 @@
+import { Grid2 } from '@mui/material';
+
 import { BookingHistory, Profile } from '@containers';
 
 import { MainContainer } from './profile.styles';
@@ -7,8 +9,12 @@ import { MainContainer } from './profile.styles';
  * @returns A rendered user profile page.
  */
 export const ProfilePage = () => (
-    <MainContainer>
-        <Profile />
-        <BookingHistory />
+    <MainContainer container gap={1}>
+        <Grid2 flex={1}>
+            <Profile />
+        </Grid2>
+        <Grid2 size={{ xs: 12, md: 9, lg: 9.5 }}>
+            <BookingHistory />
+        </Grid2>
     </MainContainer>
 );

@@ -3,13 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Box, Grid2, Stack, useMediaQuery, useTheme } from '@mui/material';
 
-import {
-    Grid,
-    Loader,
-    NoDataText,
-    Typography,
-    VerticalCard,
-} from '@components';
+import { Grid, Heading, Loader, NoDataText, VerticalCard } from '@components';
 import { APP_ROUTES } from '@constants';
 import { Filter } from '@containers';
 import { useInfiniteScroll } from '@hooks';
@@ -44,19 +38,20 @@ export const CinemaListPage = () => {
         );
     };
 
+    const Filters = [
+        {
+            label: 'locations',
+            filter: 'location',
+            data: locations,
+        },
+    ];
     return isLoading ? (
         <Loader />
     ) : (
         <Grid2 container gap={5} flexDirection={isTablet ? 'row' : 'column'}>
             <Grid2 size={isTablet ? 3 : 12}>
                 <Filter
-                    filterData={[
-                        {
-                            label: 'locations',
-                            filter: 'location',
-                            data: locations,
-                        },
-                    ]}
+                    filterData={Filters}
                     onClick={(key, value) =>
                         setFilter(searchParams, setSearchParams, key, value)
                     }
@@ -65,7 +60,7 @@ export const CinemaListPage = () => {
             </Grid2>
             <Grid2 flex={1}>
                 <Stack sx={{ gap: 5 }}>
-                    <Typography variant="h2">Cinemas</Typography>
+                    <Heading>Cinemas</Heading>
                     {currentData?.length ? (
                         <>
                             <Grid
@@ -85,7 +80,7 @@ export const CinemaListPage = () => {
                             <Box ref={endRef} style={{ height: 1 }} />
                         </>
                     ) : (
-                        <NoDataText text={'No cinemas available'} />
+                        <NoDataText>No cinemas available</NoDataText>
                     )}
                 </Stack>
             </Grid2>

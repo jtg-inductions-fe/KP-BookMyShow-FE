@@ -38,9 +38,9 @@ export const StyledToggleButton = styled(NavLink)(
         '&:hover': {
             backgroundColor: 'transparent',
         },
-        padding: `${pxToRem(5)} ${pxToRem(8)}`,
+        padding: `${pxToRem(5)} ${pxToRem(10)}`,
         [breakpoints.up('sm')]: {
-            padding: `${pxToRem(3)} ${pxToRem(10)}`,
+            padding: `${pxToRem(3)} ${pxToRem(13)}`,
         },
     }),
 );

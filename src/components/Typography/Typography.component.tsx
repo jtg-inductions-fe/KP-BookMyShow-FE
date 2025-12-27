@@ -4,6 +4,7 @@ import { Typography as MuiTypography } from '@mui/material';
 
 import { theme } from '@theme';
 
+import { ShowMoreButton } from './Typography.styles';
 import { CustomTypographyProps } from './Typography.types';
 
 /**
@@ -50,19 +51,9 @@ export const Typography = (props: CustomTypographyProps) => {
                 {muiProps.children}
             </MuiTypography>
             {hasShowMore && isOverflow && (
-                <MuiTypography
-                    sx={{
-                        '&:hover': {
-                            cursor: 'pointer',
-                        },
-                    }}
-                    variant="caption"
-                    component={'span'}
-                    color="primary.main"
-                    onClick={() => setExpanded(!isExpanded)}
-                >
+                <ShowMoreButton onClick={() => setExpanded(!isExpanded)}>
                     {!isExpanded ? 'show more' : 'show less'}
-                </MuiTypography>
+                </ShowMoreButton>
             )}
         </>
     );

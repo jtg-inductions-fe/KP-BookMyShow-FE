@@ -2,13 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Box, Stack } from '@mui/material';
 
-import {
-    Grid,
-    NoDataText,
-    Swiper,
-    Typography,
-    VerticalCard,
-} from '@components';
+import { Grid, Heading, NoDataText, Swiper, VerticalCard } from '@components';
 import { APP_ROUTES } from '@constants';
 import { useInfiniteScroll } from '@hooks';
 import { MovieAdapter } from '@models';
@@ -39,14 +33,15 @@ export const HomePage = () => {
     const handleClick = (slug: string) => {
         void navigate(`${APP_ROUTES.MOVIES}/${slug}`);
     };
+
     return (
         <HomeContainer>
             <Box sx={{ position: 'relative' }}>
-                <Swiper slides={slidesConfig} delayTIme={3000} />
+                <Swiper slides={slidesConfig} delayTime={3000} />
                 <BottomGradient />
             </Box>
             <Stack sx={{ gap: currentData?.length ? 10 : 3 }}>
-                <Typography variant="h2">Latest Movies</Typography>
+                <Heading>Latest Movies</Heading>
                 {currentData?.length ? (
                     <Grid
                         renderNode={(movie) => (
@@ -62,7 +57,7 @@ export const HomePage = () => {
                         spacing={{ xxs: 5, xs: 5, sm: 6, md: 7 }}
                     />
                 ) : (
-                    <NoDataText text={'No latest movies available'} />
+                    <NoDataText>No latest movies available</NoDataText>
                 )}
                 <Box ref={endRef} style={{ height: 1 }} />
             </Stack>

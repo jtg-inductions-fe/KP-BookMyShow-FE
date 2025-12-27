@@ -94,6 +94,7 @@ export const SeatLayoutPage = () => {
                                     component="img"
                                     src={ScreenImg}
                                     width="100%"
+                                    aria-hidden
                                 />
                             </Box>
                             <Typography variant="caption">

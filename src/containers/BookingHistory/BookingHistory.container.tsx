@@ -6,9 +6,9 @@ import {
     BookingDetailHolder,
     BookingDetailModal,
     Grid,
+    Heading,
     Loader,
     NoDataText,
-    Typography,
 } from '@components';
 import { Filter } from '@containers';
 import { showSnackbar } from '@features';
@@ -94,13 +94,12 @@ export const BookingHistory = () => {
                 onCheck={(key, value) => exists(filterParams, key, value)}
             />
             <Stack flex={1} gap={5}>
-                <Typography variant={'h2'}>Bookings</Typography>
-
+                <Heading>Bookings</Heading>
                 {formattedData?.length ? (
                     <>
                         <Grid
                             gridItemsData={formattedData}
-                            gridColumns={{ xxs: 12, xs: 6, sm: 12 }}
+                            gridColumns={{ xxs: 12 }}
                             spacing={{ xxs: 5, xs: 3 }}
                             renderNode={(booking) => (
                                 <BookingDetailHolder
@@ -115,7 +114,7 @@ export const BookingHistory = () => {
                         <Box ref={endRef} style={{ height: 1 }} />
                     </>
                 ) : (
-                    <NoDataText text="No Booking available" />
+                    <NoDataText>No Booking available</NoDataText>
                 )}
             </Stack>
             {selectedBooking && (

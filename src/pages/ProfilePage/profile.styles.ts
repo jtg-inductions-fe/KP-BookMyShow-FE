@@ -1,14 +1,7 @@
-import { Stack, styled } from '@mui/material';
+import { Grid2, styled } from '@mui/material';
 
-export const MainContainer = styled(Stack)(
-    ({ theme: { spacing, breakpoints } }) => ({
-        gap: spacing(10),
-        paddingTop: spacing(5),
-        flexDirection: 'column',
-        width: '100%',
-
-        [breakpoints.up('md')]: {
-            flexDirection: 'row',
-        },
-    }),
-);
+export const MainContainer = styled(Grid2)(({ theme: { spacing } }) => ({
+    gap: spacing(10),
+    paddingTop: spacing(5),
+    width: '100%',
+}));

@@ -57,7 +57,7 @@ export const MovieCinemaSlotPage = () => {
                         isLoading={isLoading}
                     />
                 ) : (
-                    <NoDataText text={'No movie available'} />
+                    <NoDataText>No movie available</NoDataText>
                 )}
             </SlotContainer>
         </Box>

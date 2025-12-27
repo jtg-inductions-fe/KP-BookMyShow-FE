@@ -46,7 +46,7 @@ export const DetailCard = (props: DetailCardProps) => {
                         width={isTablet ? 400 : '100%'}
                         height={isTablet ? 450 : 400}
                     >
-                        <ImgContainer src={imgUrl} />
+                        <ImgContainer src={imgUrl} aria-hidden />
                     </Grid2>
                 ) : (
                     <ImgSkeleton />

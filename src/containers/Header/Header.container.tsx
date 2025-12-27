@@ -36,7 +36,7 @@ export const Header = () => {
                 const res = await trigger().unwrap();
                 dispatch(setUser(res));
             } catch {
-                void navigate(APP_ROUTES.LOGIN, { replace: true });
+                void navigate(APP_ROUTES.HOME, { replace: true });
             }
         };
 
@@ -61,8 +61,13 @@ export const Header = () => {
         <StyledAppBar>
             <MainContainer>
                 <LeftContainer>
-                    <Link to="/">
-                        <Box height="100%" component="img" src={logo} />
+                    <Link to="/" aria-label="go to home">
+                        <Box
+                            height="100%"
+                            component="img"
+                            src={logo}
+                            alt="logo"
+                        />
                     </Link>
                 </LeftContainer>
                 <RightContainer>

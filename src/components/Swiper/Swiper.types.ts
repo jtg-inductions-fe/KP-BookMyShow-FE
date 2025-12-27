@@ -3,5 +3,5 @@
  */
 export interface ImageSwiperProps {
     slides: string[];
-    delayTIme: number;
+    delayTime: number;
 }

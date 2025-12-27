@@ -1,5 +1,11 @@
 import { Close, Edit } from '@mui/icons-material';
-import { IconButton, InputAdornment, Stack, Typography } from '@mui/material';
+import {
+    IconButton,
+    InputAdornment,
+    InputLabel,
+    Stack,
+    useTheme,
+} from '@mui/material';
 
 import { StyledTextField } from './EditableTextField.styles';
 import { EditableTextFieldProps } from './EditableTextField.types';
@@ -11,13 +17,21 @@ import { EditableTextFieldProps } from './EditableTextField.types';
  */
 export const EditableTextField = (props: EditableTextFieldProps) => {
     const { title, editFields, setEditFields, ...MuiTextFieldProps } = props;
-
+    const { typography } = useTheme();
     return (
         <Stack gap={2}>
-            <Typography variant="subtitle1" color="text.primary">
+            <InputLabel
+                htmlFor={title}
+                sx={{
+                    ...typography.subtitle1,
+                    color: 'text.primary',
+                }}
+            >
                 {title}
-            </Typography>
+            </InputLabel>
             <StyledTextField
+                id={title}
+                aria-labelledby={title}
                 {...MuiTextFieldProps}
                 disabled={!editFields[title]}
                 slotProps={{
@@ -33,12 +47,9 @@ export const EditableTextField = (props: EditableTextFieldProps) => {
                                         }));
                                     }}
                                     edge="end"
+                                    color="primary"
                                 >
-                                    {!editFields[title] ? (
-                                        <Edit sx={{ color: 'primary.main' }} />
-                                    ) : (
-                                        <Close sx={{ color: 'primary.main' }} />
-                                    )}
+                                    {!editFields[title] ? <Edit /> : <Close />}
                                 </IconButton>
                             </InputAdornment>
                         ),
