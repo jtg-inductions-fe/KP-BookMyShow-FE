@@ -6,7 +6,7 @@ export interface Movie {
     title: string;
     description: string;
     duration: string;
-    release_date: string;
+    releaseDate: string;
     slug: string;
     genre: string[];
     language: string[];

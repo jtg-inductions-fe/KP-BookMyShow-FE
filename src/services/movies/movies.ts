@@ -2,7 +2,7 @@ import { baseApi } from '@api';
 import { Genre, Language, Movie } from '@models';
 
 import { MovieCinemaSlot } from './movies.types';
-import { PaginatedResponse } from '../services.types';
+import { MovieApi, PaginatedResponse } from '../services.types';
 
 /**
  * The `movieApi` object injected with endpoints for fetching movie data.
@@ -28,6 +28,13 @@ export const movieApi = baseApi.injectEndpoints({
                 url: `api/movies/${slug}`,
                 method: 'GET',
             }),
+            transformResponse: ({
+                release_date,
+                ...response
+            }: MovieApi): Movie => ({
+                ...response,
+                releaseDate: release_date,
+            }),
         }),
         getMovies: builder.infiniteQuery<
             PaginatedResponse<Movie>,
@@ -40,6 +47,15 @@ export const movieApi = baseApi.injectEndpoints({
                 initialPageParam: null,
                 getNextPageParam: (lastPage) => lastPage.next,
             },
+            transformResponse: (
+                response: PaginatedResponse<MovieApi>,
+            ): PaginatedResponse<Movie> => ({
+                ...response,
+                results: response.results.map(({ release_date, ...movie }) => ({
+                    ...movie,
+                    releaseDate: release_date,
+                })),
+            }),
         }),
         getMovieCinemaSlots: builder.query<
             MovieCinemaSlot[],
