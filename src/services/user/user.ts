@@ -2,11 +2,11 @@ import { Booking } from 'models/booking';
 
 import { baseApi } from '@api';
 import { User } from '@models';
-import { BookingApi, PaginatedResponse } from '@services';
+import { BookingApi, PaginatedResponse, UserApi } from '@services';
 
 export const userApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
-        profile: builder.query<User, void>({
+        getProfile: builder.query<User, void>({
             query: () => ({
                 url: 'api/user/profile/',
                 method: 'GET',
@@ -14,16 +14,24 @@ export const userApi = baseApi.injectEndpoints({
             extraOptions: {
                 requiresAuth: true,
             },
+            transformResponse: ({ phone_number, ...data }: UserApi): User => ({
+                ...data,
+                phoneNumber: phone_number,
+            }),
         }),
-        updateProfile: builder.mutation<User, Partial<User>>({
-            query: (body) => ({
+        updateProfile: builder.mutation<User, Partial<UserApi>>({
+            query: ({ phoneNumber, ...body }: User) => ({
                 url: 'api/user/profile/',
                 method: 'PATCH',
-                body: body,
+                body: { ...body, phone_number: phoneNumber },
             }),
             extraOptions: {
                 requiresAuth: true,
             },
+            transformResponse: ({ phone_number, ...data }: UserApi): User => ({
+                ...data,
+                phoneNumber: phone_number,
+            }),
         }),
         getBookings: builder.infiniteQuery<
             PaginatedResponse<Booking>,
@@ -63,7 +71,7 @@ export const userApi = baseApi.injectEndpoints({
 });
 
 export const {
-    useLazyProfileQuery,
+    useLazyGetProfileQuery,
     useGetBookingsInfiniteQuery,
     useUpdateProfileMutation,
 } = userApi;

@@ -1,5 +1,5 @@
 export {
-    useLazyProfileQuery,
+    useLazyGetProfileQuery,
     useGetBookingsInfiniteQuery,
     useUpdateProfileMutation,
 } from './user';

@@ -31,7 +31,7 @@ export const Profile = () => {
     } = useForm<Partial<User>>({
         values: {
             name: userData.name,
-            phone_number: userData.phone_number,
+            phoneNumber: userData.phoneNumber,
         },
     });
 
@@ -40,7 +40,7 @@ export const Profile = () => {
         try {
             const res = await updateUser(data).unwrap();
             dispatch(setUser(res));
-            setEditFields({ name: false, phone_number: false });
+            setEditFields({ name: false, phoneNumber: false });
             dispatch(
                 showSnackbar({
                     messages: ['profile updated!'],

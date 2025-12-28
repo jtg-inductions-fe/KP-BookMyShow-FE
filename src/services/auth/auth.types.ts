@@ -18,7 +18,7 @@ export interface SignupRequest {
 export interface SignupResponse {
     name: string;
     email: string;
-    number: string;
+    phone_number: string;
 }
 
 /**

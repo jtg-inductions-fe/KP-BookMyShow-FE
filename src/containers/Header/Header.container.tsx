@@ -8,7 +8,7 @@ import logo from '@assets/images/logo.svg';
 import { Profile, ProfileProps, ToggleButtonGroup } from '@components';
 import { APP_ROUTES } from '@constants';
 import { setUser } from '@features';
-import { useLazyProfileQuery } from '@services';
+import { useLazyGetProfileQuery } from '@services';
 import { useAppDispatch, useAppSelector } from '@store';
 
 import { ToggleButtonItemConfig } from './Header.config';
@@ -28,7 +28,7 @@ export const Header = () => {
     const { isAuthenticated } = useAppSelector((state) => state.auth);
     const { name } = useAppSelector((state) => state.user);
 
-    const [trigger, { isLoading }] = useLazyProfileQuery();
+    const [trigger, { isLoading }] = useLazyGetProfileQuery();
 
     useEffect(() => {
         const fetchUser = async () => {

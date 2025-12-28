@@ -72,3 +72,12 @@ export interface MovieApi {
     genre: string[];
     language: string[];
 }
+
+/**
+ * Defines the structure of the User Api.
+ */
+export interface UserApi {
+    name: string;
+    email: string;
+    phone_number: string;
+}
