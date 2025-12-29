@@ -6,3 +6,5 @@ export type {
     LoginResponse,
 } from './auth';
 export * from './user';
+
+export { useGetLatestMoviesInfiniteQuery } from './movies';

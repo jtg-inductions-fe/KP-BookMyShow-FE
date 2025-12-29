@@ -1,0 +1,1 @@
+export { useGetLatestMoviesInfiniteQuery } from './movies';

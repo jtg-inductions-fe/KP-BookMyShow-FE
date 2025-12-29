@@ -17,7 +17,7 @@ import {
  *
  * @extends FetchArgs
  */
-interface CustomFetchArgs extends FetchArgs {
+interface CustomExtraOptions {
     requiresAuth?: boolean;
 }
 
@@ -50,12 +50,12 @@ export const baseQuery = fetchBaseQuery({
  * - generate or throw error according to it.
  */
 export const baseQueryWithReauth: BaseQueryFn<
-    string | CustomFetchArgs,
+    string | FetchArgs,
     unknown,
-    FetchBaseQueryError
+    FetchBaseQueryError,
+    CustomExtraOptions
 > = async (args, store, extraOptions) => {
-    const needsAuth = (args as CustomFetchArgs)?.requiresAuth ?? false;
-
+    const needsAuth = extraOptions?.requiresAuth;
     if (needsAuth) {
         const refreshToken = Cookies.get('refresh-token');
         const accessToken = Cookies.get('access-token');
