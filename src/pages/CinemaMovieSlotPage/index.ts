@@ -1,0 +1,1 @@
+export { CinemaMovieSlotPage } from './CinemaMovieSlot';

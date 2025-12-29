@@ -23,9 +23,7 @@ export const MovieDetailPage = () => {
     const isMobile = useMediaQuery(breakpoints.up('sm'));
 
     const onClick = () => {
-        void navigate(
-            `cinemas/?date=${dayjs().format('YYYY-MM-DD').toString()}`,
-        );
+        void navigate(`cinemas/?date=${dayjs().format('YYYY-MM-DD')}`);
     };
 
     if (isLoading)

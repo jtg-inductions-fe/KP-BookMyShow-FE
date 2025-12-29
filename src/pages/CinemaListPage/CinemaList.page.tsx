@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import dayjs from 'dayjs';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import {
@@ -40,7 +41,9 @@ export const CinemaListPage = () => {
     });
 
     const handleClick = (slug: string) => {
-        void navigate(`${APP_ROUTES.CINEMAS}/${slug}`);
+        void navigate(
+            `${slug}${APP_ROUTES.MOVIES}/?date=${dayjs().format('YYYY-MM-DD')}`,
+        );
     };
 
     const toggleFilter = (key: string, value: string) => {

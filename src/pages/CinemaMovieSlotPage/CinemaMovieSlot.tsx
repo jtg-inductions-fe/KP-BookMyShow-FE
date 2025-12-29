@@ -1,41 +1,43 @@
 import dayjs from 'dayjs';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
-import { Theaters } from '@mui/icons-material';
+import { MovieCreation } from '@mui/icons-material';
 import { Box } from '@mui/material';
 
 import { DetailCard, Typography } from '@components';
 import { SlotContainer } from '@containers';
-import { MovieAdapter, MovieCinemaSlotAdapter } from '@models';
+import { CinemaAdapter, CinemaMovieSlotAdapter } from '@models';
 import {
-    MovieCinemaSlot,
-    useGetMovieCinemaSlotsQuery,
-    useGetMovieDetailsQuery,
+    CinemaMovieSlot,
+    useGetCinemaDetailsQuery,
+    useGetCinemaMovieSlotsQuery,
 } from '@services';
 
 /**
- * A page rendering a information of movie and it's all cinema and their slots.
+ * A page rendering a information of cinema and it's all movies and their slots.
  * Handling the logic of calling API and handle the data.
  * Utilizing `SlotContainer` and passing movie information in the children.
- * @returns A page holding information and action related to `MovieCinemaSlotPage`.
+ * @returns A page holding information and action related to `CinemaMovieSlotPage`.
  */
-export const MovieCinemaSlotPage = () => {
+export const CinemaMovieSlotPage = () => {
     const { slug } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const { data } = useGetMovieCinemaSlotsQuery({
+    const { data } = useGetCinemaMovieSlotsQuery({
         slug: slug!,
         date: searchParams.get('date') || dayjs().format('YYYY-MM-DD'),
     });
 
     const navigate = useNavigate();
-    const { data: movie, isLoading } = useGetMovieDetailsQuery({ slug: slug! });
+    const { data: cinema, isLoading } = useGetCinemaDetailsQuery({
+        slug: slug!,
+    });
 
-    const adaptSlotData = (slotData: MovieCinemaSlot) =>
-        new MovieCinemaSlotAdapter(slotData).adaptToSlotCard();
+    const CinemaMovieAdapter = (slotData: CinemaMovieSlot) =>
+        new CinemaMovieSlotAdapter(slotData).adaptToSlotCard();
 
-    const onClick = (id: number, pathSlug: string) => {
-        void navigate(`/${id}/${pathSlug}`);
+    const onClick = (id: number) => {
+        void navigate(`${Number(id)}`);
     };
 
     const onDateChange = (value: string) => {
@@ -43,22 +45,22 @@ export const MovieCinemaSlotPage = () => {
     };
 
     return (
-        <Box paddingTop={10} paddingBottom={10}>
-            <SlotContainer<MovieCinemaSlot>
+        <Box py={10}>
+            <SlotContainer<CinemaMovieSlot>
                 data={data}
-                adapter={adaptSlotData}
+                adapter={CinemaMovieAdapter}
                 onClick={onClick}
-                Icon={Theaters}
+                Icon={MovieCreation}
                 onDateChange={onDateChange}
             >
-                {movie ? (
+                {cinema ? (
                     <DetailCard
-                        data={new MovieAdapter(movie).adaptToDCard()}
+                        data={new CinemaAdapter(cinema).adaptToDCard()}
                         isLoading={isLoading}
                     />
                 ) : (
                     <Typography variant="h3" color="primary.main">
-                        No movie available
+                        No cinema available
                     </Typography>
                 )}
             </SlotContainer>

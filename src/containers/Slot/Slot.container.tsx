@@ -31,13 +31,11 @@ export const SlotContainer = <T,>(props: SlotContainerProps<T>) => {
                     disablePast
                     value={dayjs(
                         searchParams.get('date') ||
-                            dayjs().format('YYYY-MM-DD').toString(),
+                            dayjs().format('YYYY-MM-DD'),
                     )}
                     format="YYYY-MM-DD"
                     onChange={(value) =>
-                        onDateChange(
-                            dayjs(value).format('YYYY-MM-DD').toString(),
-                        )
+                        onDateChange(dayjs(value).format('YYYY-MM-DD'))
                     }
                 />
                 {data?.length ? (

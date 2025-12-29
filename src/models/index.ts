@@ -8,4 +8,5 @@ export {
     MovieAdapter,
     CinemaAdapter,
     MovieCinemaSlotAdapter,
+    CinemaMovieSlotAdapter,
 } from './Adapters';

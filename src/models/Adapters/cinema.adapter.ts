@@ -1,4 +1,4 @@
-import { VerticalCardData } from '@components';
+import { DetailCardData, VerticalCardData } from '@components';
 import { Cinema } from '@models';
 
 /**
@@ -17,5 +17,12 @@ export class CinemaAdapter {
             title: this.cinema.name,
             subtitle1: this.cinema.location.city,
         } satisfies VerticalCardData;
+    }
+
+    adaptToDCard() {
+        return {
+            title: this.cinema.name,
+            subtitle1: this.cinema.location.city,
+        } satisfies Partial<DetailCardData>;
     }
 }

@@ -1,6 +1,7 @@
 import { baseApi } from '@api';
 import { Cinema, Location } from '@models';
 
+import { CinemaMovieSlot } from './cinemas.types';
 import { CinemaApi, PaginatedResponse } from '../services.types';
 
 /**
@@ -31,6 +32,22 @@ export const cinemaApi = baseApi.injectEndpoints({
                 })),
             }),
         }),
+        getCinemaDetails: builder.query<Cinema, { slug: string }>({
+            query: ({ slug }) => ({
+                url: `/api/cinemas/${slug}`,
+                method: 'GET',
+            }),
+        }),
+        getCinemaMovieSlots: builder.query<
+            CinemaMovieSlot[],
+            { slug: string; date: string | null }
+        >({
+            query: ({ slug, date }) => ({
+                url: `api/cinemas/${slug}/movies/slots/`,
+                method: 'GET',
+                params: { date: date },
+            }),
+        }),
     }),
 });
 
@@ -47,6 +64,10 @@ export const locationApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useGetCinemasInfiniteQuery } = cinemaApi;
+export const {
+    useGetCinemasInfiniteQuery,
+    useGetCinemaDetailsQuery,
+    useGetCinemaMovieSlotsQuery,
+} = cinemaApi;
 
 export const { useGetLocationsQuery } = locationApi;
