@@ -2,7 +2,7 @@
  * Represents a movie with its essential details.
  */
 export interface Movie {
-    id: bigint;
+    id: number;
     title: string;
     description: string;
     duration: string;

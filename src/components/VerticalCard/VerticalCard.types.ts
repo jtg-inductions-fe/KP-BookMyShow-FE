@@ -4,8 +4,8 @@
  */
 export interface VerticalCardData {
     title: string;
-    subtitle1: string;
-    subtitle2: string;
+    subtitle1?: string;
+    subtitle2?: string;
 }
 
 /**
@@ -16,6 +16,6 @@ export interface VerticalCardData {
 export interface VerticalCardProps {
     data: VerticalCardData;
     isLoading: boolean;
-    imgUrl: string;
+    imgUrl?: string;
     onClick: () => void;
 }

@@ -26,7 +26,7 @@ export const VerticalCard = ({
         }}
     >
         <CardActionArea onClick={onClick}>
-            <StyledCardMedia image={imgUrl} />
+            {imgUrl && <StyledCardMedia image={imgUrl} />}
             <StyledCardContent>
                 {isLoading ? (
                     <>
@@ -36,23 +36,33 @@ export const VerticalCard = ({
                     </>
                 ) : (
                     <>
-                        <Typography lines={1} color="text.primary" variant="h3">
-                            {data.title}
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            color="text.secondary"
-                            lines={1}
-                        >
-                            {data.subtitle1}
-                        </Typography>
-                        <Typography
-                            lines={1}
-                            variant="body1"
-                            color="text.secondary"
-                        >
-                            {data.subtitle2}
-                        </Typography>
+                        {data.title && (
+                            <Typography
+                                lines={1}
+                                color="text.primary"
+                                variant="h3"
+                            >
+                                {data.title}
+                            </Typography>
+                        )}
+                        {data.subtitle1 && (
+                            <Typography
+                                variant="body1"
+                                color="text.secondary"
+                                lines={1}
+                            >
+                                {data.subtitle1}
+                            </Typography>
+                        )}
+                        {data.subtitle2 && (
+                            <Typography
+                                lines={1}
+                                variant="body1"
+                                color="text.secondary"
+                            >
+                                {data.subtitle2}
+                            </Typography>
+                        )}
                     </>
                 )}
             </StyledCardContent>

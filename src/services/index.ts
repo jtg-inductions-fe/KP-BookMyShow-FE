@@ -14,3 +14,5 @@ export {
     useGetLanguagesQuery,
     useGetGenresQuery,
 } from './movies';
+
+export { useGetCinemasInfiniteQuery, useGetLocationsQuery } from './cinemas';
