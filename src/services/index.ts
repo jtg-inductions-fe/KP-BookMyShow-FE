@@ -9,10 +9,12 @@ export * from './user';
 
 export {
     useGetLatestMoviesInfiniteQuery,
+    useGetMovieCinemaSlotsQuery,
     useGetMoviesInfiniteQuery,
     useGetMovieDetailsQuery,
     useGetLanguagesQuery,
     useGetGenresQuery,
 } from './movies';
+export type { MovieCinemaSlot } from './movies';
 
 export { useGetCinemasInfiniteQuery, useGetLocationsQuery } from './cinemas';

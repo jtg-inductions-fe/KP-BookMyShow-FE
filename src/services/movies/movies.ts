@@ -1,6 +1,7 @@
 import { baseApi } from '@api';
 import { Genre, Language, Movie } from '@models';
 
+import { MovieCinemaSlot } from './movies.types';
 import { PaginatedResponse } from '../services.types';
 
 /**
@@ -34,11 +35,21 @@ export const movieApi = baseApi.injectEndpoints({
             string | null
         >({
             query: ({ queryArg, pageParam }) =>
-                pageParam ? pageParam : `/api/movies?${queryArg}`,
+                pageParam ? pageParam : `api/movies?${queryArg}`,
             infiniteQueryOptions: {
                 initialPageParam: null,
                 getNextPageParam: (lastPage) => lastPage.next,
             },
+        }),
+        getMovieCinemaSlots: builder.query<
+            MovieCinemaSlot[],
+            { slug: string; date: string | null }
+        >({
+            query: ({ slug, date }) => ({
+                url: `api/movies/${slug}/cinemas/slots/`,
+                method: 'GET',
+                params: { date: date },
+            }),
         }),
     }),
 });
@@ -47,7 +58,7 @@ export const languageApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getLanguages: builder.query<string[], void>({
             query: () => ({
-                url: '/api/common/languages/',
+                url: 'api/common/languages/',
                 method: 'GET',
             }),
             transformResponse: (languages: Language[]) =>
@@ -60,7 +71,7 @@ export const genreApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getGenres: builder.query<string[], void>({
             query: () => ({
-                url: '/api/movies/genres/',
+                url: 'api/movies/genres/',
                 method: 'GET',
             }),
             transformResponse: (genres: Genre[]) =>
@@ -73,6 +84,7 @@ export const {
     useGetLatestMoviesInfiniteQuery,
     useGetMovieDetailsQuery,
     useGetMoviesInfiniteQuery,
+    useGetMovieCinemaSlotsQuery,
 } = movieApi;
 
 export const { useGetLanguagesQuery } = languageApi;

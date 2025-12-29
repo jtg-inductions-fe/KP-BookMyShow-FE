@@ -1,25 +1,12 @@
-import { Box, styled } from '@mui/material';
+import { Box, Grid2, styled } from '@mui/material';
 
-export const MainContainer = styled(Box)(
+export const MainContainer = styled(Grid2)(
     ({ theme: { spacing, breakpoints } }) => ({
         position: 'relative',
-        display: 'grid',
         padding: 0,
-        paddingTop: spacing(10),
-        gridTemplateColumns: '1fr',
         gap: spacing(5),
-        paddingBottom: spacing(10),
-
-        [breakpoints.up('sm')]: {
-            padding: `0 ${spacing(10)}`,
-            paddingTop: spacing(10),
-        },
-
         [breakpoints.up('md')]: {
-            paddingTop: spacing(40),
-
             gap: spacing(10),
-            gridTemplateColumns: '1fr 4fr',
         },
     }),
 );
@@ -45,7 +32,6 @@ export const DetailsContainer = styled(Box)(({ theme: { spacing } }) => ({
     flexDirection: 'column',
     gap: spacing(7),
     alignItems: 'start',
-    paddingTop: spacing(4),
 }));
 
 export const UpperContainer = styled(Box)(({ theme: { spacing } }) => ({
@@ -79,8 +65,6 @@ export const Gradient1 = styled(Box)(
         width: pxToRem(600),
         height: pxToRem(300),
         borderRadius: '50%',
-        top: 60,
-        right: 600,
         background:
             'radial-gradient(circle, #f845662d 0%, rgba(0, 0, 0, 0.34) 100%)',
         filter: 'blur(60px)',

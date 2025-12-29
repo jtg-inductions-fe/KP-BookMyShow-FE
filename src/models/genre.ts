@@ -4,6 +4,6 @@
  * This interface defines the properties of a genre.
  */
 export interface Genre {
-    id: bigint;
+    id: number;
     name: string;
 }

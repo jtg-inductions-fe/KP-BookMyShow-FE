@@ -65,7 +65,7 @@ export const MovieListPage = () => {
         searchParams.getAll(key).includes(value);
 
     useEffect(() => {
-        void refetch({ refetchCachedPages: false });
+        void refetch();
     }, [refetch, searchParams]);
 
     return isLoading ? (

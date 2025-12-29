@@ -13,7 +13,9 @@ export interface DetailCardData {
  * interface defining structure of Detail card props.
  */
 export interface DetailCardProps {
-    data: DetailCardData;
-    imgUrl: string;
-    btnText: string;
+    data: Partial<DetailCardData>;
+    imgUrl?: string;
+    btnText?: string;
+    isLoading?: boolean;
+    onClick?: () => void;
 }

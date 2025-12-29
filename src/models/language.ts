@@ -4,6 +4,6 @@
  * This interface defines the properties of a language.
  */
 export interface Language {
-    id: bigint;
+    id: number;
     name: string;
 }
