@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-import { useMediaQuery, useTheme } from '@mui/material';
+import { Typography } from 'components/Typography';
+
+import { IconButton, useMediaQuery, useTheme } from '@mui/material';
 
 import {
     StyledToggleButton,
@@ -26,6 +28,7 @@ export const ToggleButtonGroup = ({
             setSelected(newValue);
         }
     };
+
     return (
         <StyledToggleButtonGroup
             value={selected}
@@ -35,11 +38,37 @@ export const ToggleButtonGroup = ({
             {ToggleButtonItems.map((toggleButtonItem) => (
                 <StyledToggleButton
                     key={toggleButtonItem.label}
-                    value={toggleButtonItem.label}
-                    onClick={toggleButtonItem.handleClick}
+                    to={toggleButtonItem.url}
                 >
-                    {!isTablet && <toggleButtonItem.logo />}
-                    {isTablet && toggleButtonItem.label}
+                    {({ isActive }) => (
+                        <>
+                            {!isTablet && (
+                                <IconButton
+                                    sx={{
+                                        padding: 0,
+                                        margin: 0,
+                                        color: isActive
+                                            ? 'text.primary'
+                                            : 'text.disabled',
+                                    }}
+                                >
+                                    <toggleButtonItem.logo />
+                                </IconButton>
+                            )}
+                            {isTablet && (
+                                <Typography
+                                    fontWeight={450}
+                                    color={
+                                        isActive
+                                            ? 'textPrimary'
+                                            : 'textDisabled'
+                                    }
+                                >
+                                    {toggleButtonItem.label}
+                                </Typography>
+                            )}
+                        </>
+                    )}
                 </StyledToggleButton>
             ))}
         </StyledToggleButtonGroup>

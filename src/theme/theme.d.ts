@@ -9,3 +9,9 @@ export declare module '@mui/material/styles/createTypography' {
         fontWeightSemiBold?: React.CSSProperties['fontWeight'];
     }
 }
+
+export declare module '@mui/material/styles' {
+    interface BreakpointOverrides {
+        xxs: true;
+    }
+}

@@ -4,6 +4,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 import TheatersIcon from '@mui/icons-material/Theaters';
 
 import { ToggleButtonItem } from '@components';
+import { APP_ROUTES } from '@constants';
 import { clearAuthState, clearUser } from '@features';
 import { AppDispatch } from '@store';
 /**
@@ -49,20 +50,18 @@ export const getMenuOptions = (
     },
 ];
 
-//TODO - handleClick will be developed in upcoming PR's.
-
 /**
- * config for menuItem.
+ * config for ToggleButtons defining the properties of `ToggleButtonItem`.
  */
 export const ToggleButtonItemConfig: ToggleButtonItem[] = [
     {
-        label: 'Movies',
-        handleClick: () => {},
+        label: 'movies',
         logo: MovieIcon,
+        url: APP_ROUTES.MOVIES,
     },
     {
-        label: 'Cinemas',
-        handleClick: () => {},
+        label: 'cinemas',
         logo: TheatersIcon,
+        url: APP_ROUTES.CINEMAS,
     },
 ];

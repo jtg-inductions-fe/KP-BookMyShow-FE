@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Breakpoint } from '@mui/material';
+import { Breakpoint, Grid2Props } from '@mui/material';
 
 /**
  * Defines the props structure for a generic grid component.
@@ -11,7 +11,7 @@ import { Breakpoint } from '@mui/material';
  * @param renderNode Function responsible for rendering a grid item.
  * @returns A React node representing the grid item.
  */
-export interface CustomGridProps<T> {
+export interface CustomGridProps<T> extends Grid2Props {
     gridColumns?: Partial<Record<Breakpoint, number>>;
     gridItemsData?: T[];
     renderNode: (data: T) => React.ReactNode;

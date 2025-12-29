@@ -1,4 +1,6 @@
-import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+
+import { styled, ToggleButtonGroup } from '@mui/material';
 
 export const StyledToggleButtonGroup = styled(ToggleButtonGroup)(
     ({
@@ -22,7 +24,7 @@ export const StyledToggleButtonGroup = styled(ToggleButtonGroup)(
     }),
 );
 
-export const StyledToggleButton = styled(ToggleButton)(
+export const StyledToggleButton = styled(NavLink)(
     ({
         theme: {
             typography: { pxToRem },
@@ -32,17 +34,11 @@ export const StyledToggleButton = styled(ToggleButton)(
         textTransform: 'none',
         border: 'none',
         borderRadius: pxToRem(50),
-        '&.Mui-selected': {
-            backgroundColor: 'transparent',
-            color: 'inherit',
-        },
-        '&.Mui-selected:hover': {
-            backgroundColor: 'transparent',
-        },
+        textDecoration: 'none',
         '&:hover': {
             backgroundColor: 'transparent',
         },
-        padding: `${pxToRem(4)} ${pxToRem(8)}`,
+        padding: `${pxToRem(5)} ${pxToRem(8)}`,
         [breakpoints.up('sm')]: {
             padding: `${pxToRem(3)} ${pxToRem(10)}`,
         },

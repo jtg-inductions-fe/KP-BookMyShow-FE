@@ -8,13 +8,9 @@ import { CustomGridProps } from './Grid.types';
  * @returns The Grid with provided data
  */
 export const Grid = <T,>(props: CustomGridProps<T>) => {
-    const {
-        gridColumns = { xs: 12, sm: 6, md: 4, lg: 3 },
-        gridItemsData,
-        renderNode,
-    } = props;
+    const { gridColumns, gridItemsData, renderNode, spacing = 10 } = props;
     return (
-        <Grid2 container direction={'row'} spacing={10}>
+        <Grid2 container direction={'row'} spacing={spacing}>
             {gridItemsData?.map((data, index) => (
                 <Grid2 key={index} size={gridColumns}>
                     {renderNode(data)}

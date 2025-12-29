@@ -8,6 +8,7 @@ export const COLORS = {
     },
     SECONDARY: {
         MAIN: '#F8456665',
+        LIGHT: '#f8456621',
     },
     TEXT: {
         PRIMARY: '#FFFFFF',
@@ -39,6 +40,7 @@ export const COLORS = {
  * Breakpoints used in the application.
  */
 export const BREAKPOINTS = {
+    XXS: 0,
     XS: 320,
     SM: 768,
     MD: 1024,
@@ -77,8 +79,3 @@ export const SCALING_FACTOR = 4;
  * Snackbar component duration.
  */
 export const SNACKBAR_DURATION = 5000;
-
-/**
- * movie description expanding threshold.
- */
-export const TEXT_EXPANDING_THRESHOLD = 330;

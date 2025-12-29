@@ -52,6 +52,8 @@ export const HomePage = () => {
                             />
                         )}
                         gridItemsData={currentData}
+                        gridColumns={{ xxs: 12, xs: 6, sm: 4, md: 3 }}
+                        spacing={{ xxs: 5, xs: 5, sm: 6, md: 7 }}
                     />
                 ) : (
                     <Typography variant="body2" color="primary.main">

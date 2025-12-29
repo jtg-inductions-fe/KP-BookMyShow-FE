@@ -9,5 +9,8 @@ export * from './user';
 
 export {
     useGetLatestMoviesInfiniteQuery,
+    useGetMoviesInfiniteQuery,
     useGetMovieDetailsQuery,
+    useGetLanguagesQuery,
+    useGetGenresQuery,
 } from './movies';
