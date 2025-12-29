@@ -31,4 +31,7 @@ export const palette: PaletteOptions = {
         paper: COLORS.BACKGROUND.PAPER,
     },
     divider: COLORS.DIVIDER,
+    action: {
+        hover: COLORS.ACTION.HOVER,
+    },
 };

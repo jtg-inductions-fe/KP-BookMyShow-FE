@@ -7,6 +7,7 @@ export {
     HEADER_HEIGHT,
     CONTAINER_MAX_WIDTH,
     SNACKBAR_DURATION,
+    TEXT_EXPANDING_THRESHOLD,
 } from './themeConstant';
 
 export { APP_ROUTES, ENDPOINTS_WITH_HEADERS } from './routeConstants';

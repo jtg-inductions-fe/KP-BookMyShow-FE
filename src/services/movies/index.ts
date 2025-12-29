@@ -1,1 +1,4 @@
-export { useGetLatestMoviesInfiniteQuery } from './movies';
+export {
+    useGetLatestMoviesInfiniteQuery,
+    useGetMovieDetailsQuery,
+} from './movies';

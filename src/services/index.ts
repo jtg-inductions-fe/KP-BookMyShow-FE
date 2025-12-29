@@ -7,4 +7,7 @@ export type {
 } from './auth';
 export * from './user';
 
-export { useGetLatestMoviesInfiniteQuery } from './movies';
+export {
+    useGetLatestMoviesInfiniteQuery,
+    useGetMovieDetailsQuery,
+} from './movies';

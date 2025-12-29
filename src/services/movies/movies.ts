@@ -22,7 +22,14 @@ export const movieApi = baseApi.injectEndpoints({
                 getNextPageParam: (lastPage) => lastPage.next,
             },
         }),
+        getMovieDetails: builder.query<Movie, { slug: string }>({
+            query: ({ slug }) => ({
+                url: `api/movies/${slug}`,
+                method: 'GET',
+            }),
+        }),
     }),
 });
 
-export const { useGetLatestMoviesInfiniteQuery } = movieApi;
+export const { useGetLatestMoviesInfiniteQuery, useGetMovieDetailsQuery } =
+    movieApi;

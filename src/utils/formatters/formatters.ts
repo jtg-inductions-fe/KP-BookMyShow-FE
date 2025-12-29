@@ -33,3 +33,28 @@ export const dateFormatter = (
 
     return new Intl.DateTimeFormat(locale, options).format(dateObj);
 };
+
+/**
+ * Formats a given duration string in 'HH:MM' format into a human-readable format.
+ **/
+export const formatDuration = (duration: string) => {
+    const parts = duration.split(':');
+    const hours = parseInt(parts[0], 10);
+    const minutes = parseInt(parts[1], 10);
+
+    let formattedString = '';
+
+    if (hours > 0) {
+        formattedString += `${hours}hr`;
+    }
+
+    if (minutes > 0) {
+        formattedString += ` ${minutes} min`;
+    }
+
+    if (formattedString === '') {
+        return '0 min';
+    }
+
+    return formattedString;
+};

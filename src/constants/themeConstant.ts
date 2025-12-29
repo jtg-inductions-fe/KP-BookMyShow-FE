@@ -30,6 +30,9 @@ export const COLORS = {
         PAPER: '#12161C',
     },
     DIVIDER: '#4B4F54',
+    ACTION: {
+        HOVER: '#5f5f5f46',
+    },
 } as const;
 
 /**
@@ -74,3 +77,8 @@ export const SCALING_FACTOR = 4;
  * Snackbar component duration.
  */
 export const SNACKBAR_DURATION = 5000;
+
+/**
+ * movie description expanding threshold.
+ */
+export const TEXT_EXPANDING_THRESHOLD = 330;
