@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { APP_ROUTES } from '@constants';
 import { useAppSelector } from '@store';
 
-import { GuestRouteProps } from './routes.types';
+import { RouteProps } from './routes.types';
 
 /**
  * `GuestRoute`
@@ -11,7 +11,7 @@ import { GuestRouteProps } from './routes.types';
  * This route wrapper is used to redirect access to pages that should be visible to
  * unauthenticated users.
  */
-export const GuestRoute = ({ children }: GuestRouteProps) => {
+export const GuestRoute = ({ children }: RouteProps) => {
     const { isAuthenticated } = useAppSelector((state) => state.auth);
 
     return isAuthenticated ? (

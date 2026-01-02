@@ -7,6 +7,7 @@ import { Header } from '@containers';
 import { MainLayout } from '@layout';
 
 import { GuestRoute } from './GuestRoute';
+import { ProtectedRoute } from './ProtectedRoute';
 
 type PagesModule = typeof import('@pages');
 
@@ -30,6 +31,7 @@ const CinemaListPage = lazyLoadPage('CinemaListPage');
 const MovieCinemaSlotPage = lazyLoadPage('MovieCinemaSlotPage');
 const CinemaMovieSlotPage = lazyLoadPage('CinemaMovieSlotPage');
 const SeatLayoutPage = lazyLoadPage('SeatLayoutPage');
+const ProfilePage = lazyLoadPage('ProfilePage');
 
 /**
  * Define the routing structure for the application.
@@ -114,9 +116,25 @@ const routes: RouteObject[] = [
     },
     {
         path: APP_ROUTES.SEAT_LAYOUT,
-        element: <MainLayout />,
+        element: (
+            <ProtectedRoute>
+                <MainLayout />
+            </ProtectedRoute>
+        ),
         children: [
             { index: true, element: <SeatLayoutPage /> },
+            { path: '*', element: <NotFoundPage /> },
+        ],
+    },
+    {
+        path: APP_ROUTES.PROFILE,
+        element: (
+            <ProtectedRoute>
+                <MainLayout header={<Header />} />
+            </ProtectedRoute>
+        ),
+        children: [
+            { index: true, element: <ProfilePage /> },
             { path: '*', element: <NotFoundPage /> },
         ],
     },

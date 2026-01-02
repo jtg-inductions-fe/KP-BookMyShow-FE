@@ -58,6 +58,13 @@ export const cinemaApi = baseApi.injectEndpoints({
                 seatsPerRow: data.seats_per_row,
                 slotId: data.slot_id,
                 slotPrice: data.slot_price,
+                seats: data.seats.map(
+                    ({ row_number, seat_number, ...rest }) => ({
+                        ...rest,
+                        rowNumber: row_number,
+                        seatNumber: seat_number,
+                    }),
+                ),
             }),
             providesTags: ['Booking'],
         }),
@@ -66,6 +73,16 @@ export const cinemaApi = baseApi.injectEndpoints({
                 url: `api/cinemas/${id}/booking/`,
                 method: 'POST',
                 body: { seats },
+            }),
+            extraOptions: {
+                requiresAuth: true,
+            },
+            invalidatesTags: ['Booking'],
+        }),
+        cancelBooking: builder.mutation<void, { id: number | undefined }>({
+            query: ({ id }) => ({
+                url: `api/cinemas/bookings/${id}/`,
+                method: 'PATCH',
             }),
             extraOptions: {
                 requiresAuth: true,
@@ -94,6 +111,7 @@ export const {
     useGetCinemaMovieSlotsQuery,
     useGetSeatLayoutQuery,
     useBookSeatsMutation,
+    useCancelBookingMutation,
 } = cinemaApi;
 
 export const { useGetLocationsQuery } = locationApi;

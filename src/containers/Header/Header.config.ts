@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import { NavigateFunction } from 'react-router-dom';
 
 import MovieIcon from '@mui/icons-material/Movie';
 import TheatersIcon from '@mui/icons-material/Theaters';
@@ -27,6 +28,9 @@ export interface MenuOption {
  * A callback invoked after a menu option is selected.
  * Typically used to close the menu UI.
  *
+ * `navigate`
+ * The Navigation Function for navigate to different pages.
+ *
  * `dispatch`
  * The Redux dispatch function used to trigger actions inside menu handlers.
  *
@@ -36,8 +40,15 @@ export interface MenuOption {
 export const getMenuOptions = (
     handleClose: () => void,
     dispatch: AppDispatch,
+    navigate: NavigateFunction,
 ): MenuOption[] => [
-    { label: 'Profile', onClick: handleClose },
+    {
+        label: 'Profile',
+        onClick: () => {
+            handleClose();
+            void navigate(APP_ROUTES.PROFILE);
+        },
+    },
     {
         label: 'Logout',
         onClick: () => {
@@ -46,6 +57,7 @@ export const getMenuOptions = (
             dispatch(clearAuthState());
             dispatch(clearUser());
             handleClose();
+            void navigate(APP_ROUTES.HOME, { replace: true });
         },
     },
 ];

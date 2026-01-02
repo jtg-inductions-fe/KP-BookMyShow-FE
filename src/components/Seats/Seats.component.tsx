@@ -1,6 +1,7 @@
 import { Button, Stack } from '@mui/material';
 
 import { Chip } from '@components';
+import { numberToChar } from '@utils';
 
 import { SeatGrid } from './Seats.styles';
 import { SeatsProps } from './Seats.types';
@@ -23,8 +24,8 @@ export const Seats = (props: SeatsProps) => {
             >
                 {data?.seats.map((seat) => (
                     <Chip
-                        label=""
                         key={seat.id}
+                        label={`${numberToChar(seat.rowNumber) ?? ''}${seat.seatNumber}`}
                         variant={
                             state.find((item) => item.id === seat.id) ||
                             !seat.available
@@ -34,8 +35,8 @@ export const Seats = (props: SeatsProps) => {
                         onClick={() => {
                             handleSeatClick({
                                 id: Number(seat.id),
-                                row: seat.row_number,
-                                column: seat.seat_number,
+                                row: seat.rowNumber,
+                                column: seat.seatNumber,
                             });
                         }}
                         color={seat.available ? 'primary' : 'secondary'}

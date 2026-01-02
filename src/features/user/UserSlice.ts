@@ -1,5 +1,4 @@
-import { User } from 'services/user/user.types';
-
+import { User } from '@models';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: User = {
