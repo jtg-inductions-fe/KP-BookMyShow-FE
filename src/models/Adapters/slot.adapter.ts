@@ -21,7 +21,7 @@ export class MovieCinemaSlotAdapter {
             title: `${capitalize(this.slot.name)}, ${this.slot.location.city.toLowerCase()}`,
             slug: this.slot.slug,
             chipData: this.slot.slots.map((data) => ({
-                key: this.slot.id,
+                key: data.id,
                 value: dateFormatter(
                     data.start_time,
                     undefined,

@@ -41,7 +41,7 @@ export const SlotCard = (props: SlotCardProps) => {
                         label={data.value}
                         onClick={() =>
                             isAuthenticated
-                                ? onClick && onClick(data.key, data.value)
+                                ? onClick && onClick(data.key)
                                 : void navigate(APP_ROUTES.LOGIN)
                         }
                     />

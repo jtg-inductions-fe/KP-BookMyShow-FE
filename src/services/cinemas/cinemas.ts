@@ -1,8 +1,8 @@
 import { baseApi } from '@api';
-import { Cinema, Location } from '@models';
+import { Cinema, Location, SeatLayout } from '@models';
 
 import { CinemaMovieSlot } from './cinemas.types';
-import { CinemaApi, PaginatedResponse } from '../services.types';
+import { CinemaApi, PaginatedResponse, SeatLayoutApi } from '../services.types';
 
 /**
  * The `cinemaApi` object injected with endpoints for fetching cinema data.
@@ -34,7 +34,7 @@ export const cinemaApi = baseApi.injectEndpoints({
         }),
         getCinemaDetails: builder.query<Cinema, { slug: string }>({
             query: ({ slug }) => ({
-                url: `/api/cinemas/${slug}`,
+                url: `api/cinemas/${slug}`,
                 method: 'GET',
             }),
         }),
@@ -47,6 +47,30 @@ export const cinemaApi = baseApi.injectEndpoints({
                 method: 'GET',
                 params: { date: date },
             }),
+        }),
+        getSeatLayout: builder.query<SeatLayout, { id: number }>({
+            query: ({ id }) => ({
+                url: `api/cinemas/slot/${id}/seats/`,
+                method: 'GET',
+            }),
+            transformResponse: (data: SeatLayoutApi): SeatLayout => ({
+                ...data,
+                seatsPerRow: data.seats_per_row,
+                slotId: data.slot_id,
+                slotPrice: data.slot_price,
+            }),
+            providesTags: ['Booking'],
+        }),
+        bookSeats: builder.mutation<number, { id: number; seats: number[] }>({
+            query: ({ id, seats }) => ({
+                url: `api/cinemas/${id}/booking/`,
+                method: 'POST',
+                body: { seats },
+            }),
+            extraOptions: {
+                requiresAuth: true,
+            },
+            invalidatesTags: ['Booking'],
         }),
     }),
 });
@@ -68,6 +92,8 @@ export const {
     useGetCinemasInfiniteQuery,
     useGetCinemaDetailsQuery,
     useGetCinemaMovieSlotsQuery,
+    useGetSeatLayoutQuery,
+    useBookSeatsMutation,
 } = cinemaApi;
 
 export const { useGetLocationsQuery } = locationApi;

@@ -4,7 +4,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { MovieCreation } from '@mui/icons-material';
 import { Box } from '@mui/material';
 
-import { DetailCard, Typography } from '@components';
+import { DetailCard, NoDataText } from '@components';
 import { SlotContainer } from '@containers';
 import { CinemaAdapter, CinemaMovieSlotAdapter } from '@models';
 import {
@@ -37,7 +37,7 @@ export const CinemaMovieSlotPage = () => {
         new CinemaMovieSlotAdapter(slotData).adaptToSlotCard();
 
     const onClick = (id: number) => {
-        void navigate(`${Number(id)}`);
+        void navigate(`/slots/${Number(id)}/seat-layout`);
     };
 
     const onDateChange = (value: string) => {
@@ -59,9 +59,7 @@ export const CinemaMovieSlotPage = () => {
                         isLoading={isLoading}
                     />
                 ) : (
-                    <Typography variant="h3" color="primary.main">
-                        No cinema available
-                    </Typography>
+                    <NoDataText text={'No cinemas available'} />
                 )}
             </SlotContainer>
         </Box>

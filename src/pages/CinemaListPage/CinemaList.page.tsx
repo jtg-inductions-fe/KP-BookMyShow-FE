@@ -12,7 +12,7 @@ import {
     useTheme,
 } from '@mui/material';
 
-import { Grid, Typography, VerticalCard } from '@components';
+import { Grid, NoDataText, Typography, VerticalCard } from '@components';
 import { APP_ROUTES } from '@constants';
 import { Filter } from '@containers';
 import { useInfiniteScroll } from '@hooks';
@@ -113,9 +113,7 @@ export const CinemaListPage = () => {
                             <Box ref={endRef} style={{ height: 1 }} />
                         </>
                     ) : (
-                        <Typography variant="h3">
-                            No cinemas available
-                        </Typography>
+                        <NoDataText text={'No cinemas available'} />
                     )}
                 </Stack>
             </Grid2>

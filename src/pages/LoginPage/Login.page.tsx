@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import AuthImg from '@assets/images/auth_background.webp';
 import LoginImg from '@assets/images/login_image.webp';
@@ -22,6 +22,7 @@ export const LoginPage = () => {
     const [loginUser] = useLoginMutation();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const onSubmit = async (data: LoginRequest): Promise<void> => {
         try {
             const response = await loginUser(data).unwrap();
@@ -50,17 +51,14 @@ export const LoginPage = () => {
                     options: { variant: 'success' },
                 }),
             );
-
-            void navigate(APP_ROUTES.HOME, {
-                replace: true,
-            });
+            if (location.key === 'default')
+                void navigate(APP_ROUTES.HOME, { replace: true });
+            else void navigate(-1);
         } catch (error) {
-            const allErrors: string[] = [];
             const errorData = (error as { data: Record<string, string> }).data;
-            allErrors.push(errorData.detail);
             dispatch(
                 showSnackbar({
-                    messages: allErrors,
+                    messages: Object.values(errorData).flat(),
                     options: { variant: 'error' },
                 }),
             );
