@@ -58,3 +58,26 @@ export interface SeatApi {
     seat_number: number;
     available: boolean;
 }
+
+/**
+ * Interface representing the Movie Api structure.
+ */
+export interface MovieApi {
+    id: number;
+    title: string;
+    description: string;
+    duration: string;
+    release_date: string;
+    slug: string;
+    genre: string[];
+    language: string[];
+}
+
+/**
+ * Defines the structure of the User Api.
+ */
+export interface UserApi {
+    name: string;
+    email: string;
+    phone_number: string;
+}

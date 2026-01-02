@@ -2,13 +2,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Box, Grid2, Stack, useMediaQuery, useTheme } from '@mui/material';
 
-import {
-    Grid,
-    Loader,
-    NoDataText,
-    Typography,
-    VerticalCard,
-} from '@components';
+import { Grid, Heading, Loader, NoDataText, VerticalCard } from '@components';
 import { APP_ROUTES } from '@constants';
 import { Filter } from '@containers';
 import { useInfiniteScroll } from '@hooks';
@@ -61,31 +55,33 @@ export const MovieListPage = () => {
     const exists = (key: string, value: string) =>
         searchParams.getAll(key).includes(value);
 
+    const Filters = [
+        {
+            label: 'languages',
+            filter: 'language',
+            data: languages,
+        },
+        {
+            label: 'genres',
+            filter: 'genre',
+            data: genres,
+        },
+    ];
+
     return isLoading ? (
         <Loader />
     ) : (
         <Grid2 container gap={5} flexDirection={isTablet ? 'row' : 'column'}>
             <Grid2 size={isTablet ? 3 : 12}>
                 <Filter
-                    filterData={[
-                        {
-                            label: 'languages',
-                            filter: 'language',
-                            data: languages,
-                        },
-                        {
-                            label: 'genres',
-                            filter: 'genre',
-                            data: genres,
-                        },
-                    ]}
+                    filterData={Filters}
                     onClick={toggleFilters}
                     onCheck={exists}
                 />
             </Grid2>
             <Grid2 flex={1}>
                 <Stack sx={{ gap: 5 }}>
-                    <Typography variant="h2">Movies</Typography>
+                    <Heading>Movies</Heading>
                     {currentData?.length ? (
                         <>
                             <Grid
@@ -106,7 +102,7 @@ export const MovieListPage = () => {
                             <Box ref={endRef} style={{ height: 1 }} />
                         </>
                     ) : (
-                        <NoDataText text="No movies available" />
+                        <NoDataText>No movies available</NoDataText>
                     )}
                 </Stack>
             </Grid2>

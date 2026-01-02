@@ -93,7 +93,11 @@ export const Form = <T extends FieldValues>({
                 </Button>
             </StyledForm>
 
-            <Typography variant="subtitle2" color="text.primary">
+            <Typography
+                variant="subtitle2"
+                component="span"
+                color="text.primary"
+            >
                 {link.message}
                 {'\u00A0'}
                 <Link

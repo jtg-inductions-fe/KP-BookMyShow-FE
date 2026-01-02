@@ -49,7 +49,7 @@ export const SlotContainer = <T,>(props: SlotContainerProps<T>) => {
                         />
                     ))
                 ) : (
-                    <NoDataText text={'No slots available'} />
+                    <NoDataText>No slots available</NoDataText>
                 )}
             </Box>
         </Stack>

@@ -13,6 +13,7 @@ export const COLORS = {
     TEXT: {
         PRIMARY: '#FFFFFF',
         SECONDARY: '#797B7D',
+        DISABLED: '#710b1dc4',
     },
     INFO: {
         MAIN: '#99A1AF',

@@ -2,7 +2,7 @@ import { FreeMode } from 'swiper/modules';
 
 import { Box, capitalize, Stack, useMediaQuery, useTheme } from '@mui/material';
 
-import { Accordion, Chip, Grid, Typography } from '@components';
+import { Accordion, Chip, Grid, Heading } from '@components';
 
 import { FilterBox, StyledSwiperSlide } from './Filter.styles';
 import { FilterProps } from './Filter.types';
@@ -20,6 +20,7 @@ export const Filter = (props: FilterProps) => {
         <Chip
             key={value}
             label={value}
+            color="primary"
             variant={onCheck(filter, value) ? 'filled' : 'outlined'}
             onClick={() => {
                 onClick(filter, value);
@@ -28,7 +29,7 @@ export const Filter = (props: FilterProps) => {
     );
     return (
         <Box>
-            <Typography variant="h2">Filters</Typography>
+            <Heading>Filters</Heading>
             <Stack sx={{ paddingTop: 5, gap: 2 }}>
                 {filterData.map(({ label, data, filter }, index) =>
                     isTablet ? (

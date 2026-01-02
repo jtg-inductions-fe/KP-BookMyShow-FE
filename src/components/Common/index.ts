@@ -1,1 +1,1 @@
-export { BackgroundGradient, NoDataText } from './common.component';
+export { BackgroundGradient, NoDataText, Heading } from './common.component';

@@ -1,5 +1,9 @@
-import { ChipProps } from '@mui/material';
+import { Chip, styled } from '@mui/material';
 
-export interface StyledChipProps extends ChipProps {
-    label: string;
-}
+export const StyledChip = styled(Chip)(({ theme: { spacing } }) => ({
+    borderRadius: spacing(3),
+    width: 'fit-content',
+    ['&:focus-visible']: {
+        border: '1px solid white',
+    },
+}));

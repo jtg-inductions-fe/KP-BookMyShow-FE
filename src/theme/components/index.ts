@@ -4,6 +4,7 @@ import InterBoldWOFF2 from '@assets/fonts/inter/Inter-Bold.woff2';
 import InterMediumWOFF2 from '@assets/fonts/inter/Inter-Medium.woff2';
 import InterRegularWOFF2 from '@assets/fonts/inter/Inter-Regular.woff2';
 import InterSemiBoldWOFF2 from '@assets/fonts/inter/Inter-SemiBold.woff2';
+import { theme } from '@theme';
 
 const fontFaceDeclarations = `
        @font-face {
@@ -42,11 +43,24 @@ const fontFaceDeclarations = `
 
 export const components: Components = {
     MuiCssBaseline: {
-        styleOverrides: {
+        styleOverrides: () => ({
             html: {
                 fontSize: '62.5%',
+                scrollBehavior: 'smooth',
             },
             fontFaceDeclarations,
-        },
+            '*::-webkit-scrollbar': {
+                backgroundColor: 'transparent',
+                width: theme.typography.pxToRem(5),
+            },
+            '*::-webkit-scrollbar-thumb': {
+                borderRadius: theme.typography.pxToRem(5),
+                backgroundColor: theme.palette.primary.main,
+            },
+            '*': {
+                scrollbarWidth: 'thin',
+                scrollbarColor: `${theme.palette.primary.main} transparent`,
+            },
+        }),
     },
 };

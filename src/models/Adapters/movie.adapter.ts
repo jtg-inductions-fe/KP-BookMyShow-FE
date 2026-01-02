@@ -32,7 +32,7 @@ export class MovieAdapter {
             description: this.movie.description,
             subtitle1: this.getInPipeFormat(this.movie.genre),
             subtitle2: this.getInPipeFormat(this.movie.language),
-            extraInfo: `${formatDuration(this.movie.duration)} \u00B7 ${dateFormatter(this.movie.release_date)}`,
+            extraInfo: `${formatDuration(this.movie.duration)} \u00B7 ${dateFormatter(this.movie.releaseDate)}`,
         } satisfies DetailCardData;
     }
 }

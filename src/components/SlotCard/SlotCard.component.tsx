@@ -37,6 +37,10 @@ export const SlotCard = (props: SlotCardProps) => {
                             border: 1,
                             borderLeft: 4,
                             borderColor: 'primary.main',
+                            ['&:focus-visible']: {
+                                border: '1px solid white',
+                                borderLeft: 4,
+                            },
                         }}
                         label={data.value}
                         onClick={() =>

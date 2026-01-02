@@ -34,8 +34,7 @@ export interface MenuOption {
  * `dispatch`
  * The Redux dispatch function used to trigger actions inside menu handlers.
  *
- * @returns
- * An array of menu options, each containing a label and an onClick handler.
+ * @returns An array of menu options, each containing a label and an onClick handler.
  */
 export const getMenuOptions = (
     handleClose: () => void,
@@ -46,18 +45,20 @@ export const getMenuOptions = (
         label: 'Profile',
         onClick: () => {
             handleClose();
-            void navigate(APP_ROUTES.PROFILE);
+            void navigate(APP_ROUTES.PROFILE, {
+                replace: location.pathname === APP_ROUTES.PROFILE,
+            });
         },
     },
     {
         label: 'Logout',
         onClick: () => {
+            setTimeout(() => void navigate(APP_ROUTES.HOME, { replace: true }));
             Cookies.remove('refresh-token');
             Cookies.remove('access-token');
             dispatch(clearAuthState());
             dispatch(clearUser());
             handleClose();
-            void navigate(APP_ROUTES.HOME, { replace: true });
         },
     },
 ];

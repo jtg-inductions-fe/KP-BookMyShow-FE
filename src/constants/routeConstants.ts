@@ -20,7 +20,7 @@ export const APP_ROUTES = {
  * API endpoints that should include auth headers.
  */
 export const ENDPOINTS_WITH_HEADERS: string[] = [
-    'profile',
+    'getProfile',
     'bookSeats',
     'getBookings',
     'updateProfile',

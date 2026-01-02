@@ -22,7 +22,7 @@ export const Config: FieldConfig<User>[] = [
         },
     },
     {
-        name: 'phone_number',
+        name: 'phoneNumber',
         placeholder: 'Phone Number',
         type: 'tel',
         validation: {

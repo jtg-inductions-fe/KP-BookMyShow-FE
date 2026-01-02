@@ -1,4 +1,6 @@
-import { BoxProps, Typography } from '@mui/material';
+import { BoxProps, TypographyProps } from '@mui/material';
+
+import { Typography } from '@components';
 
 import { Gradient } from './common.styles';
 
@@ -11,11 +13,22 @@ export const BackgroundGradient = (props: BoxProps) => <Gradient {...props} />;
 
 /**
  * A component shows when there is no data, to make text consistent over the app.
- * @param text A message text
- * @returns A Typography component with text.
+ * @param children A text for the component.
+ * @returns A Typography component.
  */
-export const NoDataText = ({ text }: { text: string }) => (
-    <Typography variant="h3" color="primary.main">
-        {text}
+export const NoDataText = ({ children }: TypographyProps) => (
+    <Typography variant="h3" color="primary.main" lines={1}>
+        {children}
+    </Typography>
+);
+
+/**
+ * A component for Heading.
+ * @param children A text for the component.
+ * @returns A Typography component.
+ */
+export const Heading = ({ children }: TypographyProps) => (
+    <Typography variant="h2" lines={1} width="80%">
+        {children}
     </Typography>
 );

@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState: User = {
     name: '',
     email: '',
-    phone_number: '',
+    phoneNumber: '',
 };
 
 /**

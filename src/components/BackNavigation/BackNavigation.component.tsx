@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { ArrowBackIosOutlined } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { IconButton, svgIconClasses } from '@mui/material';
 
 import { DetailCard, DetailCardData } from '@components';
 
@@ -16,7 +16,15 @@ export const BackNavigation = (data: Partial<DetailCardData>) => {
     const navigate = useNavigate();
     return (
         <StyledStack>
-            <IconButton onClick={() => void navigate(-1)}>
+            <IconButton
+                sx={{
+                    [`&:focus-visible .${svgIconClasses.root}`]: {
+                        color: 'white',
+                    },
+                }}
+                onClick={() => void navigate(-1)}
+                aria-label="back button"
+            >
                 <ArrowBackIosOutlined fontSize="large" color="primary" />
             </IconButton>
 

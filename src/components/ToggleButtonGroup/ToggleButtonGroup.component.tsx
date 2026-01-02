@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { Typography } from 'components/Typography';
-
 import { IconButton, useMediaQuery, useTheme } from '@mui/material';
+
+import { Typography } from '@components';
 
 import {
     StyledToggleButton,
@@ -37,6 +37,7 @@ export const ToggleButtonGroup = ({
         >
             {ToggleButtonItems.map((toggleButtonItem) => (
                 <StyledToggleButton
+                    aria-label={`${toggleButtonItem.label} button`}
                     key={toggleButtonItem.label}
                     to={toggleButtonItem.url}
                 >
@@ -44,6 +45,7 @@ export const ToggleButtonGroup = ({
                         <>
                             {!isTablet && (
                                 <IconButton
+                                    aria-label={`${toggleButtonItem.label} icon`}
                                     sx={{
                                         padding: 0,
                                         margin: 0,

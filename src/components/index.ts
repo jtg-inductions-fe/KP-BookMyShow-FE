@@ -20,7 +20,7 @@ export type { SlotCommonProps, SlotCardProps } from './SlotCard';
 export { DatePicker } from './DatePicker';
 export { PopOver } from './PopOver';
 export { BackNavigation } from './BackNavigation';
-export { BackgroundGradient, NoDataText } from './Common';
+export { BackgroundGradient, NoDataText, Heading } from './Common';
 export { Seats } from './Seats';
 export type { SeatState } from './Seats';
 export { BookingDetailModal } from './BookingDetailModal';
